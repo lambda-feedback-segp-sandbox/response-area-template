@@ -1,10 +1,9 @@
-import { z } from 'zod'
-
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area/base-props.type'
 import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area/response-area-tub'
+import { z } from 'zod'
 
 import { EssayInput } from './Essay.component'
 

@@ -1018,8 +1018,8 @@
 
 "@lambda-feedback-segp-sandbox/styles@^0.1.0":
   version "0.1.0"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/0.1.0/821f56370a800646fcc4b56ee7272b0c2fc8ad43#821f56370a800646fcc4b56ee7272b0c2fc8ad43"
-  integrity sha512-U71E2GF9swLtWaYwdocu+wTvHc8nC3tOEevR5KR09POo9WNIwDNsSl3wupKxdlKHMKgzWQi0iYSnv5f1v9y6EQ==
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/0.1.0/f0ae59616b3a42a5ecdec40a2d82a0d53a4f298a#f0ae59616b3a42a5ecdec40a2d82a0d53a4f298a"
+  integrity sha512-muweWsuzTOLhz9j1pGuKU1cEBp/vmoHa91f64ORf0qtyEnSAErJxtayuFfqXL+ya/hAmUYT/7mBxVBzd+H7I9w==
   dependencies:
     "@emotion/react" "^11.4.1"
     "@emotion/server" "^11.4.0"
