@@ -17,3 +17,5 @@ Lambda Feedback.
    ```
 4. Edit `components/Input.tsx` and `components/Wizard.tsx` to implement your
    response area and its configuration wizard respectively.
+5. Use the Sandbox add-on to test your response area with an evaluation
+   function.
