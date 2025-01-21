@@ -6,7 +6,7 @@ type EssayInputProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
-  handleChange: (val: string) => void
+  handleChange: (val: string, _: any) => void
   answer?: string
 }
 
@@ -35,7 +35,7 @@ export const EssayInput: React.FC<EssayInputProps> = ({
       defaultValue={answer}
       className={classes.textarea}
       onChange={event => {
-        handleChange(event.target.value)
+        handleChange(event.target.value, null)
       }}
       onKeyDown={submitOnEnter}
       placeholder="Type your response here…"

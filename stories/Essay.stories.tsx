@@ -4,24 +4,26 @@ import React, { useState } from 'react'
 
 import { EssayInput } from '../components/Essay.component'
 
+const WrappedInput: typeof EssayInput = props => {
+  const [response, setResponse] = useState<string | undefined>(undefined)
+
+  return (
+    <EssayInput
+      {...props}
+      answer={response}
+      handleChange={(newResponse, _) => setResponse(newResponse)}
+    />
+  )
+}
+
 const meta = {
   title: 'EssayInput',
   component: EssayInput,
   parameters: {
     layout: 'centered',
   },
-  args: { handleSubmit: fn() },
-  render: (args, _) => {
-    const [response, setResponse] = useState(undefined)
-
-    return (
-      <EssayInput
-        {...args}
-        answer={response}
-        handleChange={(newResponse, _) => setResponse(newResponse)}
-      />
-    )
-  },
+  args: { handleChange: () => {}, handleSubmit: fn() },
+  render: (args, _) => <WrappedInput {...args} />,
 } satisfies Meta<typeof EssayInput>
 
 export default meta
