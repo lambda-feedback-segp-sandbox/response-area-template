@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
+import React, { useState } from 'react'
 
 import { EssayInput } from '../components/Essay.component'
 
@@ -9,7 +10,18 @@ const meta = {
   parameters: {
     layout: 'centered',
   },
-  args: { handleChange: () => {}, handleSubmit: fn() },
+  args: { handleSubmit: fn() },
+  render: (args, _) => {
+    const [response, setResponse] = useState(undefined)
+
+    return (
+      <EssayInput
+        {...args}
+        answer={response}
+        handleChange={(newResponse, _) => setResponse(newResponse)}
+      />
+    )
+  },
 } satisfies Meta<typeof EssayInput>
 
 export default meta
