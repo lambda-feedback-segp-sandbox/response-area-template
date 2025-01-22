@@ -6,12 +6,13 @@ import { EssayInput } from '../components/Essay.component'
 
 const WrappedInput: typeof EssayInput = props => {
   const [response, setResponse] = useState<string | undefined>(undefined)
-
   return (
     <EssayInput
       {...props}
       answer={response}
-      handleChange={(newResponse, _) => setResponse(newResponse)}
+      handleChange={(newResponse, _) => {setResponse(newResponse),
+        localStorage.setItem('response', newResponse);
+      }}
     />
   )
 }
