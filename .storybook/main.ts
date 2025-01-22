@@ -9,6 +9,7 @@ const config: StorybookConfig = {
     '@storybook/addon-onboarding',
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
+    '@lambda-feedback-segp-sandbox/sandbox-addon'
   ],
   framework: {
     name: '@storybook/react-vite',
