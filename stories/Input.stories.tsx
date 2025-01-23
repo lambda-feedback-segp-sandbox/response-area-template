@@ -5,13 +5,14 @@ import React, { useState } from 'react'
 import { Input } from '../components/Input.component'
 
 const WrappedInput: typeof Input = props => {
-  const [response, setResponse] = useState<string | undefined>(undefined)
+  const [response, setResponse] = useState<number[] | undefined>(undefined)
   return (
     <Input
       {...props}
       answer={response}
-      handleChange={(newResponse, _) => {
-        setResponse(newResponse), localStorage.setItem('response', newResponse)
+      handleChange={newResponse => {
+        setResponse(newResponse ?? undefined),
+          localStorage.setItem('response', newResponse?.toString() ?? '')
       }}
     />
   )

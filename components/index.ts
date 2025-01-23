@@ -5,29 +5,29 @@ import {
 import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area/response-area-tub'
 import { z } from 'zod'
 
-import { EssayInput } from './Essay.component'
+import { Input } from './Input.component'
 
-export const essayResponseAnswerSchema = z.string()
+export const responseAnswerSchema = z.array(z.number())
 
-export class EssayResponseAreaTub extends ResponseAreaTub {
-  public readonly responseType = 'ESSAY'
+export class MyResponseAreaTub extends ResponseAreaTub {
+  public readonly responseType = 'REPLACEME'
 
   public readonly displayWideInput = true
 
-  protected answerSchema = essayResponseAnswerSchema
+  protected answerSchema = responseAnswerSchema
 
-  protected answer?: string
+  protected answer?: number[]
 
   InputComponent = (props: BaseResponseAreaProps) => {
     const parsedAnswer = this.answerSchema.safeParse(props.answer)
-    return EssayInput({
+    return Input({
       ...props,
       answer: parsedAnswer.success ? parsedAnswer.data : undefined,
     })
   }
 
   WizardComponent = (props: BaseResponseAreaWizardProps) => {
-    return EssayInput({
+    return Input({
       ...props,
       answer: this.answer,
       handleChange: answer => {
