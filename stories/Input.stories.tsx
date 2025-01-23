@@ -2,30 +2,30 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React, { useState } from 'react'
 
-import { EssayInput } from '../components/Essay.component'
+import { Input } from '../components/Input.component'
 
-const WrappedInput: typeof EssayInput = props => {
+const WrappedInput: typeof Input = props => {
   const [response, setResponse] = useState<string | undefined>(undefined)
   return (
-    <EssayInput
+    <Input
       {...props}
       answer={response}
-      handleChange={(newResponse, _) => {setResponse(newResponse),
-        localStorage.setItem('response', newResponse);
+      handleChange={(newResponse, _) => {
+        setResponse(newResponse), localStorage.setItem('response', newResponse)
       }}
     />
   )
 }
 
 const meta = {
-  title: 'EssayInput',
-  component: EssayInput,
+  title: 'Input',
+  component: Input,
   parameters: {
     layout: 'centered',
   },
   args: { handleChange: () => {}, handleSubmit: fn() },
   render: (args, _) => <WrappedInput {...args} />,
-} satisfies Meta<typeof EssayInput>
+} satisfies Meta<typeof Input>
 
 export default meta
 type Story = StoryObj<typeof meta>
