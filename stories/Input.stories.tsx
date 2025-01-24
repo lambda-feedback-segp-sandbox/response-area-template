@@ -1,22 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
-import React, { useState } from 'react'
+import React from 'react'
 
 import { Input } from '../components/Input.component'
 
-const WrappedInput: typeof Input = props => {
-  const [response, setResponse] = useState<number[] | undefined>(undefined)
-  return (
-    <Input
-      {...props}
-      answer={response}
-      handleChange={newResponse => {
-        setResponse(newResponse ?? undefined),
-          localStorage.setItem('response', newResponse?.toString() ?? '')
-      }}
-    />
-  )
-}
+import { wrapInput } from './input-wrapper'
+
+const WrappedInput: typeof Input = wrapInput(Input)
 
 const meta = {
   title: 'Input',
