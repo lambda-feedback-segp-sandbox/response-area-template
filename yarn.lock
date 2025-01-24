@@ -990,6 +990,17 @@
     express "^4.21.2"
     zod "^3.24.1"
 
+"@lambda-feedback-segp-sandbox/ef-test-server@^0.4.0":
+  version "0.4.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/ef-test-server/0.4.0/aba8efb594f44f19c9bbce7b10630e85ae4932e8#aba8efb594f44f19c9bbce7b10630e85ae4932e8"
+  integrity sha512-vyZHY6cWQOqBtavfI62HinN8WLIvgrg2itTQXxDxy77tJdX2yNZPtXHXXvdpaLw9zJgYDalhrCuDDG8wQnjObw==
+  dependencies:
+    axios "^1.7.9"
+    cors "^2.8.5"
+    dotenv "^16.4.7"
+    express "^4.21.2"
+    zod "^3.24.1"
+
 "@lambda-feedback-segp-sandbox/graphql-api@0.1.0":
   version "0.1.0"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/graphql-api/0.1.0/2cdc62ca45bdab4e45470008baddaa487e643ceb#2cdc62ca45bdab4e45470008baddaa487e643ceb"
