@@ -15,7 +15,7 @@ Lambda Feedback.
    ```
    $ yarn storybook
    ```
-4. Edit `components/Input.component.tsx` and
+4. Edit `components/index.ts`, `components/Input.component.tsx` and
    `components/Wizard.component.tsx` to implement your response area
    and its configuration wizard respectively.
 5. Use the Sandbox add-on to test your response area with an evaluation

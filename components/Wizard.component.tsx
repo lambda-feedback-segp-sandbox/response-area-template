@@ -2,7 +2,7 @@ import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-ar
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
-type InputComponentProps = Omit<
+type WizardComponentProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
@@ -17,7 +17,7 @@ const useStyles = makeStyles()(theme => ({
   },
 }))
 
-export const Input: React.FC<InputComponentProps> = ({
+export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
   handleSubmit,
   answer,

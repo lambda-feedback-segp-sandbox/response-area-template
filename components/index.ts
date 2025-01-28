@@ -6,8 +6,9 @@ import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area/res
 import { z } from 'zod'
 
 import { Input } from './Input.component'
+import { Wizard } from './Wizard.component'
 
-export const responseAnswerSchema = z.array(z.number())
+export const responseAnswerSchema = z.string()
 
 export class MyResponseAreaTub extends ResponseAreaTub {
   public readonly responseType = 'REPLACEME'
@@ -16,7 +17,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   protected answerSchema = responseAnswerSchema
 
-  protected answer?: number[]
+  protected answer?: string
 
   InputComponent = (props: BaseResponseAreaProps) => {
     const parsedAnswer = this.answerSchema.safeParse(props.answer)
@@ -27,15 +28,15 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
 
   WizardComponent = (props: BaseResponseAreaWizardProps) => {
-    return Input({
+    return Wizard({
       ...props,
-      answer: this.answer,
       handleChange: answer => {
         props.handleChange({
           responseType: this.responseType,
           answer,
         })
       },
+      answer: this.answer,
     })
   }
 }
