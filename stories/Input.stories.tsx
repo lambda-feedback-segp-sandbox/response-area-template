@@ -8,7 +8,7 @@ import { wrapInput } from './input-wrapper'
 
 const WrappedInput: typeof Input = wrapInput(Input)
 
-const meta = {
+const InputMeta = {
   title: 'Input',
   component: Input,
   parameters: {
@@ -18,8 +18,8 @@ const meta = {
   render: (args, _) => <WrappedInput {...args} />,
 } satisfies Meta<typeof Input>
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default InputMeta
+type Story = StoryObj<typeof InputMeta>
 
 export const StudentView: Story = {
   args: {
