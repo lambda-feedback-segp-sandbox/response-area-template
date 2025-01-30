@@ -11,7 +11,6 @@ import { z } from 'zod'
 import { Input } from './Input.component'
 import { Wizard } from './Wizard.component'
 
-
 /** The main class for the custom response area, extends base ResponseAreaTub
  *  abstract class
  *  @see ResponseAreaTub */
