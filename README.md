@@ -15,7 +15,7 @@ Lambda Feedback.
    ```
    $ yarn storybook
    ```
-4. Edit `components/Input.component.tsx` and
+4. Edit `components/index.ts`, `components/Input.component.tsx` and
    `components/Wizard.component.tsx` to implement your response area
    and its configuration wizard respectively.
 5. Use the Sandbox add-on to test your response area with an evaluation
@@ -29,3 +29,11 @@ Lambda Feedback.
    Then switch to the **Evaluate** tab in Storybook, enter a response
    using your response area, and submit using the **Test Response
    Area** button.
+
+## Optional
+
+* Use the following command to generate TypeDoc files with documentation 
+  about the template repository:
+  ```
+  $ npx typedoc components/index.ts 
+  ```

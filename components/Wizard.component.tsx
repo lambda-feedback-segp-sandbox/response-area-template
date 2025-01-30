@@ -4,10 +4,10 @@ import {
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
-/** Custom input parameters for the Input component, extending or overriding
+/** Custom input parameters for the Wizard component, extending or overriding
  *  parameters provided in BaseResponseAreaProps
  *  @see BaseResponseAreaProps */
-type InputComponentProps = Omit<
+type WizardComponentProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
@@ -22,10 +22,10 @@ const useStyles = makeStyles()(theme => ({
   },
 }))
 
-/** Creates ReactNode rendering the Student and Teacher preview views, using
- *  InputComponentProps
- * @see InputComponentProps */
-export const Input: React.FC<InputComponentProps> = ({
+/** Creates ReactNode rendering the Teacher configuration view, using
+ *  WizardComponentProps
+ * @see WizardComponentProps */
+export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
   handleSubmit,
   answer,

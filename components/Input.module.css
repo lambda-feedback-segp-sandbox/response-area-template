@@ -1,3 +1,8 @@
+/*
+  File contains the styling for the css components
+  for Input and Wizard components
+*/
+
 .form {
   display: flex;
   align-items: center;

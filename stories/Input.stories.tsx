@@ -2,24 +2,27 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
 
-import { Input } from '../components/Input.component'
+import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
-const WrappedInput: typeof Input = wrapInput(Input)
+const WrappedInput = wrapInput(new MyResponseAreaTub().InputComponent)
 
-const meta = {
+const InputMeta = {
   title: 'Input',
-  component: Input,
+  component: WrappedInput,
   parameters: {
     layout: 'centered',
   },
-  args: { handleChange: () => {}, handleSubmit: fn() },
+  args: {
+    handleChange: () => {},
+    handleSubmit: fn(),
+  },
   render: (args, _) => <WrappedInput {...args} />,
-} satisfies Meta<typeof Input>
+} satisfies Meta
 
-export default meta
-type Story = StoryObj<typeof meta>
+export default InputMeta
+type Story = StoryObj<typeof InputMeta>
 
 export const StudentView: Story = {
   args: {
