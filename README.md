@@ -29,3 +29,11 @@ Lambda Feedback.
    Then switch to the **Evaluate** tab in Storybook, enter a response
    using your response area, and submit using the **Test Response
    Area** button.
+
+## Optional
+
+* Use the following command to generate TypeDoc files with documentation 
+  about the template repository:
+  ```
+  $ npx typedoc components/index.ts 
+  ```
