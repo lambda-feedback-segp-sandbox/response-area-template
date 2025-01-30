@@ -1,16 +1,29 @@
+import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area'
+import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
 
-import { Wizard } from '../components/Wizard.component'
+import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
-const WrappedInput: typeof Wizard = wrapInput(Wizard)
+const baseProps: BaseResponseAreaProps = {
+  handleChange(
+    val: IModularResponseSchema['answer'],
+    additionalParams: Record<string, any> | undefined,
+  ): void {},
+}
+
+const wizard = () => {
+  return new MyResponseAreaTub().InputComponent(baseProps)
+}
+
+const WrappedInput = wrapInput(wizard)
 
 const WizardMeta = {
   title: 'Wizard',
-  component: Wizard,
+  component: wizard,
   parameters: {
     layout: 'centered',
   },
@@ -19,7 +32,7 @@ const WizardMeta = {
     handleSubmit: fn(),
   },
   render: (args, _) => <WrappedInput {...args} />,
-} satisfies Meta<typeof Wizard>
+} satisfies Meta
 
 export default WizardMeta
 type Story = StoryObj<typeof WizardMeta>
