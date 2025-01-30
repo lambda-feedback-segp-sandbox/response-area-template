@@ -1,5 +1,3 @@
-import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area'
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
@@ -8,22 +6,11 @@ import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
-const baseProps: BaseResponseAreaProps = {
-  handleChange(
-    val: IModularResponseSchema['answer'],
-    additionalParams: Record<string, any> | undefined,
-  ): void {},
-}
-
-const input = () => {
-  return new MyResponseAreaTub().InputComponent(baseProps)
-}
-
-const WrappedInput = wrapInput(input)
+const WrappedInput = wrapInput(new MyResponseAreaTub().InputComponent)
 
 const InputMeta = {
   title: 'Input',
-  component: input,
+  component: WrappedInput,
   parameters: {
     layout: 'centered',
   },
