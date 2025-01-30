@@ -4,7 +4,7 @@ import {
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
-/** Custom input parameters for the Input component, extending or overiding
+/** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in BaseResponseAreaProps
  *  @see BaseResponseAreaProps */
 type InputComponentProps = Omit<

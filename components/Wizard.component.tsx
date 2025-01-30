@@ -1,7 +1,12 @@
-import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area'
+import {
+  BaseResponseAreaProps,
+} from '@lambda-feedback-segp-sandbox/response-area'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
+/** Custom input parameters for the Wizard component, extending or overriding
+ *  parameters provided in BaseResponseAreaProps
+ *  @see BaseResponseAreaProps */
 type WizardComponentProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
@@ -17,6 +22,9 @@ const useStyles = makeStyles()(theme => ({
   },
 }))
 
+/** Creates ReactNode rendering the Teacher configuration view, using
+ *  WizardComponentProps
+ * @see WizardComponentProps */
 export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
   handleSubmit,
