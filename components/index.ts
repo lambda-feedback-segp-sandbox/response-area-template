@@ -32,17 +32,17 @@ export type Config = {
 
 const config: Config = {
   styles: {
-    fontFamily: createProperty("Arial"), // Default font is Arial
+    fontFamily: createProperty("fontFamily", "Arial"), // Default font is Arial
   },
   settings: {
-    theme: createProperty("light"), // Example: Theme setting
-    textSize: createProperty(16), // Example: Text size setting
+    theme: createProperty("theme", "light"), // Example: Theme setting
+    textSize: createProperty("textSize", 16), // Example: Text size setting
   },
 };
 
 /** Helper function to create a property with localStorage support */
-function createProperty<T>(defaultValue: T): Property<T> {
-  const key = `config.${String(defaultValue)}`;
+function createProperty<T>(propName: String, defaultValue: T): Property<T> {
+  const key = `config.${propName}`;
 
   return {
     default: defaultValue,
