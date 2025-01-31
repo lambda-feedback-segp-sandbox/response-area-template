@@ -1,10 +1,10 @@
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
-} from '@lambda-feedback-segp-sandbox/response-area/base-props.type'
+} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import {
   ResponseAreaTub,
-} from '@lambda-feedback-segp-sandbox/response-area/response-area-tub'
+} from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
 import { ReactNode } from 'react'
 import { z } from 'zod'
 
