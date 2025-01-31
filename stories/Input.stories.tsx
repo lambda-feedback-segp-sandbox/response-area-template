@@ -1,14 +1,12 @@
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
-import { ResponseAreaView } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
 
 import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
 const WrappedInput = wrapInput(new MyResponseAreaTub().InputComponent)
-const tub = new MyResponseAreaTub()
 const InputMeta = {
   title: 'Input',
   component: WrappedInput,
