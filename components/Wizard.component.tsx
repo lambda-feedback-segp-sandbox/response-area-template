@@ -1,7 +1,12 @@
-import React, { useState } from 'react';
-import { Input, InputProps } from './Input.component';
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles';
-import { Select, MenuItem, FormControl, InputLabel, SelectChangeEvent } from '@mui/material';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import { SelectChangeEvent } from '@mui/material/Select';
+import React, { useState } from 'react';
+
+import { Input, InputProps } from './Input.component';
 
 export const Wizard: React.FC<InputProps> = ({
   config
