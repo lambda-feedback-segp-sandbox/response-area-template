@@ -1,34 +1,22 @@
-import {
-  BaseResponseAreaProps,
-} from '@lambda-feedback-segp-sandbox/response-area'
+import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
+import {Config} from "./index"
 
-/** Custom input parameters for the Input component, extending or overriding
- *  parameters provided in BaseResponseAreaProps
- *  @see BaseResponseAreaProps */
-type InputComponentProps = Omit<
+export type InputProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
-  handleChange: (val: string) => void
+  handleChange: (val: string, _: any) => void
   answer?: string
+  config: Config
 }
 
-const useStyles = makeStyles()(theme => ({
-  textarea: {
-    width: '100%',
-    minHeight: theme.spacing(20),
-  },
-}))
-
-/** Creates ReactNode rendering the Student and Teacher preview views, using
- *  InputComponentProps
- * @see InputComponentProps */
-export const Input: React.FC<InputComponentProps> = ({
+export const Input: React.FC<InputProps> = ({
   handleChange,
   handleSubmit,
   answer,
+  config
 }) => {
   const { classes } = useStyles()
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
@@ -50,10 +38,18 @@ export const Input: React.FC<InputComponentProps> = ({
       defaultValue={answer}
       className={classes.textarea}
       onChange={event => {
-        handleChange(event.target.value)
+        handleChange(event.target.value, null)
       }}
       onKeyDown={submitOnEnter}
       placeholder="Type your response here…"
+      style={{"fontFamily": config.styles.fontFamily.get()}}
     />
   )
 }
+
+const useStyles = makeStyles()(theme => ({
+  textarea: {
+    width: '100%',
+    minHeight: theme.spacing(20)
+  },
+}))

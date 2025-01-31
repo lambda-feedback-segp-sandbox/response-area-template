@@ -11,6 +11,51 @@ import { z } from 'zod'
 import { Input } from './Input.component'
 import { Wizard } from './Wizard.component'
 
+type Property<T> = {
+  default: T;
+  get: () => T;
+  set: (value: T) => void;
+};
+
+
+/** Object modified by Wizard Component and read by Input Component
+ *  Useful if the Wizard Component modifies properties of the Response Area */
+export type Config = {
+  styles: {
+    fontFamily: Property<string>;
+  };
+  settings: {
+    theme: Property<string>;
+    textSize: Property<number>;
+  };
+};
+
+const config: Config = {
+  styles: {
+    fontFamily: createProperty("Arial"), // Default font is Arial
+  },
+  settings: {
+    theme: createProperty("light"), // Example: Theme setting
+    textSize: createProperty(16), // Example: Text size setting
+  },
+};
+
+/** Helper function to create a property with localStorage support */
+function createProperty<T>(defaultValue: T): Property<T> {
+  const key = `config.${String(defaultValue)}`;
+
+  return {
+    default: defaultValue,
+    get: () => {
+      const storedValue = localStorage.getItem(key);
+      return storedValue !== null ? (JSON.parse(storedValue) as T) : defaultValue;
+    },
+    set: (value: T) => {
+      localStorage.setItem(key, JSON.stringify(value));
+    },
+  };
+}
+
 /** The main class for the custom response area, extends base ResponseAreaTub
  *  abstract class
  *  @see ResponseAreaTub */
@@ -40,6 +85,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     return Input({
       ...props,
       answer: parsedAnswer.success ? parsedAnswer.data : undefined,
+      config: config
     })
   }
 
@@ -59,6 +105,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
         })
       },
       answer: this.answer,
+      config: config
     })
   }
 }
