@@ -1,0 +1,10 @@
+{
+  "entryPoints": [
+    "components/index.ts",
+    "components/Input.component.tsx",
+    "components/Wizard.component.tsx",
+    "node_modules/@lambda-feedback-segp-sandbox/response-area/index.ts"
+  ],
+  "out": "docs",
+  "excludeExternals": false
+}

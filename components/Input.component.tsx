@@ -5,9 +5,8 @@ import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
- *  parameters provided in BaseResponseAreaProps
- *  @see BaseResponseAreaProps */
-type InputComponentProps = Omit<
+ *  parameters provided in {@link BaseResponseAreaProps} */
+export type InputComponentProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
@@ -23,8 +22,7 @@ const useStyles = makeStyles()(theme => ({
 }))
 
 /** Creates ReactNode rendering the Student and Teacher preview views, using
- *  InputComponentProps
- * @see InputComponentProps */
+ *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
   handleChange,
   handleSubmit,
