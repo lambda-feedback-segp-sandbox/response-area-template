@@ -30,3 +30,4 @@ tsconfig.tsbuildinfo
 *storybook.log
 
 .idea/
+package-lock.json
