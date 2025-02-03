@@ -1,43 +1,36 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
 
 import { MyResponseAreaTub } from '../components'
 
+
 import { wrapInput } from './input-wrapper'
 
-const initialiseMatrix = () => {
+const initialiseMatrix = (args: any): React.FC<any> => {
   const matrix = new MyResponseAreaTub()
   matrix.initWithDefault()
-  return matrix.InputComponent
+  return () => matrix.InputComponent(args)
 }
-
-const WrappedInput = wrapInput(initialiseMatrix())
 
 const InputMeta = {
   title: 'Input',
-  component: WrappedInput,
   parameters: {
     layout: 'centered',
   },
   args: {
-    handleChange: () => {},
+    handleChange: () => console.log("handleChange() being called from Input"),
     handleSubmit: fn(),
   },
-  render: (args, _) => <WrappedInput {...args} />,
 } satisfies Meta
 
-export default InputMeta
-type Story = StoryObj<typeof InputMeta>
+const WrappedInput: React.FC<any> = wrapInput(initialiseMatrix(InputMeta.args))
 
-export const StudentView: Story = {
-  args: {
-    isTeacherMode: false,
-  },
+export default {
+  ...InputMeta,
+  component: WrappedInput,
+  render: (args: any) => <WrappedInput {...args} />,
 }
 
-export const TeacherView: Story = {
-  args: {
-    isTeacherMode: true,
-  },
-}
+type Story = StoryObj<typeof WrappedInput>
+export const Default: Story = {}

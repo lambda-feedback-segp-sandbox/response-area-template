@@ -1,33 +1,36 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React from 'react'
 
 import { MyResponseAreaTub } from '../components'
 
+
 import { wrapInput } from './input-wrapper'
 
-const initialiseMatrix = () => {
+const initialiseMatrix = (args: any): React.FC<any> => {
   const matrix = new MyResponseAreaTub()
   matrix.initWithDefault()
-  return matrix.WizardComponent
+  return () => matrix.WizardComponent(args)
 }
-
-const WrappedWizard = wrapInput(initialiseMatrix())
 
 const WizardMeta = {
   title: 'Wizard',
-  component: WrappedWizard,
   parameters: {
     layout: 'centered',
   },
   args: {
-    handleChange: () => {},
+    handleChange: () => console.log("handleChange() being called from Wizard"),
     handleSubmit: fn(),
   },
-  render: (args, _) => <WrappedWizard {...args} />,
 } satisfies Meta
 
-export default WizardMeta
-type Story = StoryObj<typeof WizardMeta>
+const WrappedWizard: React.FC<any> = wrapInput(initialiseMatrix(WizardMeta.args))
 
+export default {
+  ...WizardMeta,
+  component: WrappedWizard,
+  render: (args: any) => <WrappedWizard {...args} />,
+}
+
+type Story = StoryObj<typeof WrappedWizard>
 export const Default: Story = {}
