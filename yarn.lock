@@ -1831,10 +1831,10 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.2.0":
-  version "1.2.0"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.2.0/efd5d4fb850fef2a4cfb62cdf65313b87bad6f79#efd5d4fb850fef2a4cfb62cdf65313b87bad6f79"
-  integrity sha512-X4xrTFwXC5RcasJI3nymUX8jsep+09VWd8FnjrRgWcEJHhbdxtsPZxpWqnzMz4sSkCYUCoojFCXISeMNf+lWew==
+"@lambda-feedback-segp-sandbox/response-area@^1.2.1":
+  version "1.2.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.2.1/dd90daeb1b4766e5f133d1f9fecdc5335bc1e832#dd90daeb1b4766e5f133d1f9fecdc5335bc1e832"
+  integrity sha512-R0nT1/1fIPyJPgnIMUnt417Rs8RCuH95Go2F5E/ShGmRR0DX6lwyEjf8S5JNBZPb0g4RBLp4k6wch8IkW7AqJA==
   dependencies:
     "@lambda-feedback-segp-sandbox/form-components" "^0.2.0"
     "@lambda-feedback-segp-sandbox/graphql-api" "^0.3.0"
