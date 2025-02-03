@@ -12,13 +12,15 @@ export const Wizard: React.FC<InputProps> = ({
   config
 }) => {
   const { classes } = useStyles();
-  const [_, forceRender] = useState(0);
   const [answer, setAnswer] = useState('');
+  const [, setSelectedFont] = useState(config.styles.fontFamily.get());
 
   const handleFontChange = (event: SelectChangeEvent<string>) => {
-    config.styles.fontFamily.set(event.target.value)
-    forceRender(prev => prev + 1);
+    const newFont = event.target.value;
+    config.styles.fontFamily.set(newFont);
+    setSelectedFont(newFont); // This ensures React detects the change and triggers a re-render
   };
+
 
   return (
     <div className={classes.container}>
