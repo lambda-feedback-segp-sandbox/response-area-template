@@ -5,9 +5,8 @@ import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Wizard component, extending or overriding
- *  parameters provided in BaseResponseAreaProps
- *  @see BaseResponseAreaProps */
-type WizardComponentProps = Omit<
+ *  parameters provided in {@link BaseResponseAreaProps} */
+export type WizardComponentProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
@@ -23,13 +22,14 @@ const useStyles = makeStyles()(theme => ({
 }))
 
 /** Creates ReactNode rendering the Teacher configuration view, using
- *  WizardComponentProps
- * @see WizardComponentProps */
+ *  {@link WizardComponentProps} */
 export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
   handleSubmit,
   answer,
 }) => {
+  // The following code is for demonstration purposes only, it can be
+  // completely refactored
   const { classes } = useStyles()
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(

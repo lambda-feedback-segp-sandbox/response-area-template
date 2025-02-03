@@ -11,9 +11,8 @@ import { z } from 'zod'
 import { Input } from './Input.component'
 import { Wizard } from './Wizard.component'
 
-/** The main class for the custom response area, extends base ResponseAreaTub
- *  abstract class
- *  @see ResponseAreaTub */
+/** The main class for the custom response area, extends base
+ * {@link ResponseAreaTub} abstract class */
 export class MyResponseAreaTub extends ResponseAreaTub {
   /** Specifies the label used for selection of the response area in UI */
   public readonly responseType = 'REPLACE_ME'
@@ -26,13 +25,13 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   protected answerSchema = z.string()
 
   /** Main data structure holding the answer for the response area, type of
-   *  answer can vary between different response areas */
+   *  answer can vary between different response areas, i.e. it might not
+   *  necessarily be a string */
   protected answer?: string
 
-  /** Creates a main response area component, providing a student and
-   *  teacher preview views
+  /** Creates a main response area component, instantiating a student and
+   *  teacher preview views. {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
-   *  @see BaseResponseAreaProps
    *  @returns ReactNode rendering the view
    *  */
   InputComponent = (props: BaseResponseAreaProps): ReactNode => {
@@ -43,10 +42,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     })
   }
 
-  /** Creates a teacher view, providing control over configuration of the
-   *  response area
+  /** Creates a teacher view, allowing configuration of the response area.
+   *  {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
-   *  @see BaseResponseAreaProps
    *  @returns ReactNode rendering the view
    *  */
   WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {

@@ -35,5 +35,5 @@ Lambda Feedback.
 * Use the following command to generate TypeDoc files with documentation 
   about the template repository:
   ```
-  $ npx typedoc components/index.ts 
+  $ yarn typedoc
   ```
