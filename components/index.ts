@@ -1,111 +1,75 @@
 import {
-  BaseResponseAreaProps,
-  BaseResponseAreaWizardProps,
-} from '@lambda-feedback-segp-sandbox/response-area/base-props.type'
+  DEFAULT_COLS, DEFAULT_ROWS,
+} from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import {
-  ResponseAreaTub,
-} from '@lambda-feedback-segp-sandbox/response-area/response-area-tub'
-import { ReactNode } from 'react'
+  BaseResponseAreaProps, BaseResponseAreaWizardProps,
+} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
+import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
+import _ from 'lodash'
 import { z } from 'zod'
 
-import { Input } from './Input.component'
-import { Wizard } from './Wizard.component'
+import { padMatrixFromRowsAndCols } from './helpers'
+import { Matrix } from './Matrix.component'
+import { matrixConfigSchema, matrixResponseAnswerSchema } from './Matrix.schema'
+import { MatrixWizard } from './MatrixWizard.component'
 
-type Property<T> = {
-  default: T;
-  get: () => T;
-  set: (value: T) => void;
-};
-
-
-/** Object modified by Wizard Component and read by Input Component
- *  Useful if the Wizard Component modifies properties of the Response Area */
-export type Config = {
-  styles: {
-    fontFamily: Property<string>;
-  };
-  settings: {
-    theme: Property<string>;
-    textSize: Property<number>;
-  };
-};
-
-const config: Config = {
-  styles: {
-    fontFamily: createProperty("fontFamily", "Arial"), // Default font is Arial
-  },
-  settings: {
-    theme: createProperty("theme", "light"), // Example: Theme setting
-    textSize: createProperty("textSize", 16), // Example: Text size setting
-  },
-};
-
-/** Helper function to create a property with localStorage support */
-function createProperty<T>(propName: String, defaultValue: T): Property<T> {
-  const key = `config.${propName}`;
-
-  return {
-    default: defaultValue,
-    get: () => {
-      const storedValue = localStorage.getItem(key);
-      return storedValue !== null ? (JSON.parse(storedValue) as T) : defaultValue;
-    },
-    set: (value: T) => {
-      localStorage.setItem(key, JSON.stringify(value));
-    },
-  };
+export const defaultMatrixAnswer = {
+  rows: DEFAULT_ROWS, cols: DEFAULT_COLS, type: 'MATRIX' as const, answers: padMatrixFromRowsAndCols({
+    rows: DEFAULT_ROWS, cols: DEFAULT_COLS,
+  }),
 }
 
-/** The main class for the custom response area, extends base ResponseAreaTub
- *  abstract class
- *  @see ResponseAreaTub */
 export class MyResponseAreaTub extends ResponseAreaTub {
-  /** Specifies the label used for selection of the response area in UI */
-  public readonly responseType = 'REPLACE_ME'
-
-  /** Enables response area to use full width of the wrapping container */
+  public readonly responseType = 'MATRIX'
   public readonly displayWideInput = true
+  protected configSchema = matrixConfigSchema
+  protected config?: z.infer<typeof matrixConfigSchema>
+  protected answerSchema = matrixResponseAnswerSchema
+  protected answer?: z.infer<typeof matrixResponseAnswerSchema>
 
-  /** Schema created with Zod library, used to parse the answer for the
-   *  response area */
-  protected answerSchema = z.string()
-
-  /** Main data structure holding the answer for the response area, type of
-   *  answer can vary between different response areas */
-  protected answer?: string
-
-  /** Creates a main response area component, providing a student and
-   *  teacher preview views
-   *  @param props - Base parameters passed to all response areas
-   *  @see BaseResponseAreaProps
-   *  @returns ReactNode rendering the view
-   *  */
-  InputComponent = (props: BaseResponseAreaProps): ReactNode => {
-    const parsedAnswer = this.answerSchema.safeParse(props.answer)
-    return Input({
-      ...props,
-      answer: parsedAnswer.success ? parsedAnswer.data : undefined,
-      config: config
+  initWithDefault = () => {
+    this.config = {
+      rows: DEFAULT_ROWS, cols: DEFAULT_COLS,
+    }
+    this.answer = padMatrixFromRowsAndCols({
+      rows: DEFAULT_ROWS, cols: DEFAULT_COLS,
     })
   }
 
-  /** Creates a teacher view, providing control over configuration of the
-   *  response area
-   *  @param props - Base parameters passed to all response areas
-   *  @see BaseResponseAreaProps
-   *  @returns ReactNode rendering the view
-   *  */
-  WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
-    return Wizard({
-      ...props,
-      handleChange: answer => {
-        props.handleChange({
-          responseType: this.responseType,
-          answer,
-        })
-      },
-      answer: this.answer,
-      config: config
+  InputComponent = (props: BaseResponseAreaProps) => {
+    if (!this.config) throw new Error('Config missing')
+
+    return Matrix({
+      ...props, config: this.config,
     })
+  }
+
+  WizardComponent = (props: BaseResponseAreaWizardProps) => {
+    if (!this.config) throw new Error('Config missing')
+    if (this.answer === undefined) throw new Error('Answer missing')
+
+    return MatrixWizard({
+      ...props, config: this.config, answer: this.answer,
+    })
+  }
+
+  protected extractAnswer = (provided: any): void => {
+    if (!this.config) throw new Error('Config missing')
+    if (!Array.isArray(provided)) throw new Error('Answer is not an array')
+
+    // legacy handling: answer used to be stored as a one-dimensional array. This
+    // checks which format the answer is in and converts it to a two-dimensional
+    // array if necessary
+    const isChuncked = Array.isArray(provided[0])
+    let answerToParse: z.infer<typeof matrixResponseAnswerSchema>
+    if (isChuncked) {
+      answerToParse = provided
+    } else {
+      answerToParse = _.chunk(provided, this.config.cols)
+    }
+    const parsedAnswer = this.answerSchema.safeParse(answerToParse)
+    if (!parsedAnswer.success) throw new Error('Could not extract answer')
+
+    this.answer = parsedAnswer.data
   }
 }
