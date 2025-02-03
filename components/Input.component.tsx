@@ -28,6 +28,8 @@ export const Input: React.FC<InputComponentProps> = ({
   handleSubmit,
   answer,
 }) => {
+  // The following code is for demonstration purposes only, it can be
+  // completely refactored
   const { classes } = useStyles()
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(

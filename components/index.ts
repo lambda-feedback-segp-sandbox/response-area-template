@@ -25,10 +25,11 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   protected answerSchema = z.string()
 
   /** Main data structure holding the answer for the response area, type of
-   *  answer can vary between different response areas */
+   *  answer can vary between different response areas, i.e. it might not
+   *  necessarily be a string */
   protected answer?: string
 
-  /** Creates a main response area component, providing a student and
+  /** Creates a main response area component, instantiating a student and
    *  teacher preview views. {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
@@ -41,8 +42,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     })
   }
 
-  /** Creates a teacher view, providing control over configuration of the
-   *  response area. {@link BaseResponseAreaProps}
+  /** Creates a teacher view, allowing configuration of the response area.
+   *  {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
