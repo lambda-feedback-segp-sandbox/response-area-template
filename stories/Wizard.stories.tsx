@@ -6,14 +6,13 @@ import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
-const matrix = new MyResponseAreaTub()
-
-const helper = () => {
+const initialiseMatrix = () => {
+  const matrix = new MyResponseAreaTub()
   matrix.initWithDefault()
   return matrix.WizardComponent
 }
 
-const WrappedWizard = wrapInput(helper())
+const WrappedWizard = wrapInput(initialiseMatrix())
 
 const WizardMeta = {
   title: 'Wizard',

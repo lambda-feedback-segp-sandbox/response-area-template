@@ -11,7 +11,7 @@ import {
   matrixFromJson,
   padMatrixFromRowsAndCols,
 } from './helpers'
-
+import styles from './Matrix.module.css'
 import { MatrixConfigSchema } from './Matrix.schema'
 
 const MINIMUM_COLUMN_WIDTH = 5
@@ -33,14 +33,14 @@ interface MatrixProps extends BaseResponseAreaProps {
 }
 
 export const Matrix: React.FC<MatrixProps> = ({
-  handleChange,
-  handleSubmit,
-  previewSubmit,
-  answer,
-  preResponseText,
-  postResponseText,
-  config: { rows, cols },
-}) => {
+                                                handleChange,
+                                                handleSubmit,
+                                                previewSubmit,
+                                                answer,
+                                                preResponseText,
+                                                postResponseText,
+                                                config: { rows, cols },
+                                              }) => {
   const matrix = matrixFromJson({
     json: answer,
     rows,
@@ -68,22 +68,22 @@ interface MatrixLegacyProps extends BaseResponseAreaProps {
 }
 
 export const MatrixLegacy: React.FC<MatrixLegacyProps> = ({
-  rows,
-  cols,
-  matrix,
-  handleChange,
-  handleSubmit,
-  previewSubmit,
-  preResponseText,
-  postResponseText,
-}) => {
+                                                            rows,
+                                                            cols,
+                                                            matrix,
+                                                            handleChange,
+                                                            handleSubmit,
+                                                            previewSubmit,
+                                                            preResponseText,
+                                                            postResponseText,
+                                                          }) => {
   const ref = useRef<HTMLDivElement>(null)
 
   const [availableWidth, setAvailableWidth] = useState(0)
 
   const availableTableWidth = Math.max(200, availableWidth)
 
-  const { classes } = useStyles()
+  const { classes, cx } = useStyles()
 
   const { isMobile, isTablet } = useViewPort()
 
@@ -167,46 +167,46 @@ export const MatrixLegacy: React.FC<MatrixLegacyProps> = ({
   return (
     <div
       ref={ref}
-      className={classes.container}
+      className={cx(classes.container, styles.tableStyles)}
       style={{ maxWidth: availableTableWidth }}>
       <table className={classes.matrixElement}>
         <tbody>
-          {matrix.map((row, rowIndex) => (
-            <tr key={`row-${rowIndex}`}>
-              {row.map((item, columnIndex) => {
-                return (
-                  <td id={`item-${item}`} key={`column-${columnIndex}`}>
-                    <input
-                      className={classes.input}
-                      name={`field-${item}`}
-                      value={getValue({
-                        row: rowIndex,
-                        col: columnIndex,
-                        matrix,
-                      })}
-                      onKeyDown={submitOnEnter}
-                      // Update Matrix response on change
-                      onChange={event => {
-                        event.preventDefault()
+        {matrix.map((row, rowIndex) => (
+          <tr key={`row-${rowIndex}`}>
+            {row.map((item, columnIndex) => {
+              return (
+                <td id={`item-${item}`} key={`column-${columnIndex}`}>
+                  <input
+                    className={classes.input}
+                    name={`field-${item}`}
+                    value={getValue({
+                      row: rowIndex,
+                      col: columnIndex,
+                      matrix,
+                    })}
+                    onKeyDown={submitOnEnter}
+                    // Update Matrix response on change
+                    onChange={event => {
+                      event.preventDefault()
 
-                        const newMatrix = _.cloneDeep(matrix)
-                        const rowArray = newMatrix[rowIndex]
+                      const newMatrix = _.cloneDeep(matrix)
+                      const rowArray = newMatrix[rowIndex]
 
-                        if (!rowArray) {
-                          return
-                        }
+                      if (!rowArray) {
+                        return
+                      }
 
-                        rowArray[columnIndex] = event.target.value
+                      rowArray[columnIndex] = event.target.value
 
-                        handleChange(newMatrix)
-                        previewSubmit?.(newMatrix)
-                      }}
-                    />
-                  </td>
-                )
-              })}
-            </tr>
-          ))}
+                      handleChange(newMatrix)
+                      previewSubmit?.(newMatrix)
+                    }}
+                  />
+                </td>
+              )
+            })}
+          </tr>
+        ))}
         </tbody>
       </table>
     </div>
@@ -217,34 +217,14 @@ const useStyles = makeStyles()(theme => ({
     overflowX: 'auto',
     width: '100%',
     padding: BRACKETS_WIDTH,
-    display: 'flex',
-    alignItems: 'center',
-    borderLeft: '2px solid black',
-    borderRight: '2px solid black',
-    borderRadius: '0.5rem',
   },
   matrixElement: {
     width: '100%',
-    borderCollapse: 'separate',
-    borderSpacing: '0.5rem 0.5rem',
   },
   input: {
-    width: '2.5rem',
-    padding: '0.6rem',
-    paddingLeft: '1rem',
+    width: '100%',
     minWidth: theme.spacing(MINIMUM_COLUMN_WIDTH),
     height: theme.spacing(5),
     textAlign: 'center',
   },
-  form: {
-    display: 'flex',
-    alignItems: 'center',
-  },
-  preText: {
-    marginRight: '1rem',
-  },
-  postText: {
-    marginLeft: '1rem',
-  },
 }))
-
