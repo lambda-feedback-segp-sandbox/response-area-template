@@ -7,7 +7,6 @@ import { MyResponseAreaTub } from '../components'
 import { wrapInput } from './input-wrapper'
 
 const WrappedInput = wrapInput(new MyResponseAreaTub().InputComponent)
-
 const InputMeta = {
   title: 'Input',
   component: WrappedInput,
