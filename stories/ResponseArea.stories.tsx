@@ -5,6 +5,9 @@ import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
+import Button from '@mui/material/Button'
+import { Delete as DeleteIcon, BarChart, ContentCopy, Tune } from '@mui/icons-material'
+
 const tub = new MyResponseAreaTub()
 tub.InputComponent = wrapInput(tub.InputComponent)
 const ResponseAreaViewMeta = {
@@ -37,6 +40,53 @@ export const tempView: Story = {
         inFlight: false, 
         responseAreaId: '00000000-0000-0000-0000-000000000000',
         universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-        wrapLabel: "Area Label"
-    }
+        wrapLabel: "Area Label",
+        ActionButtons: (
+          <>
+            <Button
+              variant="outlined"
+              endIcon={<Tune />}
+              disabled>
+              Configure
+            </Button>
+            <Button
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+              variant="outlined"
+              disabled
+              endIcon={<BarChart />}>
+              Explore
+            </Button>
+            <Button
+              sx={{
+                display: 'flex',
+                justifyContent: 'space-between',
+                alignItems: 'center',
+              }}
+              variant="outlined"
+              disabled
+              endIcon={<ContentCopy />}>
+              Duplicate
+            </Button>
+            <Button
+              buttonProps={{
+                color: 'error',
+                variant: 'outlined',
+                sx: {
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '100%',
+                },
+              }}
+              EndButtonIcon={<DeleteIcon />}
+              disabled>
+              Delete
+              </Button>
+          </>
+        )
+      }
 }
