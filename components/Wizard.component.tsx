@@ -1,6 +1,4 @@
-import {
-  BaseResponseAreaProps,
-} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
+import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
