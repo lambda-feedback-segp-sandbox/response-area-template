@@ -1,8 +1,15 @@
+import '@lambda-feedback-segp-sandbox/styles/styles/globals.css'
+import { ThemeProvider } from '@lambda-feedback-segp-sandbox/styles/styles/minimal/theme-provider'
 import type { Preview } from '@storybook/react'
 
-import '@lambda-feedback-segp-sandbox/styles/styles/globals.css'
-
 const preview: Preview = {
+  decorators: [
+    Story => (
+      <ThemeProvider>
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     controls: {
       matchers: {
