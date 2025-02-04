@@ -17,9 +17,6 @@ tub.InputComponent = wrapInput(tub.InputComponent)
 const ResponseAreaViewMeta = {
   title: 'Response Area',
   component: ResponseAreaView,
-  parameters: {
-    layout: 'centered',
-  },
   args: {
     handleChange: () => {},
     preResponseText: 'this is pre response text',

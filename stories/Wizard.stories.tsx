@@ -10,9 +10,6 @@ const WrappedWizard = wrapInput(new MyResponseAreaTub().InputComponent)
 const WizardMeta = {
   title: 'Wizard',
   component: WrappedWizard,
-  parameters: {
-    layout: 'centered',
-  },
   args: {
     handleChange: () => {},
     handleSubmit: fn(),
