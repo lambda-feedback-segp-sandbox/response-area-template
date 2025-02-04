@@ -1795,10 +1795,10 @@
     markdown-to-jsx "^7.1.7"
     react "^18.3.1"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^1.0.0":
-  version "1.0.0"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/1.0.0/08b6bc182cf1d7d84d3e22b3c2d498cdaa9ab0a2#08b6bc182cf1d7d84d3e22b3c2d498cdaa9ab0a2"
-  integrity sha512-V5VfuLNe2Fp0JRdcszUJDrH4dKVBh2gStiTo9OiszXWUhUCJQnY6YiGbrXfDENTlH4/DB607J3AK/naSVF6pZA==
+"@lambda-feedback-segp-sandbox/response-area-base@^1.0.0", "@lambda-feedback-segp-sandbox/response-area-base@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/1.1.0/19ac6461b99e63e03e2945adf131259f7ffe7148#19ac6461b99e63e03e2945adf131259f7ffe7148"
+  integrity sha512-rx29GGzEE0zNf/x3BI3zXPMPntQ019HrQsqnuxHs69paNTrZT7gahoeQTQuwOC3PutBkzSIo5NbZEBHM7WFf5Q==
   dependencies:
     "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
     react "^18.3.1"
@@ -1815,10 +1815,10 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.2.7":
-  version "1.2.7"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.2.7/9df35806fba397cc980507ccb3f84f8b884439f9#9df35806fba397cc980507ccb3f84f8b884439f9"
-  integrity sha512-cFofh3jSD5SORhR7f/7WuQKKeY12T0tkMZjLevM249L8eOzcaQ/Lu0n2OwKQSHBeVU+2v/mxZC9DLlUnsEiaeg==
+"@lambda-feedback-segp-sandbox/response-area@^1.3.1":
+  version "1.3.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.1/556b280c1c0a2efafc477d2bfd8d80e7ea94248d#556b280c1c0a2efafc477d2bfd8d80e7ea94248d"
+  integrity sha512-Wh6xg5W/1WpDbnr+WelTCkq7cyvx2stRLSGD6BMj/j7yi5FRJfGBBW461VzKvS7337FAZWoTDyegab4hCm4byw==
   dependencies:
     "@lambda-feedback-segp-sandbox/content-components" "^1.0.1"
     "@lambda-feedback-segp-sandbox/form-components" "^1.0.2"
@@ -1826,7 +1826,7 @@
     "@lambda-feedback-segp-sandbox/icon-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/loading-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/math-components" "^1.0.0"
-    "@lambda-feedback-segp-sandbox/response-area-base" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^1.1.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
     "@monaco-editor/react" "^4.6.0"
     "@mui/lab" "^5.0.0-alpha.100"
@@ -1844,10 +1844,10 @@
     typedoc "^0.27.6"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.1":
-  version "0.6.1"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.1/065e693edbe54ec676b18a69239dabfc3b5af905#065e693edbe54ec676b18a69239dabfc3b5af905"
-  integrity sha512-DXHEJEq3cruJ17uDd04CYnUMWpC1IsCizpycXv/qL2c3dEghyLeoaXR8m2w7A4llsg+5s7LNXH/LVY0tbuKwNw==
+"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.8":
+  version "0.6.8"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.8/f960ae8e7528049e91f93b192fc97d8ccdf6289f#f960ae8e7528049e91f93b192fc97d8ccdf6289f"
+  integrity sha512-cSEqeB/X/ZOdXlA9n7RY+2BsBjHv7/bS+iwy0ZFlWGBAuBZz7TMRYZptMfhhTv07KzAnV4jcXhFSUO6orFPwKQ==
   dependencies:
     "@lambda-feedback-segp-sandbox/ef-test-server" "^0.5.0"
     "@lambda-feedback-segp-sandbox/response-area" "^0.1.0"
@@ -4528,9 +4528,9 @@ endent@^2.0.1:
     objectorarray "^1.0.5"
 
 enhanced-resolve@^5.0.0, enhanced-resolve@^5.15.0, enhanced-resolve@^5.17.1, enhanced-resolve@^5.7.0:
-  version "5.18.0"
-  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.18.0.tgz#91eb1db193896b9801251eeff1c6980278b1e404"
-  integrity sha512-0/r0MySGYG8YqlayBZ6MuCfECmHFdJ5qyPh8s8wa5Hnm6SaFLSK1VYCbj+NKp090Nm1caZhD+QTnmxO7esYGyQ==
+  version "5.18.1"
+  resolved "https://registry.yarnpkg.com/enhanced-resolve/-/enhanced-resolve-5.18.1.tgz#728ab082f8b7b6836de51f1637aab5d3b9568faf"
+  integrity sha512-ZSW3ma5GkcQBIpwZTSRAI8N71Uuwgs93IezB7mf7R60tC8ZbJideoDNKjHn2O9KIlx6rkGTTEk1xUCK2E1Y2Yg==
   dependencies:
     graceful-fs "^4.2.4"
     tapable "^2.2.0"

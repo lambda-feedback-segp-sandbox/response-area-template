@@ -39,6 +39,7 @@ export const tempView: Story = {
     handleCheck: () => {},
     handleDraftSave: () => {},
     inFlight: false,
+    feedback: {isCorrect: true, isError: false},
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
     wrapLabel: 'Area Label',
