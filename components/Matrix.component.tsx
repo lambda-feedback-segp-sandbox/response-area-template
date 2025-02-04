@@ -179,7 +179,7 @@ export const MatrixLegacy: React.FC<MatrixLegacyProps> = ({
                   <input
                     className={classes.input}
                     name={`field-${item}`}
-                    value={getValue({
+                    defaultValue={getValue({
                       row: rowIndex,
                       col: columnIndex,
                       matrix,
