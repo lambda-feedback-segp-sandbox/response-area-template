@@ -1,4 +1,5 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
+import { resolve } from 'path'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
 
 const config: StorybookConfig = {
@@ -19,6 +20,10 @@ const config: StorybookConfig = {
   },
   webpackFinal: async config => {
     if (config.resolve) {
+      config.resolve.alias = {
+        ...(config.resolve.alias || {}),
+        'next/font/google': resolve(__dirname, '../mocks/fonts.ts'),
+      }
       config.resolve.plugins = [
         ...(config.resolve.plugins || []),
         new TsconfigPathsPlugin({

@@ -9,9 +9,6 @@ const WrappedInput = wrapInput(new MyResponseAreaTub().InputComponent)
 const InputMeta = {
   title: 'Input',
   component: WrappedInput,
-  parameters: {
-    layout: 'centered',
-  },
   args: {
     handleChange: () => {},
     handleSubmit: fn(),
