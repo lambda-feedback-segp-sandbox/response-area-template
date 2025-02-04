@@ -1,6 +1,6 @@
 import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
-import React, { useCallback } from 'react'
+import { useCallback } from 'react'
 
 /** Custom input parameters for the Wizard component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
