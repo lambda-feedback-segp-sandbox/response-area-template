@@ -1,36 +1,65 @@
-import { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
-import React from 'react'
+import { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import React, { useState } from "react";
 
-import { MyResponseAreaTub } from '../components'
-
-
-import { wrapInput } from './input-wrapper'
+import { MyResponseAreaTub } from "../components";
+import { wrapInput } from "./input-wrapper";
+import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema";
 
 const initialiseMatrix = (args: any): React.FC<any> => {
-  const matrix = new MyResponseAreaTub()
-  matrix.initWithDefault()
-  return () => matrix.InputComponent(args)
-}
+  return () => {
+    const [response, _] = useState<IModularResponseSchema | null>(() => {
+      const storedResponse = localStorage.getItem("response");
+      if (storedResponse) {
+        try {
+          const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
+          return parsedResponse && parsedResponse.config
+            ? parsedResponse
+            : null;
+        } catch {
+          return null; // Return null if JSON parsing fails
+        }
+      }
+      return null;
+    });
+
+    const matrix = new MyResponseAreaTub();
+    if (response && response.config) {
+      // @ts-ignore
+      matrix.config = response.config;
+    } else {
+      matrix.initWithDefault();
+    }
+
+    return matrix.InputComponent({
+      ...args,
+      handleChange: (val: IModularResponseSchema) => {},
+    });
+  };
+};
 
 const InputMeta = {
-  title: 'Input',
+  title: "Input",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
-    handleChange: () => console.log("handleChange() being called from Input"),
+    handleChange: (val: IModularResponseSchema) => {
+      if (val && val.config && val.answer) {
+        localStorage.setItem("response", JSON.stringify(val));
+      }
+    },
     handleSubmit: fn(),
   },
-} satisfies Meta
+} satisfies Meta;
 
-const WrappedInput: React.FC<any> = wrapInput(initialiseMatrix(InputMeta.args))
+const WrappedInput: React.FC<any> = wrapInput(initialiseMatrix(InputMeta.args));
 
 export default {
   ...InputMeta,
   component: WrappedInput,
   render: (args: any) => <WrappedInput {...args} />,
-}
+};
 
-type Story = StoryObj<typeof WrappedInput>
-export const Default: Story = {}
+type Story = StoryObj<typeof WrappedInput>;
+export const Default: Story = {};

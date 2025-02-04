@@ -23,9 +23,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   public readonly responseType = 'MATRIX'
   public readonly displayWideInput = true
   protected configSchema = matrixConfigSchema
-  protected config?: z.infer<typeof matrixConfigSchema>
+  public config?: z.infer<typeof matrixConfigSchema>
   protected answerSchema = matrixResponseAnswerSchema
-  protected answer?: z.infer<typeof matrixResponseAnswerSchema>
+  public answer?: z.infer<typeof matrixResponseAnswerSchema>
 
   initWithDefault = () => {
     this.config = {
