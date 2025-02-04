@@ -1,6 +1,12 @@
 import type { StorybookConfig } from '@storybook/react-webpack5'
-import { resolve } from 'path'
+import { dirname, resolve } from 'path'
 import TsconfigPathsPlugin from 'tsconfig-paths-webpack-plugin'
+import { fileURLToPath } from 'url'
+
+if (!__dirname) {
+  const __filename = fileURLToPath(import.meta.url)
+  var __dirname = dirname(__filename)
+}
 
 const config: StorybookConfig = {
   stories: [
