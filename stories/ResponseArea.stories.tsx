@@ -47,7 +47,7 @@ export const tempView: Story = {
     wrapLabel: 'Area Label',
     ActionButtons: (
       <>
-        <Button variant="outlined" endIcon={<Tune />} disabled>
+        <Button variant="outlined" endIcon={<Tune />}>
           Configure
         </Button>
         <Button
@@ -57,7 +57,6 @@ export const tempView: Story = {
             alignItems: 'center',
           }}
           variant="outlined"
-          disabled
           endIcon={<BarChart />}>
           Explore
         </Button>
@@ -68,7 +67,6 @@ export const tempView: Story = {
             alignItems: 'center',
           }}
           variant="outlined"
-          disabled
           endIcon={<ContentCopy />}>
           Duplicate
         </Button>
@@ -81,8 +79,7 @@ export const tempView: Story = {
             alignItems: 'center',
             width: '100%',
           }}
-          endIcon={<DeleteIcon />}
-          disabled>
+          endIcon={<DeleteIcon />}>
           Delete
         </Button>
       </>
