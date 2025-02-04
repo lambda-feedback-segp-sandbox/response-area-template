@@ -73,17 +73,15 @@ export const tempView: Story = {
           Duplicate
         </Button>
         <Button
-          buttonProps={{
-            color: 'error',
-            variant: 'outlined',
-            sx: {
-              display: 'flex',
-              justifyContent: 'space-between',
-              alignItems: 'center',
-              width: '100%',
-            },
+          color="error"
+          variant="outlined"
+          sx={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            width: '100%',
           }}
-          EndButtonIcon={<DeleteIcon />}
+          endIcon={<DeleteIcon />}
           disabled>
           Delete
         </Button>
