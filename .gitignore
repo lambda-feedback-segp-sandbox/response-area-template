@@ -29,4 +29,4 @@ tsconfig.tsbuildinfo
 
 *storybook.log
 
-./idea
+.idea/
