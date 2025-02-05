@@ -7,6 +7,7 @@ import { ReactNode } from 'react'
 import { z } from 'zod'
 
 import { Input } from './Input.component'
+import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
 import { Wizard } from './Wizard.component'
 
 /** The main class for the custom response area, extends base
@@ -20,12 +21,24 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   /** Schema created with Zod library, used to parse the answer for the
    *  response area */
-  protected answerSchema = z.string()
+  protected answerSchema = inputResponseAnswerSchema
 
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
-  protected answer?: string
+  public answer?: z.infer<typeof inputResponseAnswerSchema>
+
+  /* Add a comment here please */
+  public config?: z.infer<typeof inputConfigSchema>
+
+  initWithDefault = () => {
+    this.config = {
+      fontFamily: "Arial",
+    }
+
+    // this.answer = ""
+  }
+
 
   /** Creates a main response area component, instantiating a student and
    *  teacher preview views. {@link BaseResponseAreaProps}
@@ -33,12 +46,15 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @returns ReactNode rendering the view
    *  */
   InputComponent = (props: BaseResponseAreaProps): ReactNode => {
-    const parsedAnswer = this.answerSchema.safeParse(props.answer)
+    if (!this.config) throw new Error('Config missing')
+
     return Input({
       ...props,
-      answer: parsedAnswer.success ? parsedAnswer.data : undefined,
-    })
-  }
+      config: this.config, // Ensure config matches expected types
+      handleChange: props.handleChange,
+      answer: this.answer,
+    });
+  };
 
   /** Creates a teacher view, allowing configuration of the response area.
    *  {@link BaseResponseAreaProps}
@@ -46,15 +62,10 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @returns ReactNode rendering the view
    *  */
   WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
+    if (!this.config) throw new Error('Config missing')
+
     return Wizard({
-      ...props,
-      handleChange: answer => {
-        props.handleChange({
-          responseType: this.responseType,
-          answer,
-        })
-      },
-      answer: this.answer,
+      ...props, config: this.config, answer: this.answer,
     })
   }
 }
