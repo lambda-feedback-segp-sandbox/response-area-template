@@ -1,10 +1,12 @@
+import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema";
 import { Meta } from "@storybook/react";
+import { fn } from '@storybook/test'
 import React, { useState } from "react";
 
 import { MyResponseAreaTub } from "../components";
+
 import { wrapInput } from "./input-wrapper";
-import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema";
-import { fn } from '@storybook/test'
+
 
 const initialiseResponseArea = (args: any): React.FC<any> => {
   return () => {

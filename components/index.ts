@@ -2,15 +2,13 @@ import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import {
-  ResponseAreaTub,
-} from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
+import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
 import { ReactNode } from 'react'
 import { z } from 'zod'
 
 import { Input } from './Input.component'
-import { Wizard } from './Wizard.component'
 import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
+import { Wizard } from './Wizard.component'
 
 /** The main class for the custom response area, extends base
  * {@link ResponseAreaTub} abstract class */
