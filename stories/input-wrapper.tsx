@@ -15,7 +15,7 @@ export function wrapInput<P>(Input: React.FC<P>): React.FC<any> {
           } else {
             responseString = newResponse?.toString() ?? ''
           }
-          localStorage.setItem('student.input', responseString)
+          localStorage.setItem('student.input', JSON.stringify(responseString))
         }}
       />
     )
