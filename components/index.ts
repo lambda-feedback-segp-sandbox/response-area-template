@@ -36,7 +36,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
       fontFamily: "Arial",
     }
 
-    // this.answer = ""
+    this.answer = ""
   }
 
 
@@ -46,12 +46,11 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @returns ReactNode rendering the view
    *  */
   InputComponent = (props: BaseResponseAreaProps): ReactNode => {
-    if (!this.config) throw new Error('Config missing')
+    this.config = this.config ?? { fontFamily: 'Arial' }
 
     return Input({
       ...props,
       config: this.config, // Ensure config matches expected types
-      handleChange: props.handleChange,
       answer: this.answer,
     });
   };
@@ -63,6 +62,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  */
   WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
     if (!this.config) throw new Error('Config missing')
+    this.answer = this.answer ?? ""
 
     return Wizard({
       ...props, config: this.config, answer: this.answer,

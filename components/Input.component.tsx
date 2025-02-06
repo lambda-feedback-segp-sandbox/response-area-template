@@ -50,6 +50,7 @@ export const Input: React.FC<InputComponentProps> = ({
     <textarea
       className={classes.textarea}
       onKeyDown={submitOnEnter}
+      onChange={event => handleChange(event.target.value)}
       placeholder="Type your response here…"
       style={{"fontFamily": config.fontFamily}}
     />

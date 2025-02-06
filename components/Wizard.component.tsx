@@ -57,7 +57,7 @@ export const Wizard: React.FC<WizardComponentProps> = ({
             labelId="font-select-label"
             onChange={(event) => {
               handleChange(
-              { config: {"fontFamily": event.target.value}, answer: '', responseType: ''})}}
+              { config: {"fontFamily": event.target.value}, answer: answer ?? '', responseType: 'REPLACE_ME'})}}
             defaultValue={config.fontFamily}
             label="Font"
           >
@@ -69,7 +69,7 @@ export const Wizard: React.FC<WizardComponentProps> = ({
         </FormControl>
       </div>
       <Input
-        handleChange={() => {}}
+        handleChange={(val) => handleChange({ config, answer: val as string, responseType: 'REPLACE_ME' })}
         answer={answer}
         config={config as {"fontFamily": string}}
       />
