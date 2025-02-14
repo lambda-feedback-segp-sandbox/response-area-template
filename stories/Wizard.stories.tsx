@@ -39,7 +39,7 @@ const initialiseMatrix = (args: any): React.FC<any> => {
       ...args,
       handleChange: (val: IModularResponseSchema) => {
         if (val && val.config && val.answer) {
-          localStorage.setItem("student.input", JSON.stringify(val));
+          localStorage.setItem("wizard.input", JSON.stringify(val));
           setResponse(val); // Update state safely
         }
       },
@@ -55,7 +55,7 @@ const WizardMeta = {
   args: {
     handleChange: (val: IModularResponseSchema) => {
       if (val && val.config && val.answer) {
-        localStorage.setItem("student.input", JSON.stringify(val));
+        localStorage.setItem("wizard.input", JSON.stringify(val));
       }
     },
     handleSubmit: fn(),
