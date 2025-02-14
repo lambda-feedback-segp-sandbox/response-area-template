@@ -11,42 +11,49 @@ import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React, { useState } from 'react'
 
-import { MyResponseAreaTub } from '../components'
+import { ExpressionResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
+import { QueryClient, QueryClientProvider } from "react-query";
+
+const queryClient = new QueryClient();
 
 const initialiseResponseArea = (args: any): React.FC<any> => {
-  return () => {
-    const [response] = useState<IModularResponseSchema | null>(() => {
-      const storedResponse = localStorage.getItem("wizard.input");
-      if (storedResponse) {
-        try {
-          const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
-          return parsedResponse && parsedResponse.config ? parsedResponse : null;
-        } catch {
-          return null; // Return null if JSON parsing fails
-        }
-      }
-      return null;
-    });
+  return () => (
+    <QueryClientProvider client={queryClient}>
+      {(() => {
+        const [response] = useState<IModularResponseSchema | null>(() => {
+          const storedResponse = localStorage.getItem("wizard.input");
+          if (storedResponse) {
+            try {
+              const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
+              return parsedResponse && parsedResponse.config ? parsedResponse : null;
+            } catch {
+              return null; // Return null if JSON parsing fails
+            }
+          }
+          return null;
+        });
 
-    const templateResponseAreaTub = new MyResponseAreaTub();
-    if (response && response.config) {
-      // @ts-ignore
-      templateResponseAreaTub.config = response.config;
-    } else {
-      templateResponseAreaTub.initWithDefault();
-    }
-
-    return templateResponseAreaTub.InputComponent({
-      ...args,
-      handleChange: (val: IModularResponseSchema) => {
-        if (val) {
-          localStorage.setItem("student.input", JSON.stringify(val));
+        const templateResponseAreaTub = new ExpressionResponseAreaTub();
+        if (response && response.config) {
+          // @ts-ignore
+          templateResponseAreaTub.config = response.config;
+        } else {
+          templateResponseAreaTub.initWithDefault();
         }
-      },
-    });
-  };
+
+        return templateResponseAreaTub.InputComponent({
+          ...args,
+          handleChange: (val: IModularResponseSchema) => {
+            if (val) {
+              localStorage.setItem("student.input", JSON.stringify(val));
+            }
+          },
+        });
+      })()}
+    </QueryClientProvider>
+  );
 };
 
 const InputMeta: Meta = {
@@ -64,7 +71,7 @@ const InputMeta: Meta = {
   },
 };
 
-const tub = new MyResponseAreaTub()
+const tub = new ExpressionResponseAreaTub()
 tub.InputComponent = wrapInput(initialiseResponseArea(InputMeta.args))
 const ResponseAreaViewMeta = {
   title: 'Response Area',

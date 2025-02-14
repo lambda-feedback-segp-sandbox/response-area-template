@@ -1,21 +1,21 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
 import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
 import { useState } from 'react'
 
-import { MyResponseAreaTub } from '../components'
+import { ExpressionResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
+import { fn } from '@storybook/test'
 
 
-const initialiseResponseArea = (args: any): React.FC<any> => {
+const initialiseMatrix = (args: any): React.FC<any> => {
   return () => {
     const [response, setResponse] = useState<IModularResponseSchema | null>(() => {
       const storedResponse = localStorage.getItem("wizard.input");
       if (storedResponse) {
         try {
           const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
-          return parsedResponse && parsedResponse.config
+          return parsedResponse && parsedResponse.config && parsedResponse.answer
             ? parsedResponse
             : null;
         } catch {
@@ -25,20 +25,21 @@ const initialiseResponseArea = (args: any): React.FC<any> => {
       return null;
     });
 
-    const templateResponseAreaTub = new MyResponseAreaTub();
-    if (response && response.config) {
+    const matrix = new ExpressionResponseAreaTub();
+    if (response && response.config && response.answer) {
       // @ts-ignore
-      templateResponseAreaTub.config = response.config;
+      matrix.config = response.config;
+      // @ts-ignore
+      matrix.answer = response.answer;
     } else {
-      templateResponseAreaTub.initWithDefault();
+      matrix.initWithDefault();
     }
 
-    return templateResponseAreaTub.WizardComponent({
+    return matrix.WizardComponent({
       ...args,
       handleChange: (val: IModularResponseSchema) => {
-        console.log("sadfsad")
-        if (val && val.config) {
-          localStorage.setItem("wizard.input", JSON.stringify(val));
+        if (val && val.config && val.answer) {
+          localStorage.setItem("student.input", JSON.stringify(val));
           setResponse(val); // Update state safely
         }
       },
@@ -47,25 +48,27 @@ const initialiseResponseArea = (args: any): React.FC<any> => {
 };
 
 const WizardMeta = {
-  title: 'Wizard',
+  title: "Wizard",
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
     handleChange: (val: IModularResponseSchema) => {
-      console.log("Hello")
-      if (val && val.config) {
-        localStorage.setItem("wizard.input", JSON.stringify(val));
+      if (val && val.config && val.answer) {
+        localStorage.setItem("student.input", JSON.stringify(val));
       }
     },
     handleSubmit: fn(),
   },
-  render: (args, _) => <WrappedWizard {...args} />,
-} satisfies Meta
+} satisfies Meta;
 
-const WrappedWizard = wrapInput(initialiseResponseArea(WizardMeta.args))
+const WrappedWizard: React.FC<any> = wrapInput(initialiseMatrix(WizardMeta.args));
 
-export default WizardMeta
-type Story = StoryObj<typeof WizardMeta>
+export default {
+  ...WizardMeta,
+  component: WrappedWizard,
+  render: (args: any) => <WrappedWizard {...args} />,
+};
 
-export const Default: Story = {}
+type Story = StoryObj<typeof WrappedWizard>;
+export const Default: Story = {};

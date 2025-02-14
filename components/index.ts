@@ -3,69 +3,105 @@ import {
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
-import { ReactNode } from 'react'
-import { z } from 'zod'
 
-import { Input } from './Input.component'
-import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
-import { Wizard } from './Wizard.component'
+import { ExpressionInput } from './Expression.component'
+import {
+  ExpressionAnswerSchema,
+  expressionAnswerSchema,
+  ExpressionConfigSchema,
+  expressionConfigSchema,
+} from './Expression.schema'
+import { ExpressionWizard } from './ExpressionWizard.component'
+import { ResponsePreviewFormParams } from './useResponsePreviewForm'
 
-/** The main class for the custom response area, extends base
- * {@link ResponseAreaTub} abstract class */
-export class MyResponseAreaTub extends ResponseAreaTub {
-  /** Specifies the label used for selection of the response area in UI */
-  public readonly responseType = 'REPLACE_ME'
+export { ExpressionInput } from './Expression.component'
 
-  /** Enables response area to use full width of the wrapping container */
-  public readonly displayWideInput = true
+export class ExpressionResponseAreaTub extends ResponseAreaTub {
+  public readonly responseType = 'EXPRESSION'
 
-  /** Schema created with Zod library, used to parse the answer for the
-   *  response area */
-  protected answerSchema = inputResponseAnswerSchema
+  public readonly canToggleLatexInStats = true
 
-  /** Main data structure holding the answer for the response area, type of
-   *  answer can vary between different response areas, i.e. it might not
-   *  necessarily be a string */
-  public answer?: z.infer<typeof inputResponseAnswerSchema>
+  public readonly delegatePreResponseText = false
 
-  /* Add a comment here please */
-  public config?: z.infer<typeof inputConfigSchema>
+  public readonly delegatePostResponseText = false
+
+  public readonly delegateLivePreview = false
+
+  public readonly delegateFeedback = false
+
+  public readonly delegateCheck = false
+
+  public readonly delegateErrorMessage = false
+
+  public readonly displayInFlexContainer = false
+
+  protected configSchema = expressionConfigSchema
+
+  public config?: ExpressionConfigSchema
+
+  protected answerSchema = expressionAnswerSchema
+
+  public answer?: ExpressionAnswerSchema
 
   initWithDefault = () => {
     this.config = {
-      fontFamily: "Arial",
+      allowHandwrite: true,
+      allowPhoto: true,
     }
-
-    this.answer = ""
+    this.answer = ''
   }
 
-
-  /** Creates a main response area component, instantiating a student and
-   *  teacher preview views. {@link BaseResponseAreaProps}
-   *  @param props - Base parameters passed to all response areas
-   *  @returns ReactNode rendering the view
-   *  */
-  InputComponent = (props: BaseResponseAreaProps): ReactNode => {
-    this.config = this.config ?? { fontFamily: 'Arial' }
-
-    return Input({
-      ...props,
-      config: this.config, // Ensure config matches expected types
-      answer: this.answer,
-    });
-  };
-
-  /** Creates a teacher view, allowing configuration of the response area.
-   *  {@link BaseResponseAreaProps}
-   *  @param props - Base parameters passed to all response areas
-   *  @returns ReactNode rendering the view
-   *  */
-  WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
+  InputComponent = (props: BaseResponseAreaProps) => {
     if (!this.config) throw new Error('Config missing')
-    this.answer = this.answer ?? ""
+    const parsedAnswer = this.answerSchema.safeParse(props.answer)
 
-    return Wizard({
-      ...props, config: this.config, answer: this.answer,
+    let responseParams: ResponsePreviewFormParams | undefined = undefined
+    if (props.responseAreaId && props.universalResponseAreaId) {
+      responseParams = {
+        responseAreaId: props.responseAreaId,
+        universalResponseAreaId: props.universalResponseAreaId,
+      }
+    }
+
+    return ExpressionInput({
+      answer: parsedAnswer.success ? parsedAnswer.data : undefined,
+
+      allowDraw: this.config.allowHandwrite,
+      allowScan: this.config.allowPhoto,
+      allowPreview: props.hasPreview ?? false,
+      isTeacherMode: props.isTeacherMode,
+
+      preResponseText: props.preResponseText,
+      postResponseText: props.postResponseText,
+      checkIsLoading: props.checkIsLoading,
+      feedback: props.feedback,
+      typesafeErrorMessage: props.typesafeErrorMessage,
+      showFeedbackContainer: props.displayMode !== 'peek',
+
+      handleChange: props.handleChange,
+      handleSubmit: props.handleSubmit,
+
+      responseParams,
+    })
+  }
+
+  WizardComponent = (props: BaseResponseAreaWizardProps) => {
+    if (!this.config) throw new Error('Config missing')
+    // if (this.answer === undefined) throw new Error('Answer missing')
+
+    return ExpressionWizard({
+      answer: this.answer,
+      ...this.config,
+      onChange: args => {
+        props.handleChange({
+          responseType: this.responseType,
+          config: {
+            allowHandwrite: args.allowHandwrite,
+            allowPhoto: args.allowPhoto,
+          },
+          answer: args.answer,
+        })
+      },
     })
   }
 }

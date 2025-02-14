@@ -1731,10 +1731,65 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
+"@lambda-feedback-segp-sandbox/form-components@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/form-components/1.1.0/9bf045eb3a284c86f3338439c5cc887fd989803c#9bf045eb3a284c86f3338439c5cc887fd989803c"
+  integrity sha512-YirQrb6/EX2j9L1lW64N3/EissEeNun2LTBsdkq/NIdMjcyxdGu4OuSxRuW47XMuKArR7OwKhU6WGgBR8hhmZg==
+  dependencies:
+    "@braintree/sanitize-url" "^7.0.4"
+    "@lambda-feedback-segp-sandbox/content-components" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
+    "@milkdown/core" "^6.4.1"
+    "@milkdown/plugin-history" "^6.4.1"
+    "@milkdown/plugin-listener" "^6.4.1"
+    "@milkdown/plugin-math" "^6.4.1"
+    "@milkdown/plugin-menu" "^6.4.1"
+    "@milkdown/plugin-slash" "^6.4.3"
+    "@milkdown/plugin-tooltip" "^6.4.1"
+    "@milkdown/plugin-upload" "^6.4.1"
+    "@milkdown/preset-commonmark" "^6.4.2"
+    "@milkdown/preset-gfm" "^6.4.1"
+    "@milkdown/prose" "^6.4.1"
+    "@milkdown/react" "^6.4.1"
+    "@milkdown/theme-nord" "^6.4.1"
+    "@monaco-editor/react" "^4.6.0"
+    "@mui/icons-material" "^5.15.20"
+    "@mui/material" "^5.15.20"
+    "@mui/system" "^5.15.20"
+    axios "^1.7.2"
+    file-type "^16.5.3"
+    firebase "^11.0.1"
+    graphql-request "^4.3.0"
+    notistack "^2.0.3"
+    react "^18.3.1"
+    react-hook-form "^7.31.2"
+    react-input-autosize "^3.0.0"
+    react-json-view "^1.21.3"
+    react-query "^3.39.0"
+    zod "^3.14.4"
+
 "@lambda-feedback-segp-sandbox/graphql-api@^1.0.0":
   version "1.0.0"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/graphql-api/1.0.0/1b0c65260eba08d9ddb4e50b0c11883686291c80#1b0c65260eba08d9ddb4e50b0c11883686291c80"
   integrity sha512-RKQWmxyQLi+n1mJ32pRVLBwFm5QAElLGUE1QfyYHCduhxeHC1yBEY2fDcwytu86JHedmt5GGzBgKikxPKW6P9g==
+  dependencies:
+    axios "^1.7.2"
+    eslint-config-prettier "^9.1.0"
+    eslint-import-resolver-typescript "^3.6.3"
+    eslint-plugin-import "^2.31.0"
+    firebase "^11.0.1"
+    graphql "^15.6.0"
+    graphql-request "^4.3.0"
+    graphql-tag "^2.11.0"
+    lodash "^4.17.21"
+    react-query "^3.39.0"
+    zod "^3.14.4"
+
+"@lambda-feedback-segp-sandbox/graphql-api@^1.2.0":
+  version "1.2.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/graphql-api/1.2.0/813076a840a5c85289bb063d3215149461dee78c#813076a840a5c85289bb063d3215149461dee78c"
+  integrity sha512-e2mTV0rKlmWUCCTOGYMZh4kVRy9XvaAwKgjmx7+LGRMOUtd/zxFvzU7eG6/Qz88gbgJNu5YAteHAunmYB1u0cw==
   dependencies:
     axios "^1.7.2"
     eslint-config-prettier "^9.1.0"
@@ -2896,6 +2951,18 @@
   integrity sha512-V5gRru+aD8YVyCOMAjMpWR1Ui577DD5KSJsHP8RAxopAH22jFz6GZd/qxqjO6MJHQhcsjvjOFXyDhyLQUnMveQ==
   dependencies:
     "@swc/counter" "^0.1.3"
+
+"@tanstack/query-core@5.66.0":
+  version "5.66.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/query-core/-/query-core-5.66.0.tgz#163f670b3b4e3b3cdbff6698ad44b2edfcaed185"
+  integrity sha512-J+JeBtthiKxrpzUu7rfIPDzhscXF2p5zE/hVdrqkACBP8Yu0M96mwJ5m/8cPPYQE9aRNvXztXHlNwIh4FEeMZw==
+
+"@tanstack/react-query@^5.66.0":
+  version "5.66.0"
+  resolved "https://registry.yarnpkg.com/@tanstack/react-query/-/react-query-5.66.0.tgz#9f7aa1b3e844ea6a0ad2ee61fccaed76e614b865"
+  integrity sha512-z3sYixFQJe8hndFnXgWu7C79ctL+pI0KAelYyW+khaNJ1m22lWrhJU2QrsTcRKMuVPtoZvfBYrTStIdKo+x0Xw==
+  dependencies:
+    "@tanstack/query-core" "5.66.0"
 
 "@testing-library/dom@10.4.0":
   version "10.4.0"
