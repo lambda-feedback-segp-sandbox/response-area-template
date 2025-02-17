@@ -48,11 +48,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   InputComponent = (props: BaseResponseAreaProps): ReactNode => {
     this.config = this.config ?? { fontFamily: 'Arial' }
 
-    return Input({
-      ...props,
-      config: this.config, // Ensure config matches expected types
-      answer: this.answer,
-    });
+    return (<Input {...props} config={this.config} answer={this.answer} />);
   };
 
   /** Creates a teacher view, allowing configuration of the response area.
