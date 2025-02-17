@@ -1,9 +1,9 @@
 const path = require('path')
 
 module.exports = {
-    entry: './components/InputWebComponent.tsx',
+    entry: './components/WebComponents.tsx',
     output: {
-        filename: 'input-component.js',
+        filename: 'web-components.js',
         path: path.resolve(__dirname, 'dist'),
     },
     resolve: {

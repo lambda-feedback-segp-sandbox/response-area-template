@@ -2,7 +2,7 @@ import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-a
 import {
   BaseResponseAreaProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
+//import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -32,7 +32,7 @@ export const Wizard: React.FC<WizardComponentProps> = ({
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
-  const { classes } = useStyles()
+  //const { classes } = useStyles()
   // @ts-ignore
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
@@ -49,9 +49,9 @@ export const Wizard: React.FC<WizardComponentProps> = ({
     )
 
   return (
-    <div className={classes.container}>
-      <div className={classes.toolbar}>
-        <FormControl variant="outlined" className={classes.formControl}>
+    <div>
+      <div>
+        <FormControl variant="outlined">
           <InputLabel id="font-select-label">Font</InputLabel>
           <Select
             labelId="font-select-label"
@@ -76,7 +76,7 @@ export const Wizard: React.FC<WizardComponentProps> = ({
     </div>
   );
 };
-
+/*
 const useStyles = makeStyles()(theme => ({
   container: {
     display: 'flex',
@@ -93,4 +93,4 @@ const useStyles = makeStyles()(theme => ({
   formControl: {
     minWidth: 120,
   },
-}));
+}));*/
