@@ -46,10 +46,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @returns ReactNode rendering the view
    *  */
   InputComponent = (props: BaseResponseAreaProps): ReactNode => {
-    this.config = this.config ?? { fontFamily: 'Arial' }
-
     return Input({
       ...props,
+      // @ts-ignore
       config: this.config, // Ensure config matches expected types
       answer: this.answer,
     });
@@ -62,7 +61,6 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  */
   WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
     if (!this.config) throw new Error('Config missing')
-    this.answer = this.answer ?? ""
 
     return Wizard({
       ...props, config: this.config, answer: this.answer,

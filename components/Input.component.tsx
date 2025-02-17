@@ -27,7 +27,7 @@ const useStyles = makeStyles()(theme => ({
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
   handleChange,
-  handleSubmit, config,
+  handleSubmit, config, answer,
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
@@ -53,6 +53,7 @@ export const Input: React.FC<InputComponentProps> = ({
       onChange={event => handleChange(event.target.value)}
       placeholder="Type your response here…"
       style={{"fontFamily": config.fontFamily}}
+      value={answer || ''}
     />
   )
 }
