@@ -3,7 +3,7 @@ import {
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
-import { ReactNode } from 'react'
+import React from 'react'
 import { z } from 'zod'
 
 import { Input } from './Input.component'
@@ -45,7 +45,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  InputComponent = (props: BaseResponseAreaProps): ReactNode => {
+  InputComponent: React.FC<BaseResponseAreaProps> = (props: BaseResponseAreaProps) => {
     this.config = this.config ?? { fontFamily: 'Arial' }
 
     return (<Input {...props} config={this.config} answer={this.answer} />);
@@ -56,12 +56,10 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  WizardComponent = (props: BaseResponseAreaWizardProps): ReactNode => {
+  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (props: BaseResponseAreaWizardProps) => {
     if (!this.config) throw new Error('Config missing')
     this.answer = this.answer ?? ""
 
-    return Wizard({
-      ...props, config: this.config, answer: this.answer,
-    })
+    return (<Wizard {...props} config={this.config} answer={this.answer} />);
   }
 }
