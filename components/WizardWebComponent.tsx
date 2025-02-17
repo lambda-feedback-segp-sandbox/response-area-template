@@ -5,7 +5,9 @@ import { Wizard } from './Wizard.component'
 export const WizardWebComponent = r2wc(Wizard, {
     props: {
         config: "json",
-        handleChange: "function"
+        handleChange: "function",
+        answer: "json",
+        setAllowSave: "function"
     }
 })
 

@@ -14,6 +14,7 @@ export type InputComponentProps = Omit<
   handleChange: (val: IModularResponseSchema['answer']) => void
   answer?: string
   config: {"fontFamily": string}
+  makeStyles?: () => void
 }
 /*
 const useStyles = makeStyles()(theme => ({
@@ -27,7 +28,7 @@ const useStyles = makeStyles()(theme => ({
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
   handleChange,
-  handleSubmit, config,
+  handleSubmit, config, makeStyles
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
@@ -45,7 +46,9 @@ export const Input: React.FC<InputComponentProps> = ({
       },
       [handleSubmit],
     )
-
+    if (makeStyles) {
+      makeStyles();
+    }
   return (
     <textarea
       //className={classes.textarea}

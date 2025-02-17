@@ -1,21 +1,21 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
 import {
-  BaseResponseAreaProps,
+  BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 //import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import Select from '@mui/material/Select';
-import React, { useCallback } from 'react'
+import React from 'react'
 
 // @ts-ignore
 import { Input, InputProps } from './Input.component';
 
 /** Custom input parameters for the Wizard component, extending or overriding
- *  parameters provided in {@link BaseResponseAreaProps} */
+ *  parameters provided in {@link BaseResponseAreaWizardProps} */
 export type WizardComponentProps = Omit<
-  BaseResponseAreaProps,
+  BaseResponseAreaWizardProps,
   'handleChange' | 'answer'
 > & {
   handleChange: (val: IModularResponseSchema) => void
@@ -27,26 +27,11 @@ export type WizardComponentProps = Omit<
  *  {@link WizardComponentProps} */
 export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
-  handleSubmit,
   answer, config,
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
   //const { classes } = useStyles()
-  // @ts-ignore
-  const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
-    useCallback(
-      event => {
-        const isMac = navigator.userAgent.toUpperCase().indexOf('MAC') >= 0
-        if (
-          event.key === 'Enter' &&
-          ((isMac && event.metaKey) || (!isMac && event.ctrlKey))
-        ) {
-          return handleSubmit?.()
-        }
-      },
-      [handleSubmit],
-    )
 
   return (
     <div>
