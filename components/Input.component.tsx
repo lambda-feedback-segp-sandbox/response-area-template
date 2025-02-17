@@ -2,7 +2,7 @@ import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-a
 import {
   BaseResponseAreaProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
+//import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
@@ -15,14 +15,14 @@ export type InputComponentProps = Omit<
   answer?: string
   config: {"fontFamily": string}
 }
-
+/*
 const useStyles = makeStyles()(theme => ({
   textarea: {
     width: '100%',
     minHeight: theme.spacing(20),
   },
 }))
-
+*/
 /** Creates ReactNode rendering the Student and Teacher preview views, using
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
@@ -31,7 +31,7 @@ export const Input: React.FC<InputComponentProps> = ({
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
-  const { classes } = useStyles()
+  //const { classes } = useStyles()
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
       event => {
@@ -48,7 +48,7 @@ export const Input: React.FC<InputComponentProps> = ({
 
   return (
     <textarea
-      className={classes.textarea}
+      //className={classes.textarea}
       onKeyDown={submitOnEnter}
       onChange={event => handleChange(event.target.value)}
       placeholder="Type your response here…"

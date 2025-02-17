@@ -31,3 +31,5 @@ tsconfig.tsbuildinfo
 *storybook.log
 
 .idea/
+
+dist/

@@ -17,7 +17,10 @@
     "noUncheckedIndexedAccess": true,
     "downlevelIteration": true,
     "jsx": "react-jsx",
-    "baseUrl": "."
+    "baseUrl": ".",
+    "paths": {
+      "prosemirror-view": ["node_modules/prosemirror-view"]
+    }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_error.js"],
   "exclude": ["node_modules"]
