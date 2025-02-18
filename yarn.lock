@@ -2032,6 +2032,29 @@
     react-dom "^18.3.1"
     tss-react "^3.7.0"
 
+"@lambda-feedback-segp-sandbox/styles@^1.0.1":
+  version "1.0.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.0.1/e4516a43fc1b874325089e6bbf46bf8343eec99b#e4516a43fc1b874325089e6bbf46bf8343eec99b"
+  integrity sha512-4axD+A0b8f9o8ywx7z48Ugo6MQTuhsQh7pVQwbGNTs7OwfL/6ZtI+NY7UNyGN/QmuR6H1lWZ+DYQrWmNnOadaA==
+  dependencies:
+    "@emotion/react" "^11.4.1"
+    "@emotion/server" "^11.4.0"
+    "@emotion/styled" "^11.3.0"
+    "@mui/lab" "^5.0.0-alpha.100"
+    "@mui/material" "^5.15.20"
+    "@mui/material-nextjs" "^5.15.11"
+    "@mui/system" "^5.15.20"
+    "@mui/x-data-grid" "^7.7.0"
+    "@mui/x-date-pickers" "^7.7.0"
+    date-fns "^2.28.0"
+    eslint-plugin-import "^2.31.0"
+    framer-motion "^11.2.10"
+    luxon "^3.4.3"
+    next "^14.2.4"
+    react "^18.3.1"
+    react-dom "^18.3.1"
+    tss-react "^3.7.0"
+
 "@lit-labs/react@^2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@lit-labs/react/-/react-2.1.3.tgz#5fca408c435f0b6297fc1314471dc2426206d413"

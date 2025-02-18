@@ -1,14 +1,9 @@
 import { Meta, StoryObj } from "@storybook/react";
 import React from "react";
 
-//@ts-ignore
-window.makestyles= () => {
-    console.log("making styles")
-}
-
 const WebComponentWrapper: React.FC<{}> = () => {
     //@ts-ignore
-    return <input-component config='{"fontFamily":"Arial"}' handle-change="inputchangefunc" make-styles="window.makestyles" />
+    return <input-component config='{"fontFamily":"Arial"}' handle-change="inputchangefunc"/>
 }
 
 const WebComponentMeta: Meta = {

@@ -1,8 +1,8 @@
 import r2wc from "@r2wc/react-to-web-component"
 
-import { Input } from './Input.component'
+import { ThemedInput } from './ThemedInput'
 
-export const InputWebComponent = r2wc(Input, {
+export const InputWebComponent = r2wc(ThemedInput, {
     props: {
         config: "json",
         handleChange: "function",
@@ -19,8 +19,7 @@ export const InputWebComponent = r2wc(Input, {
         postResponseText: "string",
         checkIsLoading: "boolean",
         feedback: "json",
-        typesafeErrorMessage: "string",
-        makeStyles: "function"
+        typesafeErrorMessage: "string"
     }
 })
 
