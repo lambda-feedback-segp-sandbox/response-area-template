@@ -67,7 +67,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
      post-response-text={props.postResponseText} check-is-loading={props.checkIsLoading} 
      feedback={JSON.stringify(props.feedback)} typesafe-error-message={props.typesafeErrorMessage}
      handle-change={`RA_${RESPONSE_TYPE}_handleChange`} handle-submit={`RA_${RESPONSE_TYPE}_handleSubmit`}
-     handle-draft-save={`RA_${RESPONSE_TYPE}_handleDraftSave`} preview-submit={`RA_${RESPONSE_TYPE}_previewSubmit`}/>
+     handle-draft-save={`RA_${RESPONSE_TYPE}_handleDraftSave`} preview-submit={`RA_${RESPONSE_TYPE}_previewSubmit`}
+     style={{width: "100%", height: "100%"}}/>
   }
 
   /** Creates a teacher view, allowing configuration of the response area.
@@ -82,6 +83,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     window[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
     window[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave
     return <wizard-component config={JSON.stringify(this.config)} answer={this.answer} 
-            handle-change={`RA_${RESPONSE_TYPE}_handleChange`} set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}/>
+            handle-change={`RA_${RESPONSE_TYPE}_handleChange`} set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}
+            style={{width: "100%", height: "100%"}}/>
   }
 }
