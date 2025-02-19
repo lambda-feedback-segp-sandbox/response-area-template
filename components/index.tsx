@@ -42,6 +42,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
 
   constructor() {
+    super()
     this.InputComponent = this.InputComponent.bind(this);
     this.WizardComponent = this.WizardComponent.bind(this);
   }
