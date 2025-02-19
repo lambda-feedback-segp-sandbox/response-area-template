@@ -10,11 +10,13 @@ import { Input } from './Input.component'
 import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
 import { Wizard } from './Wizard.component'
 
+export const RESPONSE_TYPE = 'REPLACE_ME'
+
 /** The main class for the custom response area, extends base
  * {@link ResponseAreaTub} abstract class */
 export class MyResponseAreaTub extends ResponseAreaTub {
   /** Specifies the label used for selection of the response area in UI */
-  public readonly responseType = 'REPLACE_ME'
+  public readonly responseType = RESPONSE_TYPE
 
   /** Enables response area to use full width of the wrapping container */
   public readonly displayWideInput = true
