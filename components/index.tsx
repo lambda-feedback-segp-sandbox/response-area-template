@@ -41,17 +41,22 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     this.answer = ''
   }
 
+  constructor() {
+    this.InputComponent = this.InputComponent.bind(this);
+    this.WizardComponent = this.WizardComponent.bind(this);
+  }
+
   /** Creates a main response area component, instantiating a student and
    *  teacher preview views. {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  InputComponent: React.FC<BaseResponseAreaProps> = (
+  InputComponent(
     props: BaseResponseAreaProps,
-  ) => {
+  ): HTMLElement {
     this.config = this.config ?? { fontFamily: 'Arial' }
-
-    return <Input {...props} config={this.config} answer={this.answer} />
+    console.log(props)
+    return <input-component {...props} config={JSON.stringify(this.config)} answer={this.answer} />
   }
 
   /** Creates a teacher view, allowing configuration of the response area.
@@ -59,11 +64,11 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (
+  WizardComponent(
     props: BaseResponseAreaWizardProps,
-  ) => {
+  ): HTMLElement {
     if (!this.config) throw new Error('Config missing')
 
-    return <Wizard {...props} config={this.config} answer={this.answer} />
+    return <wizard-component {...props} config={JSON.stringify(this.config)} answer={this.answer} />
   }
 }

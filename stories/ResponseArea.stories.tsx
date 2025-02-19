@@ -50,7 +50,7 @@ const InitialiseResponseArea: React.FC<any> = (args: any) => {
 };
 
 const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(InitialiseResponseArea)
+//tub.InputComponent = wrapInput(InitialiseResponseArea)
 const ResponseAreaViewMeta = {
   title: 'Response Area',
   component: ResponseAreaView,
