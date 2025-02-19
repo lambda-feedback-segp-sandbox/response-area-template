@@ -100,44 +100,35 @@ const TempViewComponent = (args: any) => {
               variant="outlined"
               endIcon={<Tune />}
               onClick={() => handleButtonClick('Configure')}
+              sx={commonButtonStyles} // Applying common styles
             >
               Configure
             </Button>
             <Button
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
               variant="outlined"
               endIcon={<BarChart />}
               onClick={() => handleButtonClick('Explore')}
+              sx={commonButtonStyles} // Applying common styles
             >
               Explore
             </Button>
             <Button
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-              }}
               variant="outlined"
               endIcon={<ContentCopy />}
               onClick={() => handleButtonClick('Duplicate')}
+              sx={commonButtonStyles} // Applying common styles
             >
               Duplicate
             </Button>
             <Button
               color="error"
               variant="outlined"
-              sx={{
-                display: 'flex',
-                justifyContent: 'space-between',
-                alignItems: 'center',
-                width: '100%',
-              }}
               endIcon={<DeleteIcon />}
               onClick={() => handleButtonClick('Delete')}
+              sx={{
+                ...commonButtonStyles, // Applying common styles
+                width: '100%', // Additional unique style
+              }}
             >
               Delete
             </Button>
@@ -185,3 +176,10 @@ export const tempView: Story = {
   },
   render: (args) => <TempViewComponent {...args} />,
 }
+
+
+const commonButtonStyles = {
+  display: 'flex',
+  justifyContent: 'space-between',
+  alignItems: 'center',
+};
