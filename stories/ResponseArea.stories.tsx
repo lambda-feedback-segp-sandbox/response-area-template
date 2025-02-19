@@ -88,6 +88,36 @@ const TempViewComponent = (args: any) => {
     setOpen(false);
   };
 
+  if (!args.fullView) {
+    return (
+      <>
+        <ResponseAreaView
+          {...args}
+          handleCheck={() => handleButtonClick('Check')}
+          handleDraftSave={() => handleButtonClick('Save')}
+        />
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {dialogContent.description}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
+      </>
+    );
+  }
+
   return (
     <>
       <ResponseAreaView
@@ -157,7 +187,7 @@ const TempViewComponent = (args: any) => {
   );
 };
 
-export const tempView: Story = {
+export const StudentView: Story = {
   args: {
     tub: tub,
     visibleSymbols: [],
@@ -173,6 +203,28 @@ export const tempView: Story = {
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
     wrapLabel: 'Area Label',
+    fullView: false
+  },
+  render: (args) => <TempViewComponent {...args} />,
+}
+
+export const TeacherView: Story = {
+  args: {
+    tub: tub,
+    visibleSymbols: [],
+    displayMode: 'normal',
+    inputDisplayValue: [],
+    inputType: 'REPLACE_ME',
+    displayInputSymbols: false,
+    showLivePreview: true,
+    handleCheck: () => {},
+    handleDraftSave: () => {},
+    inFlight: false,
+    feedback: {isCorrect: true, isError: false},
+    responseAreaId: '00000000-0000-0000-0000-000000000000',
+    universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
+    wrapLabel: 'Area Label',
+    fullView: true
   },
   render: (args) => <TempViewComponent {...args} />,
 }
