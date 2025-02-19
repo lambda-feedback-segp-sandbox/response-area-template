@@ -28,7 +28,9 @@ yarn-error.log*
 # TypeScript
 tsconfig.tsbuildinfo
 
+# Storybook
 *storybook.log
+/storybook-static/
 
 .idea/
 
