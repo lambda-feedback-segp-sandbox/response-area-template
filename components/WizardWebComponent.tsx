@@ -1,8 +1,8 @@
 import r2wc from "@r2wc/react-to-web-component"
 
-import { Wizard } from './Wizard.component'
+import { ThemedWizard } from './ThemedWizard'
 
-export const WizardWebComponent = r2wc(Wizard, {
+export const WizardWebComponent = r2wc(ThemedWizard, {
     props: {
         config: "json",
         handleChange: "function",
