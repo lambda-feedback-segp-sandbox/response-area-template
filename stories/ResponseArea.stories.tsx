@@ -7,6 +7,11 @@ import {
   Tune,
 } from '@mui/icons-material'
 import Button from '@mui/material/Button'
+import Dialog from '@mui/material/Dialog'
+import DialogActions from '@mui/material/DialogActions'
+import DialogContent from '@mui/material/DialogContent'
+import DialogContentText from '@mui/material/DialogContentText'
+import DialogTitle from '@mui/material/DialogTitle'
 import type { Meta, StoryObj } from '@storybook/react'
 import { fn } from '@storybook/test'
 import React, { useState } from 'react'
@@ -36,7 +41,7 @@ const InitialiseResponseArea: React.FC<any> = (args: any) => {
     } else {
       templateResponseAreaTub.initWithDefault();
     }
-    return <templateResponseAreaTub.InputComponent {...args} 
+    return <templateResponseAreaTub.InputComponent {...args}
               handleChange={(val: IModularResponseSchema) => {
                   if (val) {
                       localStorage.setItem("student.input", JSON.stringify(val));
@@ -80,44 +85,101 @@ export const tempView: Story = {
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
     wrapLabel: 'Area Label',
-    ActionButtons: (
+  },
+  render: (args) => {
+    const [open, setOpen] = useState(false);
+    const [dialogContent, setDialogContent] = useState({
+      title: '',
+      description: '',
+    });
+
+    const handleButtonClick = (buttonType: string) => {
+      let title = 'Not Available';
+      let description = `${buttonType} is not available in SandBox`;
+
+      setDialogContent({ title, description });
+      setOpen(true);
+    };
+
+    const handleClose = () => {
+      setOpen(false);
+    };
+
+    return (
       <>
-        <Button variant="outlined" endIcon={<Tune />}>
-          Configure
-        </Button>
-        <Button
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-          variant="outlined"
-          endIcon={<BarChart />}>
-          Explore
-        </Button>
-        <Button
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-          }}
-          variant="outlined"
-          endIcon={<ContentCopy />}>
-          Duplicate
-        </Button>
-        <Button
-          color="error"
-          variant="outlined"
-          sx={{
-            display: 'flex',
-            justifyContent: 'space-between',
-            alignItems: 'center',
-            width: '100%',
-          }}
-          endIcon={<DeleteIcon />}>
-          Delete
-        </Button>
+        <ResponseAreaView
+          {...args}
+          handleCheck={() => handleButtonClick('Check')}
+          handleDraftSave={() => handleButtonClick('Save')}
+          ActionButtons={
+            <>
+              <Button
+                variant="outlined"
+                endIcon={<Tune />}
+                onClick={() => handleButtonClick('Configure')}
+              >
+                Configure
+              </Button>
+              <Button
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+                variant="outlined"
+                endIcon={<BarChart />}
+                onClick={() => handleButtonClick('Explore')}
+              >
+                Explore
+              </Button>
+              <Button
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                }}
+                variant="outlined"
+                endIcon={<ContentCopy />}
+                onClick={() => handleButtonClick('Duplicate')}
+              >
+                Duplicate
+              </Button>
+              <Button
+                color="error"
+                variant="outlined"
+                sx={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  width: '100%',
+                }}
+                endIcon={<DeleteIcon />}
+                onClick={() => handleButtonClick('Delete')}
+              >
+                Delete
+              </Button>
+            </>
+          }
+        />
+        <Dialog
+          open={open}
+          onClose={handleClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alert-dialog-description"
+        >
+          <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              {dialogContent.description}
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={handleClose} color="primary" autoFocus>
+              Close
+            </Button>
+          </DialogActions>
+        </Dialog>
       </>
-    ),
+    );
   },
 }
