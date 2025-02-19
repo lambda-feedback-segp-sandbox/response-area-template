@@ -15,8 +15,7 @@ import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
 
-const initialiseResponseArea = (args: any): React.FC<any> => {
-  return () => {
+const InitialiseResponseArea: React.FC<any> = (args: any) => {
     const [response] = useState<IModularResponseSchema | null>(() => {
       const storedResponse = localStorage.getItem("wizard.input");
       if (storedResponse) {
@@ -37,23 +36,19 @@ const initialiseResponseArea = (args: any): React.FC<any> => {
     } else {
       templateResponseAreaTub.initWithDefault();
     }
-
-    return templateResponseAreaTub.InputComponent({
-      ...args,
-      handleChange: (val: IModularResponseSchema) => {
-        if (val) {
-          localStorage.setItem("student.input", JSON.stringify(val));
-        }
-      },
-    });
+    return <templateResponseAreaTub.InputComponent {...args} 
+              handleChange={(val: IModularResponseSchema) => {
+                  if (val) {
+                      localStorage.setItem("student.input", JSON.stringify(val));
+                  }
+              }} />;
   };
-};
 
-const InputMeta: Meta = {
-  title: "Input",
-  parameters: {
-    layout: "centered",
-  },
+const tub = new MyResponseAreaTub()
+tub.InputComponent = wrapInput(InitialiseResponseArea)
+const ResponseAreaViewMeta = {
+  title: 'Response Area',
+  component: ResponseAreaView,
   args: {
     handleChange: (val: IModularResponseSchema) => {
       if (val && val.config && val.answer) {
@@ -61,16 +56,6 @@ const InputMeta: Meta = {
       }
     },
     handleSubmit: fn(),
-  },
-};
-
-const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(initialiseResponseArea(InputMeta.args))
-const ResponseAreaViewMeta = {
-  title: 'Response Area',
-  component: ResponseAreaView,
-  args: {
-    handleChange: () => {},
     preResponseText: 'this is pre response text',
     postResponseText: 'this is post response text',
   },

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Component Example</title>
+  <script src="./dist/web-components.js"></script>
+</head>
+<body>
+  <script>
+     function inputchangefunc() {}
+  </script>
+  <div>
+    <input-component config='{"fontFamily": "Arial"}' handle-change="inputchangefunc"></input-component>
+    <wizard-component config='{"fontFamily": "Consolas"}' handle-change="inputchangefunc"></wizard-component>
+  </div>
+</body>
+</html>
