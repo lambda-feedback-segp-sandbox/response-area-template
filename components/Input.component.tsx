@@ -1,7 +1,5 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
-import {
-  BaseResponseAreaProps,
-} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
+import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
 import React, { useCallback } from 'react'
 
@@ -13,7 +11,7 @@ export type InputComponentProps = Omit<
 > & {
   handleChange: (val: IModularResponseSchema['answer']) => void
   answer?: string
-  config: {"fontFamily": string}
+  config: { fontFamily: string }
 }
 //@ts-ignore
 const useStyles = makeStyles()(theme => ({
@@ -27,7 +25,9 @@ const useStyles = makeStyles()(theme => ({
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
   handleChange,
-  handleSubmit, config
+  handleSubmit,
+  config,
+  answer,
 }) => {
   // The following code is for demonstration purposes only, it can be
   // completely refactored
@@ -51,7 +51,8 @@ export const Input: React.FC<InputComponentProps> = ({
       onKeyDown={submitOnEnter}
       onChange={event => handleChange(event.target.value)}
       placeholder="Type your response here…"
-      style={{"fontFamily": config.fontFamily}}
+      style={{ fontFamily: config.fontFamily }}
+      value={answer || ''}
     />
   )
 }

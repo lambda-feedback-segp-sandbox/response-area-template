@@ -33,33 +33,35 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   initWithDefault = () => {
     this.config = {
-      fontFamily: "Arial",
+      fontFamily: 'Arial',
     }
 
-    this.answer = ""
+    this.answer = ''
   }
-
 
   /** Creates a main response area component, instantiating a student and
    *  teacher preview views. {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  InputComponent: React.FC<BaseResponseAreaProps> = (props: BaseResponseAreaProps) => {
+  InputComponent: React.FC<BaseResponseAreaProps> = (
+    props: BaseResponseAreaProps,
+  ) => {
     this.config = this.config ?? { fontFamily: 'Arial' }
 
-    return (<Input {...props} config={this.config} answer={this.answer} />);
-  };
+    return <Input {...props} config={this.config} answer={this.answer} />
+  }
 
   /** Creates a teacher view, allowing configuration of the response area.
    *  {@link BaseResponseAreaProps}
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (props: BaseResponseAreaWizardProps) => {
+  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (
+    props: BaseResponseAreaWizardProps,
+  ) => {
     if (!this.config) throw new Error('Config missing')
-    this.answer = this.answer ?? ""
 
-    return (<Wizard {...props} config={this.config} answer={this.answer} />);
+    return <Wizard {...props} config={this.config} answer={this.answer} />
   }
 }
