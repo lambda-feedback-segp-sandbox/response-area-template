@@ -8,6 +8,7 @@ module.exports = {
     },
     resolve: {
         extensions: ['.ts', '.tsx', '.js'],
+        alias: {'next/font/google': path.resolve(__dirname, 'mocks/fonts.ts')},
     },
     module: {
         rules: [
