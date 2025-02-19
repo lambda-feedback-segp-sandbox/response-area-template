@@ -55,8 +55,18 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     props: BaseResponseAreaProps,
   ): HTMLElement {
     this.config = this.config ?? { fontFamily: 'Arial' }
-    console.log(props)
-    return <input-component {...props} config={JSON.stringify(this.config)} answer={this.answer} />
+    window[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
+    window[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit
+    window[`RA_${RESPONSE_TYPE}_handleDraftSave`] = props.handleDraftSave
+    window[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit
+    return <input-component config={JSON.stringify(this.config)} answer={this.answer}
+     display-mode={props.displayMode} response-area-id={props.responseAreaId}
+     universal-response-area-id={props.universalResponseAreaId} has-preview={props.hasPreview}
+     is-teacher-mode={props.isTeacherMode} pre-response-text={props.preResponseText} 
+     post-response-text={props.postResponseText} check-is-loading={props.checkIsLoading} 
+     feedback={JSON.stringify(props.feedback)} typesafe-error-message={props.typesafeErrorMessage}
+     handle-change={`RA_${RESPONSE_TYPE}_handleChange`} handle-submit={`RA_${RESPONSE_TYPE}_handleSubmit`}
+     handle-draft-save={`RA_${RESPONSE_TYPE}_handleDraftSave`} preview-submit={`RA_${RESPONSE_TYPE}_previewSubmit`}/>
   }
 
   /** Creates a teacher view, allowing configuration of the response area.
@@ -68,7 +78,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     props: BaseResponseAreaWizardProps,
   ): HTMLElement {
     if (!this.config) throw new Error('Config missing')
-
-    return <wizard-component {...props} config={JSON.stringify(this.config)} answer={this.answer} />
+    window[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
+    window[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave
+    return <wizard-component config={JSON.stringify(this.config)} answer={this.answer} 
+            handle-change={`RA_${RESPONSE_TYPE}_handleChange`} set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}/>
   }
 }
