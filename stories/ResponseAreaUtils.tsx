@@ -33,7 +33,7 @@ export const initialiseResponseArea = (
       localStorage.setItem(storageKey, JSON.stringify(val));
       setResponse(val);
     }
-    args.onComponentUpdate?.(val);
+    args.inputModifiedCallback?.(val);
   };
 
   return templateResponseAreaTub[componentType]({
