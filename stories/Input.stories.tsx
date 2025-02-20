@@ -11,7 +11,7 @@ const InputMeta: Meta = {
     layout: "centered",
   },
   args: {
-    onComponentUpdate: (val: IModularResponseSchema) => {},
+    inputModifiedCallback: (val: IModularResponseSchema) => {},
     handleSubmit: () => {},
   },
 };

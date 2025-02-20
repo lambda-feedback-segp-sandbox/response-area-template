@@ -8,7 +8,7 @@ const WizardMeta: Meta = {
   title: "Wizard",
   parameters: { layout: "centered" },
   args: {
-    updateModifiedCallback: (val: IModularResponseSchema) => {},
+    inputModifiedCallback: (val: IModularResponseSchema) => {},
     handleSubmit: () => {},
   },
   render: (args) => <WrappedWizard {...args} />,
