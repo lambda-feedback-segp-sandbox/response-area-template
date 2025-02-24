@@ -2124,10 +2124,10 @@
     typedoc "^0.27.6"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.13":
-  version "0.6.13"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.13/e085f697b04d99f63012d4b53ca1aaea62ffea98#e085f697b04d99f63012d4b53ca1aaea62ffea98"
-  integrity sha512-Y2q4hT3ihEKmKWZvkeucuTckDK1gH2YtFKkpJEPe/2wUZmIS5pxvqTDJKxWpoy95k0GMOYzscWmEfTonXZiHYw==
+"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.14":
+  version "0.6.14"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.14/55ed5b72ee9d0f3350e49d7400dee89a84ad46a6#55ed5b72ee9d0f3350e49d7400dee89a84ad46a6"
+  integrity sha512-danp8aKurLA0YXwOZYCF9BpDqCj4BvGDzmO+gwpcyGSeUMiYdq4njAnJ5hMcrYjuf5KiesTFNb5wxdwNBlnerg==
   dependencies:
     "@lambda-feedback-segp-sandbox/ef-test-server" "^0.5.0"
     "@lambda-feedback-segp-sandbox/response-area" "^1.3.1"
