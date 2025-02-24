@@ -3,12 +3,9 @@ import {
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
-import React from 'react'
 import { z } from 'zod'
 
-import { Input } from './Input.component'
 import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
-import { Wizard } from './Wizard.component'
 
 export const RESPONSE_TYPE = 'REPLACE_ME'
 
