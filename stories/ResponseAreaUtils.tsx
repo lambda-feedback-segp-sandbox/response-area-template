@@ -5,7 +5,7 @@ import { MyResponseAreaTub } from "../components";
 
 export const getStoredResponse = (storageKey: string): IModularResponseSchema | null => {
   try {
-    const storedResponse = localStorage.getItem(storageKey);
+    const storedResponse = sessionStorage.getItem(storageKey);
     return storedResponse ? JSON.parse(storedResponse) ?? null : null;
   } catch {
     return null; // Return null if JSON parsing fails
@@ -30,7 +30,7 @@ export const initialiseResponseArea = (
 
   const handleChange = (val: IModularResponseSchema) => {
     if (val?.config) {
-      localStorage.setItem(storageKey, JSON.stringify(val));
+      sessionStorage.setItem(storageKey, JSON.stringify(val));
       setResponse(val);
     }
     args.inputModifiedCallback?.(val);

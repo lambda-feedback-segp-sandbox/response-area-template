@@ -22,7 +22,7 @@ import { wrapInput } from './input-wrapper'
 
 const InitialiseResponseArea: React.FC<any> = (args: any) => {
   const [response] = useState<IModularResponseSchema | null>(() => {
-    const storedResponse = localStorage.getItem("wizard.input");
+    const storedResponse = sessionStorage.getItem("wizard.input");
     if (storedResponse) {
       try {
         const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
@@ -44,7 +44,7 @@ const InitialiseResponseArea: React.FC<any> = (args: any) => {
   return <templateResponseAreaTub.InputComponent {...args}
                                                  handleChange={(val: IModularResponseSchema) => {
                                                    if (val) {
-                                                     localStorage.setItem("student.input", JSON.stringify(val));
+                                                     sessionStorage.setItem("student.input", JSON.stringify(val));
                                                    }
                                                  }} />;
 };
@@ -57,7 +57,7 @@ const ResponseAreaViewMeta = {
   args: {
     handleChange: (val: IModularResponseSchema) => {
       if (val && val.config && val.answer) {
-        localStorage.setItem("student.input", JSON.stringify(val));
+        sessionStorage.setItem("student.input", JSON.stringify(val));
       }
     },
     handleSubmit: fn(),
