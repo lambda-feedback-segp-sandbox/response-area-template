@@ -21,6 +21,7 @@
     "paths": {
       "prosemirror-view": ["node_modules/prosemirror-view"]
     },
+    "typeRoots": ["./node_modules/@types", "./types"],
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_error.js"],
   "exclude": ["node_modules"]
