@@ -55,11 +55,11 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   InputComponent(
     props: BaseResponseAreaProps,
   ): HTMLElement {
-    this.config = this.config ?? { fontFamily: 'Arial' }
-    window[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
-    window[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit
-    window[`RA_${RESPONSE_TYPE}_handleDraftSave`] = props.handleDraftSave
-    window[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit
+    this.config = this.config ?? { fontFamily: 'Arial' };
+    (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
+    (window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit;
+    (window as any)[`RA_${RESPONSE_TYPE}_handleDraftSave`] = props.handleDraftSave;
+    (window as any)[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit;
     return <input-component config={JSON.stringify(this.config)} answer={this.answer}
      display-mode={props.displayMode} response-area-id={props.responseAreaId}
      universal-response-area-id={props.universalResponseAreaId} has-preview={props.hasPreview}
