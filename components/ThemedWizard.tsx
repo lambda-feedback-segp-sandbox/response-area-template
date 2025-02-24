@@ -1,6 +1,5 @@
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import {
-  BaseResponseAreaProps,
+  BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { ThemeProvider } from '@lambda-feedback-segp-sandbox/styles/styles/minimal/theme-provider'
 import React from 'react'
@@ -11,9 +10,8 @@ import { Wizard } from './Wizard.component'
  *  parameters provided in {@link BaseResponseAreaWizardProps} */
 export type WizardComponentProps = Omit<
   BaseResponseAreaWizardProps,
-  'handleChange' | 'answer'
+  'answer'
 > & {
-  handleChange: (val: IModularResponseSchema['answer']) => void
   answer?: string
   config: {"fontFamily": string}
 }

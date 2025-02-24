@@ -21,7 +21,6 @@
     "paths": {
       "prosemirror-view": ["node_modules/prosemirror-view"]
     },
-    "noCheck": true
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", "pages/_error.js"],
   "exclude": ["node_modules"]
