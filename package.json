@@ -8,8 +8,9 @@
     "test:types": "yarn tsc --noEmit",
     "test": "yarn test:types && yarn lint --max-warnings=0",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build",
-    "build": "webpack --mode production && node postBuild.js"
+    "build": "webpack --mode production && node postBuild.js",
+    "build:debug": "webpack --mode development -c webpack.config.debug.js && node postBuild.js",
+    "build:storybook": "yarn build && storybook build"
   },
   "dependencies": {
     "@babel/preset-react": "^7.26.3",
