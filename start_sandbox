@@ -1,0 +1,8 @@
+yarn install
+yarn ef-test-server &
+serverPID=$!
+yarn webpack watch --mode development &
+webpackPID=$!
+yarn storybook
+kill $serverPID
+kill $webpackPID
