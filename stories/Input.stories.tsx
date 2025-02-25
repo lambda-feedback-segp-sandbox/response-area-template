@@ -16,7 +16,7 @@ const InputMeta: Meta = {
   },
 };
 
-const WrappedInput: React.FC<any> = wrapInput(initialiseResponseArea(InputMeta.args, "wizard.input", "InputComponent"));
+const WrappedInput: React.FC<any> = wrapInput(initialiseResponseArea(InputMeta.args, "InputComponent"));
 
 export const StudentView = {
   ...InputMeta,

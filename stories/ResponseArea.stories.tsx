@@ -19,52 +19,21 @@ import React, { useState } from 'react'
 import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
+import { initialiseResponseArea } from './ResponseAreaUtils'
 
-const InitialiseResponseArea: React.FC<any> = (args: any) => {
-  const [response] = useState<IModularResponseSchema | null>(() => {
-    const storedResponse = sessionStorage.getItem("wizard.input");
-    if (storedResponse) {
-      try {
-        const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
-        return parsedResponse && parsedResponse.config ? parsedResponse : null;
-      } catch {
-        return null; // Return null if JSON parsing fails
-      }
-    }
-    return null;
-  });
-
-  const templateResponseAreaTub = new MyResponseAreaTub();
-  if (response && response.config) {
-    // @ts-ignore
-    templateResponseAreaTub.config = response.config;
-  } else {
-    templateResponseAreaTub.initWithDefault();
-  }
-  return <templateResponseAreaTub.InputComponent {...args}
-                                                 handleChange={(val: IModularResponseSchema) => {
-                                                   if (val) {
-                                                     sessionStorage.setItem("student.input", JSON.stringify(val));
-                                                   }
-                                                 }} />;
-};
-
-const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(InitialiseResponseArea)
 const ResponseAreaViewMeta = {
   title: 'Response Area',
   component: ResponseAreaView,
+  inputModifiedCallback: (val: IModularResponseSchema) => {},
+  handleSubmit: fn(),
   args: {
-    handleChange: (val: IModularResponseSchema) => {
-      if (val && val.config && val.answer) {
-        sessionStorage.setItem("student.input", JSON.stringify(val));
-      }
-    },
-    handleSubmit: fn(),
     preResponseText: 'this is pre response text',
     postResponseText: 'this is post response text',
   },
 } satisfies Meta
+
+const tub = new MyResponseAreaTub()
+tub.InputComponent = wrapInput(initialiseResponseArea(ResponseAreaViewMeta, "InputComponent"))
 
 export default ResponseAreaViewMeta
 type Story = StoryObj<typeof ResponseAreaViewMeta>
