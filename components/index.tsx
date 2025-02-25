@@ -2,7 +2,7 @@ import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base/types/response-area-tub'
+import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base'
 import { JSX } from 'react'
 import { z } from 'zod'
 

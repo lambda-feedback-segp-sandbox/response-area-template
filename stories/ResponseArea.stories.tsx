@@ -1,4 +1,4 @@
-import { ResponseAreaView } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
+import { ResponseAreaView, ResponseAreaViewProps } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import {
   Delete as DeleteIcon,
@@ -49,27 +49,7 @@ const InitialiseResponseArea: React.FC<any> = (args: any) => {
                                                  }} />;
 };
 
-const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(InitialiseResponseArea)
-const ResponseAreaViewMeta = {
-  title: 'Response Area',
-  component: ResponseAreaView,
-  args: {
-    handleChange: (val: IModularResponseSchema) => {
-      if (val && val.config && val.answer) {
-        sessionStorage.setItem("student.input", JSON.stringify(val));
-      }
-    },
-    handleSubmit: fn(),
-    preResponseText: 'this is pre response text',
-    postResponseText: 'this is post response text',
-  },
-} satisfies Meta
-
-export default ResponseAreaViewMeta
-type Story = StoryObj<typeof ResponseAreaViewMeta>
-
-const TempViewComponent = (args: any) => {
+const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps> = ({ fullView, ...args }) => {
   const [open, setOpen] = useState(false);
   const [dialogContent, setDialogContent] = useState({
     title: '',
@@ -88,7 +68,7 @@ const TempViewComponent = (args: any) => {
     setOpen(false);
   };
 
-  if (!args.fullView) {
+  if (fullView) {
     return (
       <>
         <ResponseAreaView
@@ -187,8 +167,29 @@ const TempViewComponent = (args: any) => {
   );
 };
 
+const tub = new MyResponseAreaTub()
+tub.InputComponent = wrapInput(InitialiseResponseArea)
+const ResponseAreaViewMeta = {
+  title: 'Response Area',
+  component: TempViewComponent,
+  args: {
+    handleChange: (val: IModularResponseSchema) => {
+      if (val && val.config && val.answer) {
+        sessionStorage.setItem("student.input", JSON.stringify(val));
+      }
+    },
+    handleSubmit: fn(),
+    preResponseText: 'this is pre response text',
+    postResponseText: 'this is post response text',
+  },
+} satisfies Meta
+
+export default ResponseAreaViewMeta
+type Story = StoryObj<typeof ResponseAreaViewMeta>
+
 export const StudentView: Story = {
   args: {
+    fullView: false,
     tub: tub,
     visibleSymbols: [],
     displayMode: 'normal',
@@ -202,14 +203,13 @@ export const StudentView: Story = {
     feedback: {isCorrect: true, isError: false},
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label',
-    fullView: false
-  },
-  render: (args) => <TempViewComponent {...args} />,
+    wrapLabel: 'Area Label'
+  }
 }
 
 export const TeacherView: Story = {
   args: {
+    fullView: true,
     tub: tub,
     visibleSymbols: [],
     displayMode: 'normal',
@@ -223,10 +223,8 @@ export const TeacherView: Story = {
     feedback: {isCorrect: true, isError: false},
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label',
-    fullView: true
-  },
-  render: (args) => <TempViewComponent {...args} />,
+    wrapLabel: 'Area Label'
+  }
 }
 
 
