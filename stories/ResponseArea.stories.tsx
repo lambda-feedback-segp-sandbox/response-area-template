@@ -1,4 +1,7 @@
-import { ResponseAreaView } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
+import {
+  ResponseAreaView,
+  ResponseAreaViewProps,
+} from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import {
   Delete as DeleteIcon,
@@ -19,45 +22,63 @@ import React, { useState } from 'react'
 import { MyResponseAreaTub } from '../components'
 
 import { wrapInput } from './input-wrapper'
-import { initialiseResponseArea } from './ResponseAreaUtils'
 
-const ResponseAreaViewMeta = {
-  title: 'Response Area',
-  component: ResponseAreaView,
-  inputModifiedCallback: (val: IModularResponseSchema) => {},
-  handleSubmit: fn(),
-  args: {
-    preResponseText: 'this is pre response text',
-    postResponseText: 'this is post response text',
-  },
-} satisfies Meta
+const InitialiseResponseArea: React.FC<any> = (args: any) => {
+  const [response] = useState<IModularResponseSchema | null>(() => {
+    const storedResponse = sessionStorage.getItem('wizard.input')
+    if (storedResponse) {
+      try {
+        const parsedResponse: IModularResponseSchema =
+          JSON.parse(storedResponse)
+        return parsedResponse && parsedResponse.config ? parsedResponse : null
+      } catch {
+        return null // Return null if JSON parsing fails
+      }
+    }
+    return null
+  })
 
-const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(initialiseResponseArea(ResponseAreaViewMeta, "InputComponent"))
+  const templateResponseAreaTub = new MyResponseAreaTub()
+  if (response && response.config) {
+    // @ts-ignore
+    templateResponseAreaTub.config = response.config
+  } else {
+    templateResponseAreaTub.initWithDefault()
+  }
+  return (
+    <templateResponseAreaTub.InputComponent
+      {...args}
+      handleChange={(val: IModularResponseSchema) => {
+        if (val) {
+          sessionStorage.setItem('student.input', JSON.stringify(val))
+        }
+      }}
+    />
+  )
+}
 
-export default ResponseAreaViewMeta
-type Story = StoryObj<typeof ResponseAreaViewMeta>
-
-const TempViewComponent = (args: any) => {
-  const [open, setOpen] = useState(false);
+const TempViewComponent: React.FC<
+  { fullView: boolean } & ResponseAreaViewProps
+> = ({ fullView, ...args }) => {
+  const [open, setOpen] = useState(false)
   const [dialogContent, setDialogContent] = useState({
     title: '',
     description: '',
-  });
+  })
 
   const handleButtonClick = (buttonType: string) => {
-    let title = 'Not Available';
-    let description = `${buttonType} is not available in SandBox`;
+    let title = 'Not Available'
+    let description = `${buttonType} is not available in SandBox`
 
-    setDialogContent({ title, description });
-    setOpen(true);
-  };
+    setDialogContent({ title, description })
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
-  if (!args.fullView) {
+  if (fullView) {
     return (
       <>
         <ResponseAreaView
@@ -69,9 +90,10 @@ const TempViewComponent = (args: any) => {
           open={open}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">
+            {dialogContent.title}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {dialogContent.description}
@@ -84,7 +106,7 @@ const TempViewComponent = (args: any) => {
           </DialogActions>
         </Dialog>
       </>
-    );
+    )
   }
 
   return (
@@ -127,8 +149,7 @@ const TempViewComponent = (args: any) => {
               sx={{
                 ...commonButtonStyles, // Applying common styles
                 width: '100%', // Additional unique style
-              }}
-            >
+              }}>
               Delete
             </Button>
           </>
@@ -138,8 +159,7 @@ const TempViewComponent = (args: any) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+        aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -153,11 +173,32 @@ const TempViewComponent = (args: any) => {
         </DialogActions>
       </Dialog>
     </>
-  );
-};
+  )
+}
+
+const tub = new MyResponseAreaTub()
+tub.InputComponent = wrapInput(InitialiseResponseArea)
+const ResponseAreaViewMeta = {
+  title: 'Response Area',
+  component: TempViewComponent,
+  args: {
+    handleChange: (val: IModularResponseSchema) => {
+      if (val && val.config && val.answer) {
+        sessionStorage.setItem('student.input', JSON.stringify(val))
+      }
+    },
+    handleSubmit: fn(),
+    preResponseText: 'this is pre response text',
+    postResponseText: 'this is post response text',
+  },
+} satisfies Meta
+
+export default ResponseAreaViewMeta
+type Story = StoryObj<typeof ResponseAreaViewMeta>
 
 export const StudentView: Story = {
   args: {
+    fullView: false,
     tub: tub,
     visibleSymbols: [],
     displayMode: 'normal',
@@ -168,17 +209,16 @@ export const StudentView: Story = {
     handleCheck: () => {},
     handleDraftSave: () => {},
     inFlight: false,
-    feedback: {isCorrect: true, isError: false},
+    feedback: { isCorrect: true, isError: false },
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
     wrapLabel: 'Area Label',
-    fullView: false
   },
-  render: (args) => <TempViewComponent {...args} />,
 }
 
 export const TeacherView: Story = {
   args: {
+    fullView: true,
     tub: tub,
     visibleSymbols: [],
     displayMode: 'normal',
@@ -189,18 +229,15 @@ export const TeacherView: Story = {
     handleCheck: () => {},
     handleDraftSave: () => {},
     inFlight: false,
-    feedback: {isCorrect: true, isError: false},
+    feedback: { isCorrect: true, isError: false },
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
     wrapLabel: 'Area Label',
-    fullView: true
   },
-  render: (args) => <TempViewComponent {...args} />,
 }
-
 
 const commonButtonStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-};
+}
