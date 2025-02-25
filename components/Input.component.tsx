@@ -1,7 +1,7 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
@@ -13,6 +13,7 @@ export type InputComponentProps = Omit<
   answer?: string
   config: { fontFamily: string }
 }
+
 //@ts-ignore
 const useStyles = makeStyles()(theme => ({
   textarea: {
@@ -24,14 +25,24 @@ const useStyles = makeStyles()(theme => ({
 /** Creates ReactNode rendering the Student and Teacher preview views, using
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
-  handleChange,
-  handleSubmit,
-  config,
-  answer,
-}) => {
-  // The following code is for demonstration purposes only, it can be
-  // completely refactored
+                                                       handleChange,
+                                                       handleSubmit,
+                                                       config,
+                                                       answer,
+                                                     }) => {
   const { classes } = useStyles()
+
+  // State to store the input value
+  const [inputValue, setInputValue] = useState(answer || '')
+
+  useEffect(() => {
+    // Read from sessionStorage and update state
+    const storedValue = sessionStorage.getItem('student.input')
+    if (storedValue) {
+      setInputValue(JSON.parse(storedValue))
+    }
+  }, []) // Runs only on mount
+
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
       event => {
@@ -45,14 +56,21 @@ export const Input: React.FC<InputComponentProps> = ({
       },
       [handleSubmit],
     )
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value
+    setInputValue(newValue)
+    handleChange(newValue) // Propagate change
+  }
+
   return (
     <textarea
       className={classes.textarea}
       onKeyDown={submitOnEnter}
-      onChange={event => handleChange(event.target.value)}
+      onChange={handleInputChange}
       placeholder="Type your response here…"
       style={{ fontFamily: config.fontFamily }}
-      {...(answer !== undefined ? { value: answer } : {})}
+      value={inputValue} // Bind state to input
     />
   )
 }

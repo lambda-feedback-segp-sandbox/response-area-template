@@ -3,9 +3,12 @@ import { useState } from "react";
 
 import { MyResponseAreaTub } from "../components";
 
-export const getStoredResponse = (storageKey: string): IModularResponseSchema | null => {
+const WIZARD_KEY = "wizard.input";
+const INPUT_KEY = "student.input"
+
+export const getStoredResponse = (): IModularResponseSchema | null => {
   try {
-    const storedResponse = sessionStorage.getItem(storageKey);
+    const storedResponse = sessionStorage.getItem(WIZARD_KEY);
     return storedResponse ? JSON.parse(storedResponse) ?? null : null;
   } catch {
     return null; // Return null if JSON parsing fails
@@ -14,10 +17,9 @@ export const getStoredResponse = (storageKey: string): IModularResponseSchema | 
 
 export const initialiseResponseArea = (
   args: any,
-  storageKey: string,
   componentType: "WizardComponent" | "InputComponent"
 ): React.FC<any> => () => {
-  const [response, setResponse] = useState<IModularResponseSchema | null>(() => getStoredResponse(storageKey));
+  const [response, setResponse] = useState<IModularResponseSchema | null>(() => getStoredResponse());
 
   const templateResponseAreaTub = new MyResponseAreaTub();
   // @ts-ignore
@@ -30,8 +32,12 @@ export const initialiseResponseArea = (
 
   const handleChange = (val: IModularResponseSchema) => {
     if (val?.config) {
-      sessionStorage.setItem(storageKey, JSON.stringify(val));
+      sessionStorage.setItem(WIZARD_KEY, JSON.stringify(val));
       setResponse(val);
+    }
+
+    if (componentType == "InputComponent") {
+      sessionStorage.setItem(INPUT_KEY, JSON.stringify(val));
     }
     args.inputModifiedCallback?.(val);
   };

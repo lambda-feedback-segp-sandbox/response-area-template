@@ -35,3 +35,5 @@ tsconfig.tsbuildinfo
 .idea/
 
 dist/
+
+*.ps1

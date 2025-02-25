@@ -1989,7 +1989,7 @@
     typedoc "^0.27.6"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.13":
+"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.14":
   version "0.6.14"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.14/55ed5b72ee9d0f3350e49d7400dee89a84ad46a6#55ed5b72ee9d0f3350e49d7400dee89a84ad46a6"
   integrity sha512-danp8aKurLA0YXwOZYCF9BpDqCj4BvGDzmO+gwpcyGSeUMiYdq4njAnJ5hMcrYjuf5KiesTFNb5wxdwNBlnerg==
@@ -2002,7 +2002,7 @@
     axios "^1.7.9"
     node-fetch "^3.3.2"
 
-"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.0.2":
+"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.0.4":
   version "1.0.4"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.0.4/f3bd5c348e1af3f8fa5bb70627036fe80aab472b#f3bd5c348e1af3f8fa5bb70627036fe80aab472b"
   integrity sha512-io/CAZ+s+KX0zBKep5YN3HVd2VCILogE8KkmLCDc6C96mTBRDk9juWleZ82FvS9/2F3xxXWBK1ExUtC/UQzLcQ==

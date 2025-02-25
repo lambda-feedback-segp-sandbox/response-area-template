@@ -14,7 +14,7 @@ const WizardMeta: Meta = {
   render: (args) => <WrappedWizard {...args} />,
 };
 
-const WrappedWizard = wrapInput(initialiseResponseArea(WizardMeta.args, "wizard.input", "WizardComponent"));
+const WrappedWizard = wrapInput(initialiseResponseArea(WizardMeta.args, "WizardComponent"));
 
 export default WizardMeta;
 type Story = StoryObj<typeof WizardMeta>;

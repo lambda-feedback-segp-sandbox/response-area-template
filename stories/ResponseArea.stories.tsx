@@ -1,4 +1,7 @@
-import { ResponseAreaView, ResponseAreaViewProps } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
+import {
+  ResponseAreaView,
+  ResponseAreaViewProps,
+} from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import {
   Delete as DeleteIcon,
@@ -22,51 +25,58 @@ import { wrapInput } from './input-wrapper'
 
 const InitialiseResponseArea: React.FC<any> = (args: any) => {
   const [response] = useState<IModularResponseSchema | null>(() => {
-    const storedResponse = sessionStorage.getItem("wizard.input");
+    const storedResponse = sessionStorage.getItem('wizard.input')
     if (storedResponse) {
       try {
-        const parsedResponse: IModularResponseSchema = JSON.parse(storedResponse);
-        return parsedResponse && parsedResponse.config ? parsedResponse : null;
+        const parsedResponse: IModularResponseSchema =
+          JSON.parse(storedResponse)
+        return parsedResponse && parsedResponse.config ? parsedResponse : null
       } catch {
-        return null; // Return null if JSON parsing fails
+        return null // Return null if JSON parsing fails
       }
     }
-    return null;
-  });
+    return null
+  })
 
-  const templateResponseAreaTub = new MyResponseAreaTub();
+  const templateResponseAreaTub = new MyResponseAreaTub()
   if (response && response.config) {
     // @ts-ignore
-    templateResponseAreaTub.config = response.config;
+    templateResponseAreaTub.config = response.config
   } else {
-    templateResponseAreaTub.initWithDefault();
+    templateResponseAreaTub.initWithDefault()
   }
-  return <templateResponseAreaTub.InputComponent {...args}
-                                                 handleChange={(val: IModularResponseSchema) => {
-                                                   if (val) {
-                                                     sessionStorage.setItem("student.input", JSON.stringify(val));
-                                                   }
-                                                 }} />;
-};
+  return (
+    <templateResponseAreaTub.InputComponent
+      {...args}
+      handleChange={(val: IModularResponseSchema) => {
+        if (val) {
+          sessionStorage.setItem('student.input', JSON.stringify(val))
+        }
+      }}
+    />
+  )
+}
 
-const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps> = ({ fullView, ...args }) => {
-  const [open, setOpen] = useState(false);
+const TempViewComponent: React.FC<
+  { fullView: boolean } & ResponseAreaViewProps
+> = ({ fullView, ...args }) => {
+  const [open, setOpen] = useState(false)
   const [dialogContent, setDialogContent] = useState({
     title: '',
     description: '',
-  });
+  })
 
   const handleButtonClick = (buttonType: string) => {
-    let title = 'Not Available';
-    let description = `${buttonType} is not available in SandBox`;
+    let title = 'Not Available'
+    let description = `${buttonType} is not available in SandBox`
 
-    setDialogContent({ title, description });
-    setOpen(true);
-  };
+    setDialogContent({ title, description })
+    setOpen(true)
+  }
 
   const handleClose = () => {
-    setOpen(false);
-  };
+    setOpen(false)
+  }
 
   if (fullView) {
     return (
@@ -80,9 +90,10 @@ const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps>
           open={open}
           onClose={handleClose}
           aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description"
-        >
-          <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
+          aria-describedby="alert-dialog-description">
+          <DialogTitle id="alert-dialog-title">
+            {dialogContent.title}
+          </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">
               {dialogContent.description}
@@ -95,7 +106,7 @@ const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps>
           </DialogActions>
         </Dialog>
       </>
-    );
+    )
   }
 
   return (
@@ -138,8 +149,7 @@ const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps>
               sx={{
                 ...commonButtonStyles, // Applying common styles
                 width: '100%', // Additional unique style
-              }}
-            >
+              }}>
               Delete
             </Button>
           </>
@@ -149,8 +159,7 @@ const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps>
         open={open}
         onClose={handleClose}
         aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
+        aria-describedby="alert-dialog-description">
         <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
@@ -164,8 +173,8 @@ const TempViewComponent: React.FC<{ fullView: boolean } & ResponseAreaViewProps>
         </DialogActions>
       </Dialog>
     </>
-  );
-};
+  )
+}
 
 const tub = new MyResponseAreaTub()
 tub.InputComponent = wrapInput(InitialiseResponseArea)
@@ -175,7 +184,7 @@ const ResponseAreaViewMeta = {
   args: {
     handleChange: (val: IModularResponseSchema) => {
       if (val && val.config && val.answer) {
-        sessionStorage.setItem("student.input", JSON.stringify(val));
+        sessionStorage.setItem('student.input', JSON.stringify(val))
       }
     },
     handleSubmit: fn(),
@@ -200,11 +209,11 @@ export const StudentView: Story = {
     handleCheck: () => {},
     handleDraftSave: () => {},
     inFlight: false,
-    feedback: {isCorrect: true, isError: false},
+    feedback: { isCorrect: true, isError: false },
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label'
-  }
+    wrapLabel: 'Area Label',
+  },
 }
 
 export const TeacherView: Story = {
@@ -220,16 +229,15 @@ export const TeacherView: Story = {
     handleCheck: () => {},
     handleDraftSave: () => {},
     inFlight: false,
-    feedback: {isCorrect: true, isError: false},
+    feedback: { isCorrect: true, isError: false },
     responseAreaId: '00000000-0000-0000-0000-000000000000',
     universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label'
-  }
+    wrapLabel: 'Area Label',
+  },
 }
-
 
 const commonButtonStyles = {
   display: 'flex',
   justifyContent: 'space-between',
   alignItems: 'center',
-};
+}
