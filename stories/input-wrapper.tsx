@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, JSX } from 'react'
 
-export function wrapInput<P>(Input: React.FC<P>): React.FC<any> {
+export function wrapInput<P>(Input: React.FC<P>): (props: P) => JSX.Element {
   return (props: P) => {
     const [response, setResponse] = useState<unknown | undefined>(undefined)
     return (

@@ -23,6 +23,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  response area */
   protected answerSchema = inputResponseAnswerSchema
 
+  protected configSchema = inputConfigSchema
+
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
@@ -40,7 +42,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
 
   constructor() {
-    super()
+    super();
     this.InputComponent = this.InputComponent.bind(this);
     this.WizardComponent = this.WizardComponent.bind(this);
   }
