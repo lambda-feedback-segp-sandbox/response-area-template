@@ -2,7 +2,6 @@ import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-a
 import { Meta } from "@storybook/react";
 import React from "react";
 
-import { wrapInput } from "./input-wrapper";
 import { initialiseResponseArea } from "./ResponseAreaUtils";
 
 const InputMeta: Meta = {
@@ -16,7 +15,7 @@ const InputMeta: Meta = {
   },
 };
 
-const WrappedInput: React.FC<any> = wrapInput(initialiseResponseArea(InputMeta.args, "InputComponent"));
+const WrappedInput: React.FC<any> = initialiseResponseArea(InputMeta.args, "InputComponent");
 
 export const StudentView = {
   ...InputMeta,

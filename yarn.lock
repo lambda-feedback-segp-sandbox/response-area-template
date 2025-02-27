@@ -1950,7 +1950,7 @@
     markdown-to-jsx "^7.1.7"
     react "^18.3.1"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^1.1.0", "@lambda-feedback-segp-sandbox/response-area-base@^1.1.4":
+"@lambda-feedback-segp-sandbox/response-area-base@^1.1.0":
   version "1.1.4"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/1.1.4/a7657f25dae085c317678f9369278bf78c57383b#a7657f25dae085c317678f9369278bf78c57383b"
   integrity sha512-uEa+1BZ9AMb8G9CXsKXGqTH1h71kVRZVq0y8GoYwFu3h66vXefzypwBZhykm+8k5HEVcDOpPzaLpIjaoS+HPqw==
@@ -1960,7 +1960,17 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.3":
+"@lambda-feedback-segp-sandbox/response-area-base@^2.0.0":
+  version "2.0.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/2.0.0/2f82bb89177b8a0f1eff18d84d3bfeaf48bbbd7b#2f82bb89177b8a0f1eff18d84d3bfeaf48bbbd7b"
+  integrity sha512-qOE8evaYBEquCFefptEUwlBRZiW1v1GxKQW5zNyZo6c7BdI2R8OFt/aPCf9H0/baWGmH/iWq5Vl3dbD9M+uVOg==
+  dependencies:
+    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
+    react "^18.3.1"
+    react-query "^3.39.0"
+    zod "^3.14.4"
+
+"@lambda-feedback-segp-sandbox/response-area@^1.3.1":
   version "1.3.3"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.3/7d84e469c768c2794b9216177cc174a690c365ab#7d84e469c768c2794b9216177cc174a690c365ab"
   integrity sha512-2GZYoQTCnAcU7Q2dmHkyY1xR6Ef9x8RIV4PzP0xFE48WoUwIpniTYfswWoqGQIXs4WYDZLDJIaCkfNTCRqhIqQ==
@@ -1989,10 +1999,39 @@
     typedoc "^0.27.6"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.14":
-  version "0.6.14"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.14/55ed5b72ee9d0f3350e49d7400dee89a84ad46a6#55ed5b72ee9d0f3350e49d7400dee89a84ad46a6"
-  integrity sha512-danp8aKurLA0YXwOZYCF9BpDqCj4BvGDzmO+gwpcyGSeUMiYdq4njAnJ5hMcrYjuf5KiesTFNb5wxdwNBlnerg==
+"@lambda-feedback-segp-sandbox/response-area@^1.3.4":
+  version "1.3.4"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.4/d0c0e748c2d812b7a60ef356b5696cdb4a447b2a#d0c0e748c2d812b7a60ef356b5696cdb4a447b2a"
+  integrity sha512-+KWo3I/r5IOdM8EohqspSBOZXeYpg4Bhd+c0u62KVaKR4WzVlJrAUtFeiXl9SI1lCPFHiGRVuqokId+c7sfHNg==
+  dependencies:
+    "@lambda-feedback-segp-sandbox/content-components" "^1.0.1"
+    "@lambda-feedback-segp-sandbox/form-components" "^1.1.1"
+    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/icon-components" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/loading-components" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/math-components" "^1.0.0"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^2.0.0"
+    "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
+    "@monaco-editor/react" "^4.6.0"
+    "@mui/lab" "^5.0.0-alpha.100"
+    "@mui/material" "^5.15.20"
+    katex "^0.16.2"
+    lodash "^4.17.21"
+    monaco-editor "^0.50.0"
+    react "^18.3.1"
+    react-dropzone "^14.2.3"
+    react-image-crop "^10.0.9"
+    react-input-autosize "^3.0.0"
+    react-query "^3.39.0"
+    react-sketch-canvas "^6.2.0"
+    shuffle-seed "^1.1.6"
+    typedoc "^0.27.6"
+    zod "^3.14.4"
+
+"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.16":
+  version "0.6.16"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.16/cd7cca578a858cb2592b76e6d744f55b66d085d7#cd7cca578a858cb2592b76e6d744f55b66d085d7"
+  integrity sha512-kzvuI17PMrlxBD0Ic6Ss5NbBgcNzDYwRJorcXEIWXxDf9WVPrydk9ljHiasDWLgviQwa3pB1qd6jBnBRYDVK/g==
   dependencies:
     "@lambda-feedback-segp-sandbox/ef-test-server" "^0.5.0"
     "@lambda-feedback-segp-sandbox/response-area" "^1.3.1"

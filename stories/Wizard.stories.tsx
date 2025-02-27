@@ -1,7 +1,6 @@
 import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema";
 import type { Meta, StoryObj } from "@storybook/react";
 
-import { wrapInput } from "./input-wrapper";
 import { initialiseResponseArea } from "./ResponseAreaUtils";
 
 const WizardMeta: Meta = {
@@ -14,7 +13,7 @@ const WizardMeta: Meta = {
   render: (args) => <WrappedWizard {...args} />,
 };
 
-const WrappedWizard = wrapInput(initialiseResponseArea(WizardMeta.args, "WizardComponent"));
+const WrappedWizard = initialiseResponseArea(WizardMeta.args, "WizardComponent");
 
 export default WizardMeta;
 type Story = StoryObj<typeof WizardMeta>;

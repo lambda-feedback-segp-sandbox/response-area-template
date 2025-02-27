@@ -21,8 +21,6 @@ import React, { useState } from 'react'
 
 import { MyResponseAreaTub } from '../components'
 
-import { wrapInput } from './input-wrapper'
-
 const InitialiseResponseArea: React.FC<any> = (args: any) => {
   const [response] = useState<IModularResponseSchema | null>(() => {
     const storedResponse = sessionStorage.getItem('wizard.input')
@@ -177,7 +175,7 @@ const TempViewComponent: React.FC<
 }
 
 const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(InitialiseResponseArea)
+tub.InputComponent = InitialiseResponseArea
 const ResponseAreaViewMeta = {
   title: 'Response Area',
   component: TempViewComponent,

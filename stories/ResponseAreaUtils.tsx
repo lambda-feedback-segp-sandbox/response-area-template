@@ -1,5 +1,5 @@
 import { IModularResponseSchema } from "@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import { MyResponseAreaTub } from "../components";
 
@@ -18,18 +18,38 @@ export const getStoredResponse = (): IModularResponseSchema | null => {
 export const initialiseResponseArea = (
   args: any,
   componentType: "WizardComponent" | "InputComponent"
-): React.FC<any> => () => {
-  const [response, setResponse] = useState<IModularResponseSchema | null>(() => getStoredResponse());
+): React.FC<any> => (props: any) => { 
+  const [response, setResponse] = useState<IModularResponseSchema | null>();
 
   const templateResponseAreaTub = new MyResponseAreaTub();
+
+  useEffect(() => {
+          // Read from sessionStorage and update state
+          const storedValue = sessionStorage.getItem('student.input')
+          if (storedValue) {
+            const parsedVal = JSON.parse(storedValue);
+            if (parsedVal != response) {
+              setResponse(parsedVal);
+            }
+          }
+        }, [response]);
+
+  console.log("Response: ", response);
   // @ts-ignore
   response?.config ? (templateResponseAreaTub.config = response.config) : templateResponseAreaTub.initWithDefault();
 
   // If the component type is WizardComponent, sync response.answer with templateResponseAreaTub.answer
-  if (componentType === "WizardComponent" && response?.answer)
+  if (componentType === "WizardComponent" && response?.answer) {
     // @ts-ignore
     templateResponseAreaTub.answer = response.answer;
-
+  } else {
+    // If the component type is InputComponent, sync response.answer with templateResponseAreaTub.answer
+    // @ts-ignore
+    templateResponseAreaTub.answer = response
+  }
+  
+  console.log("Template Response Area Tub: ", templateResponseAreaTub.answer);
+  console.log("Template Response Area Tub Config: ", templateResponseAreaTub.config);
   const handleChange = (val: IModularResponseSchema) => {
     if (val?.config) {
       sessionStorage.setItem(WIZARD_KEY, JSON.stringify(val));
@@ -42,8 +62,8 @@ export const initialiseResponseArea = (
     args.inputModifiedCallback?.(val);
   };
 
-  return templateResponseAreaTub[componentType]({
-    ...args,
-    handleChange,
-  });
+  console.log("Answer: ", props.answer);
+  const Component = templateResponseAreaTub[componentType]
+  
+  return (<Component {...args} {...props} handleChange={handleChange} answer={response}/>);
 };
