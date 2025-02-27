@@ -17,9 +17,13 @@ jobs:
     name: Publish
     if: github.ref == 'refs/heads/main'
     needs: test
+    environment:
+      name: github-pages
+      url: ${{ steps.publish.outputs.pages-url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
       - name: Publish
+        id: publish
         uses: lambda-feedback-segp-sandbox/publish-response-area-action@v1
