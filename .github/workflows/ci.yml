@@ -4,6 +4,9 @@ name: CI
 
 on: push
 
+env:
+  NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
 jobs:
   test:
     name: Run tests
