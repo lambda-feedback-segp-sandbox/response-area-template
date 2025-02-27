@@ -3,7 +3,6 @@ import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { JSX } from 'react'
 import { z } from 'zod'
 
 import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
@@ -46,7 +45,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     this.InputComponent = this.InputComponent.bind(this);
     this.WizardComponent = this.WizardComponent.bind(this);
   }
-  InputComponent(props: BaseResponseAreaProps): JSX.Element {
+  InputComponent: React.FC<BaseResponseAreaProps> = (props) => {
     this.config = this.config ?? { fontFamily: 'Arial' };
     (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
     (window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit;
@@ -55,8 +54,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
     return (
       <input-component
-        config={JSON.stringify(this.config)}
-        answer={this.answer}
+        config={JSON.stringify(props.config ?? {}) }
+        answer={JSON.stringify(props.answer)}
         display-mode={props.displayMode}
         response-area-id={props.responseAreaId}
         universal-response-area-id={props.universalResponseAreaId}
@@ -81,7 +80,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
  *  @param props - Base parameters passed to all response areas
  *  @returns ReactNode rendering the view
  *  */
-  WizardComponent(props: BaseResponseAreaWizardProps): JSX.Element {
+  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (props) =>  {
     if (!this.config) throw new Error('Config missing');
     (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
     (window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave;
