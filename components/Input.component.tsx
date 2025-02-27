@@ -1,7 +1,7 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useState } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
@@ -32,16 +32,11 @@ export const Input: React.FC<InputComponentProps> = ({
                                                      }) => {
   const { classes } = useStyles()
 
-  // State to store the input value
-  const [inputValue, setInputValue] = useState(answer || '')
+  console.log('Answer in Input: ', answer)
 
-  useEffect(() => {
-    // Read from sessionStorage and update state
-    const storedValue = sessionStorage.getItem('student.input')
-    if (storedValue) {
-      setInputValue(JSON.parse(storedValue))
-    }
-  }, []) // Runs only on mount
+  // State to store the input value
+  const [inputValue, setInputValue] = useState(answer)
+  console.log('Input Value: ', inputValue)
 
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
