@@ -15,73 +15,70 @@ export const getStoredResponse = (): IModularResponseSchema | null => {
   }
 }
 
-export const initialiseResponseArea =
-  (
-    args: any,
-    componentType: 'WizardComponent' | 'InputComponent',
-  ): React.FC<any> =>
-  (props: any) => {
+export function initialiseInput<P>(args: P): React.FC<P> {
+  return props => {
     const [response, setResponse] = useState<IModularResponseSchema | null>()
 
-    const templateResponseAreaTub = new MyResponseAreaTub()
+    const tub = new MyResponseAreaTub()
 
     useEffect(() => {
-      // Read from sessionStorage and update state
-      const storedValue = sessionStorage.getItem('student.input')
-      if (storedValue) {
-        const parsedVal = JSON.parse(storedValue)
-        if (parsedVal != response) {
-          setResponse(parsedVal)
+      const storedResponseJson = sessionStorage.getItem(INPUT_KEY)
+      if (storedResponseJson) {
+        const storedResponse = JSON.parse(storedResponseJson)
+        if (storedResponse != response) {
+          setResponse(storedResponse)
         }
       }
-    }, [response])
+    }, [])
 
-    console.log('Response: ', response)
-    // @ts-ignore
-    response?.config
-      ? (templateResponseAreaTub.config = response.config)
-      : templateResponseAreaTub.initWithDefault()
-
-    // If the component type is WizardComponent, sync response.answer with templateResponseAreaTub.answer
-    if (componentType === 'WizardComponent') {
-      // @ts-ignore
-      templateResponseAreaTub.answer = response?.answer
-    } else {
-      // If the component type is InputComponent, sync response.answer with templateResponseAreaTub.answer
-      // @ts-ignore
-      templateResponseAreaTub.answer = response
+    const handleChange = (newResponse: IModularResponseSchema) => {
+      sessionStorage.setItem(INPUT_KEY, JSON.stringify(newResponse))
     }
-
-    console.log('Template Response Area Tub: ', templateResponseAreaTub.answer)
-    console.log(
-      'Template Response Area Tub Config: ',
-      templateResponseAreaTub.config,
-    )
-    const handleChange = (val: IModularResponseSchema) => {
-      if (val?.config) {
-        sessionStorage.setItem(WIZARD_KEY, JSON.stringify(val))
-      }
-
-      if (componentType == 'InputComponent') {
-        sessionStorage.setItem(INPUT_KEY, JSON.stringify(val))
-      }
-
-      setResponse(val)
-    }
-
-    const Component = templateResponseAreaTub[componentType]
-
-    console.log('response wtf: ', response)
 
     return (
-      <Component
+      <tub.InputComponent
         {...args}
         {...props}
         handleChange={handleChange}
-        answer={
-          componentType == 'WizardComponent' ? response?.answer : response
+        answer={response}
+      />
+    )
+  }
+}
+
+export function initialiseWizard<P>(args: P): React.FC<P> {
+  return props => {
+    const tub = new MyResponseAreaTub()
+    tub.initWithDefault()
+
+    const [response, setResponse] = useState<IModularResponseSchema>({
+      answer: tub.answer,
+      config: tub.config,
+      responseType: tub.responseType,
+    })
+
+    useEffect(() => {
+      const storedResponseJson = sessionStorage.getItem(WIZARD_KEY)
+      if (storedResponseJson) {
+        const storedResponse = JSON.parse(storedResponseJson)
+        if (storedResponse != response) {
+          setResponse(storedResponse)
         }
+      }
+    }, [])
+
+    const handleChange = (newResponse: IModularResponseSchema) => {
+      sessionStorage.setItem(WIZARD_KEY, JSON.stringify(newResponse))
+    }
+
+    return (
+      <tub.WizardComponent
+        {...args}
+        {...props}
+        handleChange={handleChange}
+        answer={response?.answer ?? null}
         config={response?.config}
       />
     )
   }
+}
