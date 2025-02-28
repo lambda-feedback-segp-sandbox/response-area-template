@@ -23,6 +23,9 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.publish.outputs.pages-url }}
+    permissions:
+      id-token: write
+      pages: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
