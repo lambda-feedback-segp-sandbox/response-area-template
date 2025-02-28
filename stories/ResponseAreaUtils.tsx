@@ -1,5 +1,5 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { MyResponseAreaTub } from '../components'
 
@@ -19,9 +19,16 @@ export function initialiseInput<P>(args: P): React.FC<P> {
   return props => {
     const [response, setResponse] = useState<IModularResponseSchema | null>()
 
-    const tub = new MyResponseAreaTub()
+    const tub = useRef(new MyResponseAreaTub())
 
     useEffect(() => {
+      const storedWizardResponseJson = sessionStorage.getItem(WIZARD_KEY)
+      if (storedWizardResponseJson) {
+        const storedWizardResponse = JSON.parse(storedWizardResponseJson)
+        tub.current.config = storedWizardResponse.config
+        console.log('init from storage')
+      }
+
       const storedResponseJson = sessionStorage.getItem(INPUT_KEY)
       if (storedResponseJson) {
         const storedResponse = JSON.parse(storedResponseJson)
@@ -36,11 +43,12 @@ export function initialiseInput<P>(args: P): React.FC<P> {
     }
 
     return (
-      <tub.InputComponent
+      <tub.current.InputComponent
         {...args}
         {...props}
         handleChange={handleChange}
         answer={response}
+        config={tub.current.config}
       />
     )
   }
