@@ -40,6 +40,8 @@ export function initialiseInput<P>(args: P): React.FC<P> {
 
     const handleChange = (newResponse: IModularResponseSchema) => {
       sessionStorage.setItem(INPUT_KEY, JSON.stringify(newResponse))
+
+      setResponse(newResponse)
     }
 
     return (
@@ -56,13 +58,13 @@ export function initialiseInput<P>(args: P): React.FC<P> {
 
 export function initialiseWizard<P>(args: P): React.FC<P> {
   return props => {
-    const tub = new MyResponseAreaTub()
-    tub.initWithDefault()
+    const tub = useRef(new MyResponseAreaTub())
+    tub.current.initWithDefault()
 
     const [response, setResponse] = useState<IModularResponseSchema>({
-      answer: tub.answer,
-      config: tub.config,
-      responseType: tub.responseType,
+      answer: tub.current.answer,
+      config: tub.current.config,
+      responseType: tub.current.responseType,
     })
 
     useEffect(() => {
@@ -77,10 +79,12 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
 
     const handleChange = (newResponse: IModularResponseSchema) => {
       sessionStorage.setItem(WIZARD_KEY, JSON.stringify(newResponse))
+
+      setResponse(newResponse)
     }
 
     return (
-      <tub.WizardComponent
+      <tub.current.WizardComponent
         {...args}
         {...props}
         handleChange={handleChange}

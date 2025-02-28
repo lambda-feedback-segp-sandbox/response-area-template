@@ -25,18 +25,14 @@ const useStyles = makeStyles()(theme => ({
 /** Creates ReactNode rendering the Student and Teacher preview views, using
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
-                                                       handleChange,
-                                                       handleSubmit,
-                                                       config,
-                                                       answer,
-                                                     }) => {
+  handleChange,
+  handleSubmit,
+  config,
+  answer,
+}) => {
   const { classes } = useStyles()
 
   console.log('Answer in Input: ', answer)
-
-  // State to store the input value
-  const [inputValue, setInputValue] = useState(answer)
-  console.log('Input Value: ', inputValue)
 
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
@@ -54,7 +50,6 @@ export const Input: React.FC<InputComponentProps> = ({
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value
-    setInputValue(newValue)
     handleChange(newValue) // Propagate change
   }
 
@@ -65,7 +60,7 @@ export const Input: React.FC<InputComponentProps> = ({
       onChange={handleInputChange}
       placeholder="Type your response here…"
       style={{ fontFamily: config.fontFamily }}
-      value={inputValue} // Bind state to input
+      value={answer} // Bind state to input
     />
   )
 }
