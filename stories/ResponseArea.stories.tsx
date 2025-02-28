@@ -44,7 +44,7 @@ const TempViewComponent: React.FC<
     setOpen(false)
   }
 
-  if (fullView) {
+  if (!fullView) {
     return (
       <>
         <ResponseAreaView
