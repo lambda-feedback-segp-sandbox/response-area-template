@@ -24,7 +24,9 @@ jobs:
       name: github-pages
       url: ${{ steps.publish.outputs.pages-url }}
     permissions:
+      contents: read
       id-token: write
+      packages: write
       pages: write
     runs-on: ubuntu-latest
     steps:
