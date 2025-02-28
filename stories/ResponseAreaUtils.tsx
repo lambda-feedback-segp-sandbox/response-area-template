@@ -39,9 +39,9 @@ export const initialiseResponseArea = (
   response?.config ? (templateResponseAreaTub.config = response.config) : templateResponseAreaTub.initWithDefault();
 
   // If the component type is WizardComponent, sync response.answer with templateResponseAreaTub.answer
-  if (componentType === "WizardComponent" && response?.answer) {
+  if (componentType === "WizardComponent") {
     // @ts-ignore
-    templateResponseAreaTub.answer = response.answer;
+    templateResponseAreaTub.answer = response?.answer;
   } else {
     // If the component type is InputComponent, sync response.answer with templateResponseAreaTub.answer
     // @ts-ignore
@@ -53,17 +53,18 @@ export const initialiseResponseArea = (
   const handleChange = (val: IModularResponseSchema) => {
     if (val?.config) {
       sessionStorage.setItem(WIZARD_KEY, JSON.stringify(val));
-      setResponse(val);
     }
 
     if (componentType == "InputComponent") {
       sessionStorage.setItem(INPUT_KEY, JSON.stringify(val));
     }
-    args.inputModifiedCallback?.(val);
-  };
 
-  console.log("Answer: ", props.answer);
-  const Component = templateResponseAreaTub[componentType]
+    setResponse(val);
+  };
   
-  return (<Component {...args} {...props} handleChange={handleChange} answer={response}/>);
+  const Component = templateResponseAreaTub[componentType]
+
+  console.log("response wtf: ", response);
+  
+  return (<Component {...args} {...props} handleChange={handleChange} answer={componentType == "WizardComponent" ? response?.answer : response} config={response?.config}/>);
 };

@@ -29,6 +29,9 @@ export const Wizard: React.FC<WizardComponentProps> = ({
   handleChange,
   answer, config,
 }) => {
+
+  console.log('Answer in Wizard: ', answer)
+  console.log('Config in Wizard: ', config)
   // The following code is for demonstration purposes only, it can be
   // completely refactored
   //const { classes } = useStyles()

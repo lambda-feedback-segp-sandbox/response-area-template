@@ -2,6 +2,7 @@ import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-bas
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
+  FullResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { z } from 'zod'
 
@@ -76,19 +77,19 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
   
   /** Creates a teacher view, allowing configuration of the response area.
- *  {@link BaseResponseAreaProps}
+ *  {@link BaseResponseAreaWizardProps}
  *  @param props - Base parameters passed to all response areas
  *  @returns ReactNode rendering the view
  *  */
-  WizardComponent: React.FC<BaseResponseAreaWizardProps> = (props) =>  {
+  WizardComponent: React.FC<FullResponseAreaWizardProps> = (props) =>  {
     if (!this.config) throw new Error('Config missing');
     (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
     (window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave;
 
     return (
       <wizard-component
-        config={JSON.stringify(this.config)}
-        answer={this.answer}
+        config={JSON.stringify(props.config)}
+        answer={JSON.stringify(props.answer)}
         handle-change={`RA_${RESPONSE_TYPE}_handleChange`}
         set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}
         style={{ width: "100%", height: "100%" }}
