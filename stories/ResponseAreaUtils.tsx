@@ -1,4 +1,5 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
+import _ from 'lodash'
 import { useEffect, useRef, useState } from 'react'
 
 import { MyResponseAreaTub } from '../components'
@@ -32,11 +33,11 @@ export function initialiseInput<P>(args: P): React.FC<P> {
       const storedResponseJson = sessionStorage.getItem(INPUT_KEY)
       if (storedResponseJson) {
         const storedResponse = JSON.parse(storedResponseJson)
-        if (storedResponse != response) {
+        if (!_.isEqual(storedResponse, response)) {
           setResponse(storedResponse)
         }
       }
-    }, [])
+    }, [response])
 
     const handleChange = (newResponse: IModularResponseSchema) => {
       sessionStorage.setItem(INPUT_KEY, JSON.stringify(newResponse))
@@ -71,11 +72,11 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
       const storedResponseJson = sessionStorage.getItem(WIZARD_KEY)
       if (storedResponseJson) {
         const storedResponse = JSON.parse(storedResponseJson)
-        if (storedResponse != response) {
+        if (!_.isEqual(storedResponse, response)) {
           setResponse(storedResponse)
         }
       }
-    }, [])
+    }, [response])
 
     const handleChange = (newResponse: IModularResponseSchema) => {
       sessionStorage.setItem(WIZARD_KEY, JSON.stringify(newResponse))
