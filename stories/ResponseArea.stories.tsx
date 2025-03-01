@@ -3,6 +3,7 @@ import {
   ResponseAreaViewProps,
 } from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
+import { createInitialisedInput } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
 import {
   Delete as DeleteIcon,
   BarChart,
@@ -20,8 +21,6 @@ import { fn } from '@storybook/test'
 import React, { useState } from 'react'
 
 import { MyResponseAreaTub } from '../components'
-
-import { initialiseInput } from './ResponseAreaUtils'
 
 const TempViewComponent: React.FC<
   { fullView: boolean } & ResponseAreaViewProps
@@ -157,9 +156,10 @@ const ResponseAreaViewMeta = {
   },
 } satisfies Meta
 
+const tub1 = new MyResponseAreaTub()
 const tub = new MyResponseAreaTub()
 // @ts-ignore
-tub.InputComponent = initialiseInput(ResponseAreaViewMeta.args)
+tub.InputComponent = createInitialisedInput(() => tub1)
 
 export default ResponseAreaViewMeta
 type Story = StoryObj<typeof ResponseAreaViewMeta>

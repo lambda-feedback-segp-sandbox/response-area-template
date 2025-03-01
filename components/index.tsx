@@ -1,8 +1,8 @@
-import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base'
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
-} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
+  ResponseAreaTub,
+} from '@lambda-feedback-segp-sandbox/response-area-base'
 
 import { Config, Response } from './Input.schema'
 
@@ -21,9 +21,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   /** Schema created with Zod library, used to parse the answer for the
    *  response area */
-  protected answerSchema = Response
+  answerSchema = Response
 
-  protected configSchema = Config
+  configSchema = Config
 
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
@@ -31,10 +31,13 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   public answer?: Response
 
   /* Add a comment here please */
-  public config?: Config
+  protected _config?: Config
+  get config(): Config | undefined {
+    return this._config
+  }
 
   initWithDefault = () => {
-    this.config = {
+    this._config = {
       fontFamily: 'Arial',
     }
 
@@ -47,7 +50,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     this.WizardComponent = this.WizardComponent.bind(this)
   }
   InputComponent: React.FC<BaseResponseAreaProps> = props => {
-    this.config = this.config ?? { fontFamily: 'Arial' }
+    this._config ??= { fontFamily: 'Arial' }
     ;(window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
     ;(window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit
     ;(window as any)[`RA_${RESPONSE_TYPE}_handleDraftSave`] =

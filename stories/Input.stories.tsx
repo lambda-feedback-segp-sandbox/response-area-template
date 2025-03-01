@@ -1,34 +1,23 @@
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
-import { Meta } from '@storybook/react'
-import React from 'react'
+import { createInitialisedInput } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { initialiseInput } from './ResponseAreaUtils'
+import { MyResponseAreaTub } from '../components'
 
 const InputMeta: Meta = {
+  component: createInitialisedInput(() => new MyResponseAreaTub()),
   title: 'Input',
   parameters: {
     layout: 'centered',
   },
-  args: {
-    inputModifiedCallback: (val: IModularResponseSchema) => {},
-    handleSubmit: () => {},
-  },
 }
-
-const WrappedInput: React.FC<any> = initialiseInput(InputMeta.args)
-
-export const StudentView = {
-  ...InputMeta,
-  component: WrappedInput,
-  args: { isTeacherMode: false },
-  render: (args: any) => <WrappedInput {...args} />,
-}
-
-export const TeacherView = {
-  ...InputMeta,
-  component: WrappedInput,
-  args: { isTeacherMode: true },
-  render: (args: any) => <WrappedInput {...args} />,
-}
-
 export default InputMeta
+
+type Story = StoryObj<typeof InputMeta>
+
+export const StudentView: Story = {
+  args: { isTeacherMode: false },
+}
+
+export const TeacherView: Story = {
+  args: { isTeacherMode: true },
+}
