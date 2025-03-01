@@ -1970,6 +1970,14 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^0.1.1":
+  version "0.1.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/0.1.1/2a5a13353a69159cc3f448e46f085b1a976404c3#2a5a13353a69159cc3f448e46f085b1a976404c3"
+  integrity sha512-rMB/Wn0mRn31zrNLHZuCkWvxbZM3LzzwOMfbOhHbx0ZOGcZ+uNu74zNIwI8FXTqqLbsvcDfv4iAYJdIV3gaFiQ==
+  dependencies:
+    "@lambda-feedback-segp-sandbox/styles" "^1.1.0"
+    react "^18.3.1"
+
 "@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.4":
   version "1.3.4"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.4/d0c0e748c2d812b7a60ef356b5696cdb4a447b2a#d0c0e748c2d812b7a60ef356b5696cdb4a447b2a"
@@ -2012,10 +2020,10 @@
     axios "^1.7.9"
     node-fetch "^3.3.2"
 
-"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.0.4":
-  version "1.0.4"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.0.4/f3bd5c348e1af3f8fa5bb70627036fe80aab472b#f3bd5c348e1af3f8fa5bb70627036fe80aab472b"
-  integrity sha512-io/CAZ+s+KX0zBKep5YN3HVd2VCILogE8KkmLCDc6C96mTBRDk9juWleZ82FvS9/2F3xxXWBK1ExUtC/UQzLcQ==
+"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.0.4", "@lambda-feedback-segp-sandbox/styles@^1.1.0":
+  version "1.1.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.1.0/fdf7ab55c8948abd0b215a8a1e0b88242743accb#fdf7ab55c8948abd0b215a8a1e0b88242743accb"
+  integrity sha512-Mqp4TCJlsj7RgmtGatX2fVaBAQVLUq+s4lfI2L6TL3BpNlEojmlbhMmUv7fW+qGDcxOAzf/m+cmE4pKBfvOb3g==
   dependencies:
     "@emotion/react" "^11.4.1"
     "@emotion/server" "^11.4.0"

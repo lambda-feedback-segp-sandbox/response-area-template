@@ -12,7 +12,7 @@ import { Input, InputProps } from './Input.component'
 
 /** Custom input parameters for the Wizard component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaWizardProps} */
-export type WizardComponentProps = Omit<
+export type WizardProps = Omit<
   BaseResponseAreaWizardProps,
   'handleChange' | 'answer'
 > & {
@@ -22,8 +22,8 @@ export type WizardComponentProps = Omit<
 }
 
 /** Creates ReactNode rendering the Teacher configuration view, using
- *  {@link WizardComponentProps} */
-export const Wizard: React.FC<WizardComponentProps> = ({
+ *  {@link WizardProps} */
+export const Wizard: React.FC<WizardProps> = ({
   handleChange,
   answer,
   config,
