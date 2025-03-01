@@ -32,6 +32,9 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   /* Add a comment here please */
   protected _config?: Config
+  get config(): Config | undefined {
+    return this._config
+  }
 
   initWithDefault = () => {
     this._config = {
