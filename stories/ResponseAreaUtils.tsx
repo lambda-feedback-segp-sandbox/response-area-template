@@ -52,12 +52,14 @@ export function initialiseInput<P>(args: P): React.FC<P> {
 export function initialiseWizard<P>(args: P): React.FC<P> {
   return props => {
     const tub = useRef(new MyResponseAreaTub())
-    tub.current.initWithDefault()
 
-    const [response, setResponse] = useState<IModularResponseSchema>({
-      answer: tub.current.answer ?? null,
-      config: tub.current.config,
-      responseType: tub.current.responseType,
+    const [response, setResponse] = useState<IModularResponseSchema>(() => {
+      tub.current.initWithDefault()
+      return {
+        answer: tub.current.answer ?? null,
+        config: tub.current.config,
+        responseType: tub.current.responseType,
+      }
     })
 
     useEffect(() => {
@@ -65,6 +67,7 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
       if (storedResponseJson) {
         const storedResponse = JSON.parse(storedResponseJson)
         if (!_.isEqual(storedResponse, response)) {
+          tub.current.initWithResponse(storedResponse)
           setResponse(storedResponse)
         }
       }
@@ -72,7 +75,7 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
 
     const handleChange = (newResponse: IModularResponseSchema) => {
       sessionStorage.setItem(WIZARD_KEY, JSON.stringify(newResponse))
-
+      tub.current.initWithResponse(newResponse)
       setResponse(newResponse)
     }
 
