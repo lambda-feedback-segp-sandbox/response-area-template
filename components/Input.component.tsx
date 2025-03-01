@@ -1,7 +1,7 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
-import React, { useCallback, useState } from 'react'
+import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
