@@ -69,10 +69,10 @@ export const Wizard: React.FC<WizardProps> = ({
         </FormControl>
       </div>
       <Input
-        handleChange={val =>
+        handleChange={response =>
           handleChange({
             config,
-            answer: val as string,
+            answer: response,
             responseType: 'REPLACE_ME',
           })
         }
