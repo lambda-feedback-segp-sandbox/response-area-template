@@ -13,7 +13,7 @@ const WizardMeta: Meta = {
   render: args => <WrappedWizard {...args} />,
 }
 
-const WrappedWizard = initialiseWizard(WizardMeta.args, 'WizardComponent')
+const WrappedWizard = initialiseWizard(WizardMeta.args)
 
 export default WizardMeta
 type Story = StoryObj<typeof WizardMeta>
