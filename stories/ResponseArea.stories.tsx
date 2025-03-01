@@ -21,41 +21,7 @@ import React, { useState } from 'react'
 
 import { MyResponseAreaTub } from '../components'
 
-import { wrapInput } from './input-wrapper'
-
-const InitialiseResponseArea: React.FC<any> = (args: any) => {
-  const [response] = useState<IModularResponseSchema | null>(() => {
-    const storedResponse = sessionStorage.getItem('wizard.input')
-    if (storedResponse) {
-      try {
-        const parsedResponse: IModularResponseSchema =
-          JSON.parse(storedResponse)
-        return parsedResponse && parsedResponse.config ? parsedResponse : null
-      } catch {
-        return null // Return null if JSON parsing fails
-      }
-    }
-    return null
-  })
-
-  const templateResponseAreaTub = new MyResponseAreaTub()
-  if (response && response.config) {
-    // @ts-ignore
-    templateResponseAreaTub.config = response.config
-  } else {
-    templateResponseAreaTub.initWithDefault()
-  }
-  return (
-    <templateResponseAreaTub.InputComponent
-      {...args}
-      handleChange={(val: IModularResponseSchema) => {
-        if (val) {
-          sessionStorage.setItem('student.input', JSON.stringify(val))
-        }
-      }}
-    />
-  )
-}
+import { initialiseInput } from './ResponseAreaUtils'
 
 const TempViewComponent: React.FC<
   { fullView: boolean } & ResponseAreaViewProps
@@ -78,7 +44,7 @@ const TempViewComponent: React.FC<
     setOpen(false)
   }
 
-  if (fullView) {
+  if (!fullView) {
     return (
       <>
         <ResponseAreaView
@@ -176,8 +142,6 @@ const TempViewComponent: React.FC<
   )
 }
 
-const tub = new MyResponseAreaTub()
-tub.InputComponent = wrapInput(InitialiseResponseArea)
 const ResponseAreaViewMeta = {
   title: 'Response Area',
   component: TempViewComponent,
@@ -192,6 +156,10 @@ const ResponseAreaViewMeta = {
     postResponseText: 'this is post response text',
   },
 } satisfies Meta
+
+const tub = new MyResponseAreaTub()
+// @ts-ignore
+tub.InputComponent = initialiseInput(ResponseAreaViewMeta.args)
 
 export default ResponseAreaViewMeta
 type Story = StoryObj<typeof ResponseAreaViewMeta>

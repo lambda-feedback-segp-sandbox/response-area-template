@@ -3,10 +3,10 @@ import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { JSX } from 'react'
-import { z } from 'zod'
 
-import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
+import { Config, Response } from './Input.schema'
+
+export * from './Input.schema'
 
 export const RESPONSE_TYPE = 'REPLACE_ME'
 
@@ -21,17 +21,17 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   /** Schema created with Zod library, used to parse the answer for the
    *  response area */
-  protected answerSchema = inputResponseAnswerSchema
+  protected answerSchema = Response
 
-  protected configSchema = inputConfigSchema
+  protected configSchema = Config
 
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
-  public answer?: z.infer<typeof inputResponseAnswerSchema>
+  public answer?: Response
 
   /* Add a comment here please */
-  public config?: z.infer<typeof inputConfigSchema>
+  public config?: Config
 
   initWithDefault = () => {
     this.config = {
@@ -42,21 +42,22 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
 
   constructor() {
-    super();
-    this.InputComponent = this.InputComponent.bind(this);
-    this.WizardComponent = this.WizardComponent.bind(this);
+    super()
+    this.InputComponent = this.InputComponent.bind(this)
+    this.WizardComponent = this.WizardComponent.bind(this)
   }
-  InputComponent(props: BaseResponseAreaProps): JSX.Element {
-    this.config = this.config ?? { fontFamily: 'Arial' };
-    (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
-    (window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit;
-    (window as any)[`RA_${RESPONSE_TYPE}_handleDraftSave`] = props.handleDraftSave;
-    (window as any)[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit;
+  InputComponent: React.FC<BaseResponseAreaProps> = props => {
+    this.config = this.config ?? { fontFamily: 'Arial' }
+    ;(window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
+    ;(window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit
+    ;(window as any)[`RA_${RESPONSE_TYPE}_handleDraftSave`] =
+      props.handleDraftSave
+    ;(window as any)[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit
 
     return (
       <input-component
-        config={JSON.stringify(this.config)}
-        answer={this.answer}
+        config={JSON.stringify(props.config ?? {})}
+        answer={JSON.stringify(props.answer)}
         display-mode={props.displayMode}
         response-area-id={props.responseAreaId}
         universal-response-area-id={props.universalResponseAreaId}
@@ -71,29 +72,29 @@ export class MyResponseAreaTub extends ResponseAreaTub {
         handle-submit={`RA_${RESPONSE_TYPE}_handleSubmit`}
         handle-draft-save={`RA_${RESPONSE_TYPE}_handleDraftSave`}
         preview-submit={`RA_${RESPONSE_TYPE}_previewSubmit`}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: '100%', height: '100%' }}
       />
-    );
+    )
   }
-  
+
   /** Creates a teacher view, allowing configuration of the response area.
- *  {@link BaseResponseAreaProps}
- *  @param props - Base parameters passed to all response areas
- *  @returns ReactNode rendering the view
- *  */
-  WizardComponent(props: BaseResponseAreaWizardProps): JSX.Element {
-    if (!this.config) throw new Error('Config missing');
-    (window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange;
-    (window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave;
+   *  {@link BaseResponseAreaWizardProps}
+   *  @param props - Base parameters passed to all response areas
+   *  @returns ReactNode rendering the view
+   *  */
+  WizardComponent: React.FC<BaseResponseAreaWizardProps> = props => {
+    if (!this.config) throw new Error('Config missing')
+    ;(window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
+    ;(window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave
 
     return (
       <wizard-component
         config={JSON.stringify(this.config)}
-        answer={this.answer}
+        answer={JSON.stringify(this.answer)}
         handle-change={`RA_${RESPONSE_TYPE}_handleChange`}
         set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}
-        style={{ width: "100%", height: "100%" }}
+        style={{ width: '100%', height: '100%' }}
       />
-    );
+    )
   }
 }

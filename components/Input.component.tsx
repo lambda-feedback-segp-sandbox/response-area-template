@@ -1,7 +1,7 @@
 import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
 import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
 import { makeStyles } from '@lambda-feedback-segp-sandbox/styles'
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
@@ -25,23 +25,14 @@ const useStyles = makeStyles()(theme => ({
 /** Creates ReactNode rendering the Student and Teacher preview views, using
  *  {@link InputComponentProps} */
 export const Input: React.FC<InputComponentProps> = ({
-                                                       handleChange,
-                                                       handleSubmit,
-                                                       config,
-                                                       answer,
-                                                     }) => {
+  handleChange,
+  handleSubmit,
+  config,
+  answer,
+}) => {
   const { classes } = useStyles()
 
-  // State to store the input value
-  const [inputValue, setInputValue] = useState(answer || '')
-
-  useEffect(() => {
-    // Read from sessionStorage and update state
-    const storedValue = sessionStorage.getItem('student.input')
-    if (storedValue) {
-      setInputValue(JSON.parse(storedValue))
-    }
-  }, []) // Runs only on mount
+  console.log('Answer in Input: ', answer)
 
   const submitOnEnter: React.KeyboardEventHandler<HTMLTextAreaElement> =
     useCallback(
@@ -59,7 +50,6 @@ export const Input: React.FC<InputComponentProps> = ({
 
   const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newValue = event.target.value
-    setInputValue(newValue)
     handleChange(newValue) // Propagate change
   }
 
@@ -70,7 +60,7 @@ export const Input: React.FC<InputComponentProps> = ({
       onChange={handleInputChange}
       placeholder="Type your response here…"
       style={{ fontFamily: config.fontFamily }}
-      value={inputValue} // Bind state to input
+      value={answer} // Bind state to input
     />
   )
 }
