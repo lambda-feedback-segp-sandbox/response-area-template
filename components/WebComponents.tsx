@@ -1,70 +1,10 @@
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
-import { BaseResponseAreaWizardProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { BaseResponseAreaProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { ThemeProvider } from '@lambda-feedback-segp-sandbox/styles/styles/minimal/theme-provider'
+import { withTheme } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
 import r2wc from '@r2wc/react-to-web-component'
-import React from 'react'
 
 import { Input } from './Input.component'
 import { Wizard } from './Wizard.component'
 
-import { RESPONSE_TYPE, MyResponseAreaTub } from '.'
-
-/** Creates ReactNode rendering the Student and Teacher preview views, using
- *  {@link WizardComponentProps} */
-export const ThemedWizard: React.FC<WizardComponentProps> = props => {
-  return (
-    <ThemeProvider>
-      <Wizard {...props} />
-    </ThemeProvider>
-  )
-}
-
-export const WizardWebComponent = r2wc(ThemedWizard, {
-  props: {
-    config: 'json',
-    handleChange: 'function',
-    answer: 'json',
-    setAllowSave: 'function',
-  },
-})
-
-customElements.define('wizard-component', WizardWebComponent)
-
-/** Custom input parameters for the Input component, extending or overriding
- *  parameters provided in {@link BaseResponseAreaWizardProps} */
-export type WizardComponentProps = Omit<
-  BaseResponseAreaWizardProps,
-  'answer'
-> & {
-  answer?: string
-  config: { fontFamily: string }
-}
-;(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
-;(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
-
-/** Custom input parameters for the Input component, extending or overriding
- *  parameters provided in {@link BaseResponseAreaProps} */
-export type InputComponentProps = Omit<
-  BaseResponseAreaProps,
-  'handleChange' | 'answer'
-> & {
-  handleChange: (val: IModularResponseSchema['answer']) => void
-  answer?: string
-  config: { fontFamily: string }
-}
-
-/** Creates ReactNode rendering the Student and Teacher preview views, using
- *  {@link InputComponentProps} */
-export const ThemedInput: React.FC<InputComponentProps> = props => {
-  return (
-    <ThemeProvider>
-      <Input {...props} />
-    </ThemeProvider>
-  )
-}
-
-export const InputWebComponent = r2wc(ThemedInput, {
+export const InputWebComponent = r2wc(withTheme(Input), {
   props: {
     config: 'json',
     handleChange: 'function',
@@ -86,3 +26,14 @@ export const InputWebComponent = r2wc(ThemedInput, {
 })
 
 customElements.define('input-component', InputWebComponent)
+
+export const WizardWebComponent = r2wc(withTheme(Wizard), {
+  props: {
+    config: 'json',
+    handleChange: 'function',
+    answer: 'json',
+    setAllowSave: 'function',
+  },
+})
+
+customElements.define('wizard-component', WizardWebComponent)

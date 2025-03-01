@@ -5,7 +5,7 @@ import React, { useCallback } from 'react'
 
 /** Custom input parameters for the Input component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaProps} */
-export type InputComponentProps = Omit<
+export type InputProps = Omit<
   BaseResponseAreaProps,
   'handleChange' | 'answer'
 > & {
@@ -23,8 +23,8 @@ const useStyles = makeStyles()(theme => ({
 }))
 
 /** Creates ReactNode rendering the Student and Teacher preview views, using
- *  {@link InputComponentProps} */
-export const Input: React.FC<InputComponentProps> = ({
+ *  {@link InputProps} */
+export const Input: React.FC<InputProps> = ({
   handleChange,
   handleSubmit,
   config,
