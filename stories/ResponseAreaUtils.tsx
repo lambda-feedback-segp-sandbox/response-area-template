@@ -7,18 +7,9 @@ import { MyResponseAreaTub } from '../components'
 const WIZARD_KEY = 'wizard.input'
 const INPUT_KEY = 'student.input'
 
-export const getStoredResponse = (): IModularResponseSchema | null => {
-  try {
-    const storedResponse = sessionStorage.getItem(WIZARD_KEY)
-    return storedResponse ? (JSON.parse(storedResponse) ?? null) : null
-  } catch {
-    return null // Return null if JSON parsing fails
-  }
-}
-
 export function initialiseInput<P>(args: P): React.FC<P> {
   return props => {
-    const [response, setResponse] = useState<IModularResponseSchema | null>()
+    const [response, setResponse] = useState<Response | null>()
 
     const tub = useRef(new MyResponseAreaTub())
 
@@ -39,7 +30,7 @@ export function initialiseInput<P>(args: P): React.FC<P> {
       }
     }, [response])
 
-    const handleChange = (newResponse: IModularResponseSchema) => {
+    const handleChange = (newResponse: Response) => {
       sessionStorage.setItem(INPUT_KEY, JSON.stringify(newResponse))
 
       setResponse(newResponse)
@@ -49,8 +40,9 @@ export function initialiseInput<P>(args: P): React.FC<P> {
       <tub.current.InputComponent
         {...args}
         {...props}
+        // @ts-ignore
         handleChange={handleChange}
-        answer={response}
+        answer={response as string | null | undefined}
         config={tub.current.config}
       />
     )
@@ -63,7 +55,7 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
     tub.current.initWithDefault()
 
     const [response, setResponse] = useState<IModularResponseSchema>({
-      answer: tub.current.answer,
+      answer: tub.current.answer ?? null,
       config: tub.current.config,
       responseType: tub.current.responseType,
     })
@@ -91,6 +83,7 @@ export function initialiseWizard<P>(args: P): React.FC<P> {
         handleChange={handleChange}
         answer={response?.answer ?? null}
         config={response?.config}
+        setAllowSave={_ => {}}
       />
     )
   }

@@ -2,11 +2,11 @@ import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-bas
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
-  FullResponseAreaWizardProps,
 } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import { z } from 'zod'
 
-import { inputConfigSchema, inputResponseAnswerSchema } from './Input.schema'
+import { Config, Response } from './Input.schema'
+
+export * from './Input.schema'
 
 export const RESPONSE_TYPE = 'REPLACE_ME'
 
@@ -21,17 +21,17 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
   /** Schema created with Zod library, used to parse the answer for the
    *  response area */
-  protected answerSchema = inputResponseAnswerSchema
+  protected answerSchema = Response
 
-  protected configSchema = inputConfigSchema
+  protected configSchema = Config
 
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
-  public answer?: z.infer<typeof inputResponseAnswerSchema>
+  public answer?: Response
 
   /* Add a comment here please */
-  public config?: z.infer<typeof inputConfigSchema>
+  public config?: Config
 
   initWithDefault = () => {
     this.config = {
@@ -82,15 +82,15 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  @param props - Base parameters passed to all response areas
    *  @returns ReactNode rendering the view
    *  */
-  WizardComponent: React.FC<FullResponseAreaWizardProps> = props => {
+  WizardComponent: React.FC<BaseResponseAreaWizardProps> = props => {
     if (!this.config) throw new Error('Config missing')
     ;(window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
     ;(window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave
 
     return (
       <wizard-component
-        config={JSON.stringify(props.config)}
-        answer={JSON.stringify(props.answer)}
+        config={JSON.stringify(this.config)}
+        answer={JSON.stringify(this.answer)}
         handle-change={`RA_${RESPONSE_TYPE}_handleChange`}
         set-allow-save={`RA_${RESPONSE_TYPE}_setAllowSave`}
         style={{ width: '100%', height: '100%' }}

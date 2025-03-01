@@ -158,6 +158,7 @@ const ResponseAreaViewMeta = {
 } satisfies Meta
 
 const tub = new MyResponseAreaTub()
+// @ts-ignore
 tub.InputComponent = initialiseInput(ResponseAreaViewMeta.args)
 
 export default ResponseAreaViewMeta
