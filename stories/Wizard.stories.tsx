@@ -1,19 +1,15 @@
+import { createInitialisedWizard } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
 import type { Meta, StoryObj } from '@storybook/react'
 
-import { initialiseWizard } from './ResponseAreaUtils'
+import { MyResponseAreaTub } from '../components'
 
 const WizardMeta: Meta = {
   title: 'Wizard',
+  component: createInitialisedWizard(() => new MyResponseAreaTub()),
   parameters: { layout: 'centered' },
-  args: {
-    handleSubmit: () => {},
-  },
-  render: args => <WrappedWizard {...args} />,
 }
-
-const WrappedWizard = initialiseWizard(WizardMeta.args)
-
 export default WizardMeta
+
 type Story = StoryObj<typeof WizardMeta>
 
 export const Default: Story = {}
