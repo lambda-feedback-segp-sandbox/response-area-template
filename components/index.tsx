@@ -1,8 +1,8 @@
-import { ResponseAreaTub } from '@lambda-feedback-segp-sandbox/response-area-base'
 import {
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
-} from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
+  ResponseAreaTub,
+} from '@lambda-feedback-segp-sandbox/response-area-base'
 
 import { Config, Response } from './Input.schema'
 
