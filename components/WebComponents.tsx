@@ -1,4 +1,4 @@
-import { withTheme } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
+import { withTheme } from '@lambda-feedback-segp-sandbox/styles'
 import r2wc from '@r2wc/react-to-web-component'
 
 import { Input } from './Input.component'
