@@ -3,12 +3,13 @@ import {
   BaseResponseAreaWizardProps,
   ResponseAreaTub,
 } from '@lambda-feedback-segp-sandbox/response-area-base'
+import { JSX } from 'react'
 
-import { Config, Response } from './Input.schema'
+import { Response } from './Input.schema'
 
 export * from './Input.schema'
 
-export const RESPONSE_TYPE = 'REPLACE_ME'
+export const RESPONSE_TYPE = 'replaceme'
 
 /** The main class for the custom response area, extends base
  * {@link ResponseAreaTub} abstract class */
@@ -27,13 +28,14 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
   public answer?: Response
+  private InputTag = `input-component-${this.responseType}` as keyof JSX.IntrinsicElements;
+  private WizardTag = `wizard-component-${this.responseType}` as keyof JSX.IntrinsicElements;
 
   /* Add a comment here please */
-  protected _config?: Config
-  get config(): Config | undefined {
-    return this._config
-  }
-
+  // protected _config?: Config
+  // get config(): Config | undefined {
+  //   return this._config
+  // }
   initWithDefault = () => {
     this._config = {
       fontFamily: 'Arial',
@@ -56,7 +58,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     ;(window as any)[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit
 
     return (
-      <input-component
+      <this.InputTag
         config={JSON.stringify(props.config ?? {})}
         answer={JSON.stringify(props.answer)}
         display-mode={props.displayMode}
@@ -89,7 +91,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     ;(window as any)[`RA_${RESPONSE_TYPE}_setAllowSave`] = props.setAllowSave
 
     return (
-      <wizard-component
+      <this.WizardTag
         config={JSON.stringify(this.config)}
         answer={JSON.stringify(this.answer)}
         handle-change={`RA_${RESPONSE_TYPE}_handleChange`}

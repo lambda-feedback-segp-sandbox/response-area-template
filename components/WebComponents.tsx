@@ -27,10 +27,8 @@ export const InputWebComponent = r2wc(withTheme(Input), {
   },
 })
 
-if (customElements.get('input-component') == undefined) {
-  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-  console.log(customElements.get('input-component'))
-  customElements.define('input-component', InputWebComponent)
+if (customElements.get(`input-component-${RESPONSE_TYPE}`) == undefined) {
+  customElements.define(`input-component-${RESPONSE_TYPE}`, InputWebComponent)
 }
 
 export const WizardWebComponent = r2wc(withTheme(Wizard), {
@@ -42,8 +40,8 @@ export const WizardWebComponent = r2wc(withTheme(Wizard), {
   },
 })
 
-if (customElements.get('wizard-component') == undefined) {
-  customElements.define('wizard-component', WizardWebComponent)
+if (customElements.get(`wizard-component-${RESPONSE_TYPE}`) == undefined) {
+  customElements.define(`wizard-component-${RESPONSE_TYPE}`, WizardWebComponent)
 }
 
 ;(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
