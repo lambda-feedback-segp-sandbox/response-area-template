@@ -2023,10 +2023,10 @@
     axios "^1.7.9"
     node-fetch "^3.3.2"
 
-"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.0.4", "@lambda-feedback-segp-sandbox/styles@^1.1.0":
-  version "1.1.0"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.1.0/fdf7ab55c8948abd0b215a8a1e0b88242743accb#fdf7ab55c8948abd0b215a8a1e0b88242743accb"
-  integrity sha512-Mqp4TCJlsj7RgmtGatX2fVaBAQVLUq+s4lfI2L6TL3BpNlEojmlbhMmUv7fW+qGDcxOAzf/m+cmE4pKBfvOb3g==
+"@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.1.0", "@lambda-feedback-segp-sandbox/styles@^1.2.0":
+  version "1.2.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/styles/1.2.0/907f7e8023249bbd4a601cb209c17581d7596ed3#907f7e8023249bbd4a601cb209c17581d7596ed3"
+  integrity sha512-pS0OMszmfNIO8DAz1Vbe7yengmTdpVU9KP35wonGmuPmuuJvaEPV3OG/Sk8mvq/rU63GyfRXwvU0IOF5R+x2sw==
   dependencies:
     "@emotion/react" "^11.4.1"
     "@emotion/server" "^11.4.0"
@@ -7825,9 +7825,9 @@ prelude-ls@^1.2.1:
   integrity sha512-vkcDPrRZo1QZLbn5RLGPpg/WmIQ65qoWWhcGKf/b5eplkkarX0m9z8ppCat4mlOqUsWpyNuYgO3VRyrYHSzX5g==
 
 prettier@^3.3.3:
-  version "3.5.2"
-  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.5.2.tgz#d066c6053200da0234bf8fa1ef45168abed8b914"
-  integrity sha512-lc6npv5PH7hVqozBR7lkBNOGXV9vMwROAPlumdBkX0wTbbzPu/U1hk5yL8p2pt4Xoc+2mkT8t/sow2YrV/M5qg==
+  version "3.5.3"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-3.5.3.tgz#4fc2ce0d657e7a02e602549f053b239cb7dfe1b5"
+  integrity sha512-QQtaxnoDJeAkDvDKWCLiwIXkTgRhwYDEQCghU9Z6q03iyek/rxRh/2lC3HB7P8sWT2xC/y5JDctPLBIGzHKbhw==
 
 pretty-error@^4.0.0:
   version "4.0.0"
@@ -8255,9 +8255,9 @@ readdirp@~3.6.0:
     picomatch "^2.2.1"
 
 recast@^0.23.5:
-  version "0.23.10"
-  resolved "https://registry.yarnpkg.com/recast/-/recast-0.23.10.tgz#8e8721af39e1bddad8d0ae1f3591d4f756a5fdfb"
-  integrity sha512-mbCmRMJUKCJ1h41V0cu2C26ULBURwuoZ34C9rChjcDaeJ/4Kv5al3O2HPwTs2m0wQ1vGhMY+tguhzU1aE8md1A==
+  version "0.23.11"
+  resolved "https://registry.yarnpkg.com/recast/-/recast-0.23.11.tgz#8885570bb28cf773ba1dc600da7f502f7883f73f"
+  integrity sha512-YTUo+Flmw4ZXiWfQKGcwwc11KnoRAYgzAE2E7mXKCjSviTKShtxBsN6YUUBB2gtaBzKzeKunxhUwNHQuRryhWA==
   dependencies:
     ast-types "^0.16.1"
     esprima "~4.0.0"
