@@ -28,7 +28,7 @@ export const InputWebComponent = r2wc(withTheme(Input), {
 })
 
 if (customElements.get('input-component') == undefined) {
-  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
   console.log(customElements.get('input-component'))
   customElements.define('input-component', InputWebComponent)
 }
@@ -46,6 +46,5 @@ if (customElements.get('wizard-component') == undefined) {
   customElements.define('wizard-component', WizardWebComponent)
 }
 
-
-(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;
-(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;
+;(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
+;(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub

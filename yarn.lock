@@ -1970,10 +1970,10 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.0.1":
-  version "2.0.1"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.0.1/76d7b513f6f122a48f8f56cace5280e79b7994a4#76d7b513f6f122a48f8f56cace5280e79b7994a4"
-  integrity sha512-/oIb8+FJ3TmsdfqbacEuw+RIPmXATcsw2vU9/ga+wHsxNftWo0pLHAuw79g4ynsiLPSiMtmgRyTSCgvCnEzVhw==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.0":
+  version "2.1.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.0/6cf82f8068000aeaddb81b772c85990a8add7eb9#6cf82f8068000aeaddb81b772c85990a8add7eb9"
+  integrity sha512-JlcHit86slj1UCvjg4YUCG9tRn4F3XHg1LV7XgGw0F9j776qIsO9jRg32TcIG/YBS+TKjO4pNpUpsLeAk6UOYg==
   dependencies:
     "@lambda-feedback-segp-sandbox/response-area" "^1.3.5"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"

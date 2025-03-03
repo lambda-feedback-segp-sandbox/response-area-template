@@ -1,6 +1,7 @@
 // These stories show the complete response area component stack.
 
 import {
+  AllActionButtonsDisabledStory,
   AllActionButtonsEnabledStory,
   ExploreActionButtonDisabledStory,
   StudentViewStory,
@@ -23,6 +24,9 @@ export const AllButtonsEnabled = AllActionButtonsEnabledStory
 
 // Managed by response-area-template-lib.
 export const ExploreActionButtonDisabled = ExploreActionButtonDisabledStory
+
+// Managed by response-area-template-lib.
+export const AllActionButtonsDisabled = AllActionButtonsDisabledStory
 
 // You can add your own stories here.
 // See https://storybook.js.org/docs/writing-stories#how-to-write-stories.
