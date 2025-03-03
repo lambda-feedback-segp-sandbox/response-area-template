@@ -1970,6 +1970,16 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
+"@lambda-feedback-segp-sandbox/response-area-base@^3.2.1":
+  version "3.2.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.2.1/1b0da232be3c8d0761ffda95590643820506caa3#1b0da232be3c8d0761ffda95590643820506caa3"
+  integrity sha512-45tJzb2k/ClQc8yLZhL5BEEj+uUp3ePlyljUu/nFxJh+Hj1lkm/9EUKsRT27/qXFwXB4MeMzt7Ah/VZ0HEzHkw==
+  dependencies:
+    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
+    react "^18.3.1"
+    react-query "^3.39.0"
+    zod "^3.14.4"
+
 "@lambda-feedback-segp-sandbox/response-area-template-lib@^0.2.1":
   version "0.2.1"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/0.2.1/4b2f636b36aea022d348cafca61b07306775aad5#4b2f636b36aea022d348cafca61b07306775aad5"

@@ -4,6 +4,8 @@ import r2wc from '@r2wc/react-to-web-component'
 import { Input } from './Input.component'
 import { Wizard } from './Wizard.component'
 
+import { RESPONSE_TYPE, MyResponseAreaTub } from '.'
+
 export const InputWebComponent = r2wc(withTheme(Input), {
   props: {
     config: 'json',
@@ -25,7 +27,11 @@ export const InputWebComponent = r2wc(withTheme(Input), {
   },
 })
 
-customElements.define('input-component', InputWebComponent)
+if (customElements.get('input-component') == undefined) {
+  console.log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
+  console.log(customElements.get('input-component'))
+  customElements.define('input-component', InputWebComponent)
+}
 
 export const WizardWebComponent = r2wc(withTheme(Wizard), {
   props: {
@@ -36,4 +42,10 @@ export const WizardWebComponent = r2wc(withTheme(Wizard), {
   },
 })
 
-customElements.define('wizard-component', WizardWebComponent)
+if (customElements.get('wizard-component') == undefined) {
+  customElements.define('wizard-component', WizardWebComponent)
+}
+
+
+(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;
+(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;

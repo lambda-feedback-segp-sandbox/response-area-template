@@ -23,8 +23,6 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  response area */
   answerSchema = Response
 
-  configSchema = Config
-
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
