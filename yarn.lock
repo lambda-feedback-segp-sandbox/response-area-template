@@ -1960,17 +1960,7 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^3.2.0":
-  version "3.2.0"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.2.0/b698e58761905728288ad76626011b1391970541#b698e58761905728288ad76626011b1391970541"
-  integrity sha512-8CizAUQY1iR9Y+scbwP9p8i77lRqiFBGxwzCTaIz2sRZO4Gp21315hgg1XDsQ430G4woSO/tTQJE02dPX81jWQ==
-  dependencies:
-    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
-    react "^18.3.1"
-    react-query "^3.39.0"
-    zod "^3.14.4"
-
-"@lambda-feedback-segp-sandbox/response-area-base@^3.2.1":
+"@lambda-feedback-segp-sandbox/response-area-base@^3.2.0", "@lambda-feedback-segp-sandbox/response-area-base@^3.2.1":
   version "3.2.1"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.2.1/1b0da232be3c8d0761ffda95590643820506caa3#1b0da232be3c8d0761ffda95590643820506caa3"
   integrity sha512-45tJzb2k/ClQc8yLZhL5BEEj+uUp3ePlyljUu/nFxJh+Hj1lkm/9EUKsRT27/qXFwXB4MeMzt7Ah/VZ0HEzHkw==
@@ -1980,13 +1970,17 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^0.2.1":
-  version "0.2.1"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/0.2.1/4b2f636b36aea022d348cafca61b07306775aad5#4b2f636b36aea022d348cafca61b07306775aad5"
-  integrity sha512-mLbr5JcRXX9dWui5hGpXejoUsbACmXfgfytFISTqyenIsn8BzN0nUyiCcqV31P1rVmHv3o4o3EfuGDs2iVxchg==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.0.1":
+  version "2.0.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.0.1/76d7b513f6f122a48f8f56cace5280e79b7994a4#76d7b513f6f122a48f8f56cace5280e79b7994a4"
+  integrity sha512-/oIb8+FJ3TmsdfqbacEuw+RIPmXATcsw2vU9/ga+wHsxNftWo0pLHAuw79g4ynsiLPSiMtmgRyTSCgvCnEzVhw==
   dependencies:
+    "@lambda-feedback-segp-sandbox/response-area" "^1.3.5"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.1.0"
+    "@mui/icons-material" "^5.15.20"
+    "@mui/material" "^5.15.20"
+    "@storybook/react" "^8.5.0"
     lodash "^4.17.21"
     react "^18.3.1"
     zod "^3.14.4"
