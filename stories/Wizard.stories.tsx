@@ -1,3 +1,5 @@
+// These stories show the Wizard component in isolation.
+
 import {
   DefaultStory,
   createMeta,
@@ -5,6 +7,14 @@ import {
 
 import { MyResponseAreaTub } from '../components'
 
-export default { ...createMeta(() => new MyResponseAreaTub()) }
+export default {
+  ...createMeta(() => new MyResponseAreaTub()),
+  // You can add custom story metadata here.
+  // See https://storybook.js.org/docs/writing-stories#default-export.
+}
 
+// Managed by response-area-template-lib.
 export const Default = DefaultStory
+
+// You can add your own stories here.
+// See https://storybook.js.org/docs/writing-stories#how-to-write-stories.
