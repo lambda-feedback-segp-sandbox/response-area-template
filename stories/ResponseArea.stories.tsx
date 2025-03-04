@@ -20,7 +20,7 @@ export default {
 export const StudentView = StudentViewStory
 
 // Managed by response-area-template-lib.
-export const AllButtonsEnabled = AllActionButtonsEnabledStory
+export const AllActionButtonsEnabled = AllActionButtonsEnabledStory
 
 // Managed by response-area-template-lib.
 export const ExploreActionButtonDisabled = ExploreActionButtonDisabledStory
