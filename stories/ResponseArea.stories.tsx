@@ -1,211 +1,32 @@
+// These stories show the complete response area component stack.
+
 import {
-  ResponseAreaView,
-  ResponseAreaViewProps,
-} from '@lambda-feedback-segp-sandbox/response-area/components/ResponseAreaView.component'
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area-base/schemas/question-form.schema'
-import { createInitialisedInput } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
-import {
-  Delete as DeleteIcon,
-  BarChart,
-  ContentCopy,
-  Tune,
-} from '@mui/icons-material'
-import Button from '@mui/material/Button'
-import Dialog from '@mui/material/Dialog'
-import DialogActions from '@mui/material/DialogActions'
-import DialogContent from '@mui/material/DialogContent'
-import DialogContentText from '@mui/material/DialogContentText'
-import DialogTitle from '@mui/material/DialogTitle'
-import type { Meta, StoryObj } from '@storybook/react'
-import { fn } from '@storybook/test'
-import React, { useState } from 'react'
+  AllActionButtonsDisabledStory,
+  AllActionButtonsEnabledStory,
+  ExploreActionButtonDisabledStory,
+  StudentViewStory,
+  createMeta,
+} from '@lambda-feedback-segp-sandbox/response-area-template-lib/stories/ResponseArea.stories'
 
 import { MyResponseAreaTub } from '../components'
 
-const TempViewComponent: React.FC<
-  { fullView: boolean } & ResponseAreaViewProps
-> = ({ fullView, ...args }) => {
-  const [open, setOpen] = useState(false)
-  const [dialogContent, setDialogContent] = useState({
-    title: '',
-    description: '',
-  })
-
-  const handleButtonClick = (buttonType: string) => {
-    let title = 'Not Available'
-    let description = `${buttonType} is not available in SandBox`
-
-    setDialogContent({ title, description })
-    setOpen(true)
-  }
-
-  const handleClose = () => {
-    setOpen(false)
-  }
-
-  if (!fullView) {
-    return (
-      <>
-        <ResponseAreaView
-          {...args}
-          handleCheck={() => handleButtonClick('Check')}
-          handleDraftSave={() => handleButtonClick('Save')}
-        />
-        <Dialog
-          open={open}
-          onClose={handleClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alert-dialog-description">
-          <DialogTitle id="alert-dialog-title">
-            {dialogContent.title}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              {dialogContent.description}
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handleClose} color="primary" autoFocus>
-              Close
-            </Button>
-          </DialogActions>
-        </Dialog>
-      </>
-    )
-  }
-
-  return (
-    <>
-      <ResponseAreaView
-        {...args}
-        handleCheck={() => handleButtonClick('Check')}
-        handleDraftSave={() => handleButtonClick('Save')}
-        ActionButtons={
-          <>
-            <Button
-              variant="outlined"
-              endIcon={<Tune />}
-              onClick={() => handleButtonClick('Configure')}
-              sx={commonButtonStyles} // Applying common styles
-            >
-              Configure
-            </Button>
-            <Button
-              variant="outlined"
-              endIcon={<BarChart />}
-              onClick={() => handleButtonClick('Explore')}
-              sx={commonButtonStyles} // Applying common styles
-            >
-              Explore
-            </Button>
-            <Button
-              variant="outlined"
-              endIcon={<ContentCopy />}
-              onClick={() => handleButtonClick('Duplicate')}
-              sx={commonButtonStyles} // Applying common styles
-            >
-              Duplicate
-            </Button>
-            <Button
-              color="error"
-              variant="outlined"
-              endIcon={<DeleteIcon />}
-              onClick={() => handleButtonClick('Delete')}
-              sx={{
-                ...commonButtonStyles, // Applying common styles
-                width: '100%', // Additional unique style
-              }}>
-              Delete
-            </Button>
-          </>
-        }
-      />
-      <Dialog
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description">
-        <DialogTitle id="alert-dialog-title">{dialogContent.title}</DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            {dialogContent.description}
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose} color="primary" autoFocus>
-            Close
-          </Button>
-        </DialogActions>
-      </Dialog>
-    </>
-  )
+export default {
+  ...createMeta(() => new MyResponseAreaTub()),
+  // You can add custom story metadata here.
+  // See https://storybook.js.org/docs/writing-stories#default-export.
 }
 
-const ResponseAreaViewMeta = {
-  title: 'Response Area',
-  component: TempViewComponent,
-  args: {
-    handleChange: (val: IModularResponseSchema) => {
-      if (val && val.config && val.answer) {
-        sessionStorage.setItem('student.input', JSON.stringify(val))
-      }
-    },
-    handleSubmit: fn(),
-    preResponseText: 'this is pre response text',
-    postResponseText: 'this is post response text',
-  },
-} satisfies Meta
+// Managed by response-area-template-lib.
+export const StudentView = StudentViewStory
 
-const tub1 = new MyResponseAreaTub()
-const tub = new MyResponseAreaTub()
-// @ts-ignore
-tub.InputComponent = createInitialisedInput(() => tub1)
+// Managed by response-area-template-lib.
+export const AllButtonsEnabled = AllActionButtonsEnabledStory
 
-export default ResponseAreaViewMeta
-type Story = StoryObj<typeof ResponseAreaViewMeta>
+// Managed by response-area-template-lib.
+export const ExploreActionButtonDisabled = ExploreActionButtonDisabledStory
 
-export const StudentView: Story = {
-  args: {
-    fullView: false,
-    tub: tub,
-    visibleSymbols: [],
-    displayMode: 'normal',
-    inputDisplayValue: [],
-    inputType: 'REPLACE_ME',
-    displayInputSymbols: false,
-    showLivePreview: true,
-    handleCheck: () => {},
-    handleDraftSave: () => {},
-    inFlight: false,
-    feedback: { isCorrect: true, isError: false },
-    responseAreaId: '00000000-0000-0000-0000-000000000000',
-    universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label',
-  },
-}
+// Managed by response-area-template-lib.
+export const AllActionButtonsDisabled = AllActionButtonsDisabledStory
 
-export const TeacherView: Story = {
-  args: {
-    fullView: true,
-    tub: tub,
-    visibleSymbols: [],
-    displayMode: 'normal',
-    inputDisplayValue: [],
-    inputType: 'REPLACE_ME',
-    displayInputSymbols: false,
-    showLivePreview: true,
-    handleCheck: () => {},
-    handleDraftSave: () => {},
-    inFlight: false,
-    feedback: { isCorrect: true, isError: false },
-    responseAreaId: '00000000-0000-0000-0000-000000000000',
-    universalResponseAreaId: '00000000-0000-0000-0000-000000000000',
-    wrapLabel: 'Area Label',
-  },
-}
-
-const commonButtonStyles = {
-  display: 'flex',
-  justifyContent: 'space-between',
-  alignItems: 'center',
-}
+// You can add your own stories here.
+// See https://storybook.js.org/docs/writing-stories#how-to-write-stories.

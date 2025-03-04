@@ -1960,7 +1960,7 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^3.2.0", "@lambda-feedback-segp-sandbox/response-area-base@^3.3.0":
+"@lambda-feedback-segp-sandbox/response-area-base@^3.3.0":
   version "3.3.0"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.3.0/2725704633f7dc72b6339aa5d36c9bccd9b035f7#2725704633f7dc72b6339aa5d36c9bccd9b035f7"
   integrity sha512-4bssfIMuJS4uP5Jk2RIhwOeRoooyRxcvcYsyN9bxhTNXhDX9iMqnbUBANF+Simvd7CNLHNMa1JvB9n4xPspeIg==
@@ -1971,13 +1971,17 @@
     typedoc "^0.27.9"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^0.2.1":
-  version "0.2.1"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/0.2.1/4b2f636b36aea022d348cafca61b07306775aad5#4b2f636b36aea022d348cafca61b07306775aad5"
-  integrity sha512-mLbr5JcRXX9dWui5hGpXejoUsbACmXfgfytFISTqyenIsn8BzN0nUyiCcqV31P1rVmHv3o4o3EfuGDs2iVxchg==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.5":
+  version "2.1.5"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.5/fda3c3165cc279666e4d130f59424928425cb0b6#fda3c3165cc279666e4d130f59424928425cb0b6"
+  integrity sha512-JecZoET/QpAd4ogRuQspLF91Y/IY4n30qgqaVFSOCD5DWCxGnd7iNjPv1wgINh6Zsp518f21IL1ghzE1WyFMrA==
   dependencies:
-    "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
+    "@lambda-feedback-segp-sandbox/response-area" "^1.3.11"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.1.0"
+    "@mui/icons-material" "^5.15.20"
+    "@mui/material" "^5.15.20"
+    "@storybook/react" "^8.5.0"
     lodash "^4.17.21"
     react "^18.3.1"
     zod "^3.14.4"
@@ -3447,6 +3451,11 @@
   version "7.5.8"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.8.tgz#8268a8c57a3e4abd25c165ecd36237db7948a55e"
   integrity sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==
+
+"@types/shuffle-seed@^1.1.3":
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/@types/shuffle-seed/-/shuffle-seed-1.1.3.tgz#66a887c0d38d1e149664c1dd3665cceffd3d08ae"
+  integrity sha512-D05NnrEz9YvwCp8GSzyI/UipvOtmiMbEtLgupa5buU6QJkmelKb7Pwuslsb8C7c+Wkn3qiAAL329+/E2PfUd0A==
 
 "@types/trusted-types@^2.0.2":
   version "2.0.7"
