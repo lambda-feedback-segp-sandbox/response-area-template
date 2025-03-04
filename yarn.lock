@@ -1971,10 +1971,10 @@
     typedoc "^0.27.9"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.7":
-  version "2.1.7"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.7/288d428a880cfaa124b28a734b50fe6bdb7e23f6#288d428a880cfaa124b28a734b50fe6bdb7e23f6"
-  integrity sha512-mHqPKiGqxotcgB1LUBgNm2pL9GAilSXgOM9qORsz7YdWtcaizdLF7fvhkStaHoI1E8hM7o+ylthW8pfSKxMONQ==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.2.2":
+  version "2.2.2"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.2.2/08359233a49730e1fbad5c0001a8aa6d3cf25237#08359233a49730e1fbad5c0001a8aa6d3cf25237"
+  integrity sha512-S+SKaGGkCfR+doJWF9KG5pteVvhtVcHzoXDTFm9OndeGTkCg4qr1S+zoUkHxIZ65IFDFW68VlDlUoX1TpKWwwA==
   dependencies:
     "@lambda-feedback-segp-sandbox/response-area" "^1.3.11"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
@@ -2918,11 +2918,6 @@
   dependencies:
     "@storybook/global" "^5.0.0"
     tiny-invariant "^1.3.1"
-
-"@storybook/addon-onboarding@^8.5.0":
-  version "8.6.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-onboarding/-/addon-onboarding-8.6.3.tgz#20cb6f3d04a6aa1ed186e878e27a57bd2ef63200"
-  integrity sha512-Xtx0RjLWdnnI6k59GzDtHF5j/fjuccATmiZBokAU/WP8xTaws6a+b3ynUCyHbJs92WcNtBVA/zAS5ASvSSI+NQ==
 
 "@storybook/addon-outline@8.6.3":
   version "8.6.3"
