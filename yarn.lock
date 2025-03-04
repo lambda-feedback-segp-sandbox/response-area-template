@@ -1919,10 +1919,10 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/icon-components@^1.0.1":
-  version "1.0.1"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/icon-components/1.0.1/99d22420d28fae22f329cff84de26311668a34de#99d22420d28fae22f329cff84de26311668a34de"
-  integrity sha512-X6R11lpgex3VUZ0bxocwdhqQQS4TKM1Es7skYLwypLMOWbuJu+FJSp1WDEgjc+leOJk+V+soTlyxb2yHYakzPA==
+"@lambda-feedback-segp-sandbox/icon-components@^1.0.0":
+  version "1.0.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/icon-components/1.0.0/cd4c7d741592e3ac58d649029d2f2bb2e98b3cf6#cd4c7d741592e3ac58d649029d2f2bb2e98b3cf6"
+  integrity sha512-pCKZTxqQ3SOYPdo0UsCtkj7QNLu5XgM86o0tgpoeYp+875hGDJP/Rqkh3gjk4hmdHoITSQvCh2/j1HrOPo3FQQ==
   dependencies:
     "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
     "@mui/material" "^5.15.20"
@@ -1970,30 +1970,26 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.3":
-  version "2.1.3"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.3/62c1c2f682322eb1b54e51ab83f90e7596a9180c#62c1c2f682322eb1b54e51ab83f90e7596a9180c"
-  integrity sha512-wJwEkq4yZlVbkfMB0uJ6qp2eR2q7AEJ/3M5dxG/QqocMbHq5O3lHR1xntPQXB3MWB4gQXKkCAeaF94/DabQDeg==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^0.2.1":
+  version "0.2.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/0.2.1/4b2f636b36aea022d348cafca61b07306775aad5#4b2f636b36aea022d348cafca61b07306775aad5"
+  integrity sha512-mLbr5JcRXX9dWui5hGpXejoUsbACmXfgfytFISTqyenIsn8BzN0nUyiCcqV31P1rVmHv3o4o3EfuGDs2iVxchg==
   dependencies:
-    "@lambda-feedback-segp-sandbox/response-area" "^1.3.5"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.1.0"
-    "@mui/icons-material" "^5.15.20"
-    "@mui/material" "^5.15.20"
-    "@storybook/react" "^8.5.0"
     lodash "^4.17.21"
     react "^18.3.1"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.5", "@lambda-feedback-segp-sandbox/response-area@^1.3.7":
-  version "1.3.7"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.7/2f9a28188f4179d49a250470b1d131b3ec71a193#2f9a28188f4179d49a250470b1d131b3ec71a193"
-  integrity sha512-XVdUtTcKnbgfhyYRG9L6keAYymG21ic+kH3FikvgFXkY10wsArgZN1Xfky9ImrcLcLlARr0Fk/rL1DIH81eY8A==
+"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.5":
+  version "1.3.5"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.5/0ee11a861083e0d2cb2a6a7c105df3fc849ac5b8#0ee11a861083e0d2cb2a6a7c105df3fc849ac5b8"
+  integrity sha512-bZ7pTMk8G2/wwQRXjVskKrSnHg0ofjPBntkJ9Kf5qe03fwfJWOZPgHuk40RUXXGUEjC4c4CKLeUoxKR0wIm3ww==
   dependencies:
     "@lambda-feedback-segp-sandbox/content-components" "^1.0.1"
     "@lambda-feedback-segp-sandbox/form-components" "^1.1.1"
     "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
-    "@lambda-feedback-segp-sandbox/icon-components" "^1.0.1"
+    "@lambda-feedback-segp-sandbox/icon-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/loading-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/math-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
@@ -3401,9 +3397,9 @@
   integrity sha512-GsCCIZDE/p3i96vtEqx+7dBUGXrc7zeSK3wwPHIaRThS+9OhWIXRqzs4d6k1SVU8g91DrNRWxWUGhp5KXQb2VA==
 
 "@types/node@*", "@types/node@>=12.12.47", "@types/node@>=13.7.0":
-  version "22.13.9"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.9.tgz#5d9a8f7a975a5bd3ef267352deb96fb13ec02eca"
-  integrity sha512-acBjXdRJ3A6Pb3tqnw9HZmyR3Fiol3aGxRCK1x3d+6CDAMjl7I649wpSd+yNURCjbOUGu9tqtLKnTGxmK6CyGw==
+  version "22.13.8"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-22.13.8.tgz#57e2450295b33a6518d6fd4f65f47236d3e41d8d"
+  integrity sha512-G3EfaZS+iOGYWLLRCEAXdWK9my08oHNZ+FHluRiggIYJPOXzhOiDgpVCUHaUvyIC5/fj7C/p637jdzC666AOKQ==
   dependencies:
     undici-types "~6.20.0"
 
@@ -3450,11 +3446,6 @@
   version "7.5.8"
   resolved "https://registry.yarnpkg.com/@types/semver/-/semver-7.5.8.tgz#8268a8c57a3e4abd25c165ecd36237db7948a55e"
   integrity sha512-I8EUhyrgfLrcTkzV3TSsGyl1tSuPrEDzr0yd5m90UgNxQkyDXULk3b6MlQqTCpZpNtWe1K0hzclnZkTcLBe2UQ==
-
-"@types/shuffle-seed@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@types/shuffle-seed/-/shuffle-seed-1.1.3.tgz#66a887c0d38d1e149664c1dd3665cceffd3d08ae"
-  integrity sha512-D05NnrEz9YvwCp8GSzyI/UipvOtmiMbEtLgupa5buU6QJkmelKb7Pwuslsb8C7c+Wkn3qiAAL329+/E2PfUd0A==
 
 "@types/trusted-types@^2.0.2":
   version "2.0.7"
@@ -3510,13 +3501,13 @@
     "@typescript-eslint/types" "7.18.0"
     "@typescript-eslint/visitor-keys" "7.18.0"
 
-"@typescript-eslint/scope-manager@8.26.0":
-  version "8.26.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-8.26.0.tgz#b06623fad54a3a77fadab5f652ef75ed3780b545"
-  integrity sha512-E0ntLvsfPqnPwng8b8y4OGuzh/iIOm2z8U3S9zic2TeMLW61u5IH2Q1wu0oSTkfrSzwbDJIB/Lm8O3//8BWMPA==
+"@typescript-eslint/scope-manager@8.25.0":
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/scope-manager/-/scope-manager-8.25.0.tgz#ac3805077aade898e98ca824294c998545597df3"
+  integrity sha512-6PPeiKIGbgStEyt4NNXa2ru5pMzQ8OYKO1hX1z53HMomrmiSB+R5FmChgQAP1ro8jMtNawz+TRQo/cSXrauTpg==
   dependencies:
-    "@typescript-eslint/types" "8.26.0"
-    "@typescript-eslint/visitor-keys" "8.26.0"
+    "@typescript-eslint/types" "8.25.0"
+    "@typescript-eslint/visitor-keys" "8.25.0"
 
 "@typescript-eslint/type-utils@7.18.0":
   version "7.18.0"
@@ -3533,10 +3524,10 @@
   resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-7.18.0.tgz#b90a57ccdea71797ffffa0321e744f379ec838c9"
   integrity sha512-iZqi+Ds1y4EDYUtlOOC+aUmxnE9xS/yCigkjA7XpTKV6nCBd3Hp/PRGGmdwnfkV2ThMyYldP1wRpm/id99spTQ==
 
-"@typescript-eslint/types@8.26.0":
-  version "8.26.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-8.26.0.tgz#c4e93a8faf3a38a8d8adb007dc7834f1c89ee7bf"
-  integrity sha512-89B1eP3tnpr9A8L6PZlSjBvnJhWXtYfZhECqlBl1D9Lme9mHO6iWlsprBtVenQvY1HMhax1mWOjhtL3fh/u+pA==
+"@typescript-eslint/types@8.25.0":
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/types/-/types-8.25.0.tgz#f91512c2f532b1d6a8826cadd0b0e5cd53cf97e0"
+  integrity sha512-+vUe0Zb4tkNgznQwicsvLUJgZIRs6ITeWSCclX1q85pR1iOiaj+4uZJIUp//Z27QWu5Cseiw3O3AR8hVpax7Aw==
 
 "@typescript-eslint/typescript-estree@7.18.0":
   version "7.18.0"
@@ -3552,13 +3543,13 @@
     semver "^7.6.0"
     ts-api-utils "^1.3.0"
 
-"@typescript-eslint/typescript-estree@8.26.0":
-  version "8.26.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-8.26.0.tgz#128972172005a7376e34ed2ecba4e29363b0cad1"
-  integrity sha512-tiJ1Hvy/V/oMVRTbEOIeemA2XoylimlDQ03CgPPNaHYZbpsc78Hmngnt+WXZfJX1pjQ711V7g0H7cSJThGYfPQ==
+"@typescript-eslint/typescript-estree@8.25.0":
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/typescript-estree/-/typescript-estree-8.25.0.tgz#d8409c63abddd4cf5b93c031b24b9edc1c7c1299"
+  integrity sha512-ZPaiAKEZ6Blt/TPAx5Ot0EIB/yGtLI2EsGoY6F7XKklfMxYQyvtL+gT/UCqkMzO0BVFHLDlzvFqQzurYahxv9Q==
   dependencies:
-    "@typescript-eslint/types" "8.26.0"
-    "@typescript-eslint/visitor-keys" "8.26.0"
+    "@typescript-eslint/types" "8.25.0"
+    "@typescript-eslint/visitor-keys" "8.25.0"
     debug "^4.3.4"
     fast-glob "^3.3.2"
     is-glob "^4.0.3"
@@ -3577,14 +3568,14 @@
     "@typescript-eslint/typescript-estree" "7.18.0"
 
 "@typescript-eslint/utils@^8.8.1":
-  version "8.26.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-8.26.0.tgz#845d20ed8378a5594e6445f54e53b972aee7b3e6"
-  integrity sha512-2L2tU3FVwhvU14LndnQCA2frYC8JnPDVKyQtWFPf8IYFMt/ykEN1bPolNhNbCVgOmdzTlWdusCTKA/9nKrf8Ig==
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/utils/-/utils-8.25.0.tgz#3ea2f9196a915ef4daa2c8eafd44adbd7d56d08a"
+  integrity sha512-syqRbrEv0J1wywiLsK60XzHnQe/kRViI3zwFALrNEgnntn1l24Ra2KvOAWwWbWZ1lBZxZljPDGOq967dsl6fkA==
   dependencies:
     "@eslint-community/eslint-utils" "^4.4.0"
-    "@typescript-eslint/scope-manager" "8.26.0"
-    "@typescript-eslint/types" "8.26.0"
-    "@typescript-eslint/typescript-estree" "8.26.0"
+    "@typescript-eslint/scope-manager" "8.25.0"
+    "@typescript-eslint/types" "8.25.0"
+    "@typescript-eslint/typescript-estree" "8.25.0"
 
 "@typescript-eslint/visitor-keys@7.18.0":
   version "7.18.0"
@@ -3594,12 +3585,12 @@
     "@typescript-eslint/types" "7.18.0"
     eslint-visitor-keys "^3.4.3"
 
-"@typescript-eslint/visitor-keys@8.26.0":
-  version "8.26.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-8.26.0.tgz#a4876216756c69130ea958df3b77222c2ad95290"
-  integrity sha512-2z8JQJWAzPdDd51dRQ/oqIJxe99/hoLIqmf8RMCAJQtYDc535W/Jt2+RTP4bP0aKeBG1F65yjIZuczOXCmbWwg==
+"@typescript-eslint/visitor-keys@8.25.0":
+  version "8.25.0"
+  resolved "https://registry.yarnpkg.com/@typescript-eslint/visitor-keys/-/visitor-keys-8.25.0.tgz#e8646324cd1793f96e02669cb717a05319403164"
+  integrity sha512-kCYXKAum9CecGVHGij7muybDfTS2sD3t0L4bJsEZLkyrXUImiCTq1M3LG2SRtOhiHFwMR9wAFplpT6XHYjTkwQ==
   dependencies:
-    "@typescript-eslint/types" "8.26.0"
+    "@typescript-eslint/types" "8.25.0"
     eslint-visitor-keys "^4.2.0"
 
 "@vitest/expect@2.0.5":
@@ -4266,12 +4257,12 @@ call-bind@^1.0.7, call-bind@^1.0.8:
     set-function-length "^1.2.2"
 
 call-bound@^1.0.2, call-bound@^1.0.3:
-  version "1.0.4"
-  resolved "https://registry.yarnpkg.com/call-bound/-/call-bound-1.0.4.tgz#238de935d2a2a692928c538c7ccfa91067fd062a"
-  integrity sha512-+ys997U96po4Kx/ABpBCqhA9EuxJaQWDQg7295H4hBphv3IZg0boBKuwYpt4YXp6MZ5AmZQnU/tyMTlRpaSejg==
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/call-bound/-/call-bound-1.0.3.tgz#41cfd032b593e39176a71533ab4f384aa04fd681"
+  integrity sha512-YTd+6wGlNlPxSuri7Y6X8tY2dmm12UMH66RpKMhiX6rsk5wXXnYgbUcOt8kiS31/AjfoTOvCsE+w8nZQLQnzHA==
   dependencies:
-    call-bind-apply-helpers "^1.0.2"
-    get-intrinsic "^1.3.0"
+    call-bind-apply-helpers "^1.0.1"
+    get-intrinsic "^1.2.6"
 
 callsites@^3.0.0:
   version "3.1.0"
@@ -5782,7 +5773,7 @@ get-caller-file@^2.0.5:
   resolved "https://registry.yarnpkg.com/get-caller-file/-/get-caller-file-2.0.5.tgz#4f94412a82db32f36e3b0b9741f8a97feb031f7e"
   integrity sha512-DyFP3BM/3YHTQOCUL/w0OZHR0lpKeGrxotcHWcqNEdnltqFwXVfhEBQ94eIo34AfQpo0rGki4cyIiftY06h2Fg==
 
-get-intrinsic@^1.2.4, get-intrinsic@^1.2.5, get-intrinsic@^1.2.6, get-intrinsic@^1.2.7, get-intrinsic@^1.3.0:
+get-intrinsic@^1.2.4, get-intrinsic@^1.2.5, get-intrinsic@^1.2.6, get-intrinsic@^1.2.7:
   version "1.3.0"
   resolved "https://registry.yarnpkg.com/get-intrinsic/-/get-intrinsic-1.3.0.tgz#743f0e3b6964a93a5491ed1bffaae054d7f98d01"
   integrity sha512-9fSjSaos/fRIVIp+xSJlE6lfwhES7LNtKaCBIamHsjr2na1BiABJPo0mOjjz8GJDURarmCPGqaiVg5mfjb98CQ==

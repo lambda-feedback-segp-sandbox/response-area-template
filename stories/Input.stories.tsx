@@ -1,24 +1,23 @@
-// These stories show the Input component in isolation.
-
-import {
-  StudentViewStory,
-  TeacherViewStory,
-  createMeta,
-} from '@lambda-feedback-segp-sandbox/response-area-template-lib/stories/Input.stories'
+import { createInitialisedInput } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
+import type { Meta, StoryObj } from '@storybook/react'
 
 import { MyResponseAreaTub } from '../components'
 
-export default {
-  ...createMeta(() => new MyResponseAreaTub()),
-  // You can add custom story metadata here.
-  // See https://storybook.js.org/docs/writing-stories#default-export.
+const InputMeta: Meta = {
+  component: createInitialisedInput(() => new MyResponseAreaTub()),
+  title: 'Input',
+  parameters: {
+    layout: 'centered',
+  },
+}
+export default InputMeta
+
+type Story = StoryObj<typeof InputMeta>
+
+export const StudentView: Story = {
+  args: { isTeacherMode: false },
 }
 
-// Managed by response-area-template-lib.
-export const StudentView = StudentViewStory
-
-// Managed by response-area-template-lib.
-export const TeacherView = TeacherViewStory
-
-// You can add your own stories here.
-// See https://storybook.js.org/docs/writing-stories#how-to-write-stories.
+export const TeacherView: Story = {
+  args: { isTeacherMode: true },
+}
