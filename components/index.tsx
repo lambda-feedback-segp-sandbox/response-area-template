@@ -58,11 +58,11 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   }
   InputComponent: React.FC<BaseResponseAreaProps> = props => {
     this._config ??= { fontFamily: 'Arial' }
-    ;(window as any)[`RA_${RESPONSE_TYPE}_handleChange`] = props.handleChange
-    ;(window as any)[`RA_${RESPONSE_TYPE}_handleSubmit`] = props.handleSubmit
-    ;(window as any)[`RA_${RESPONSE_TYPE}_handleDraftSave`] =
+    ;(window as any)[`RA_${props.universalResponseAreaId}_handleChange`] = props.handleChange
+    ;(window as any)[`RA_${props.universalResponseAreaId}_handleSubmit`] = props.handleSubmit
+    ;(window as any)[`RA_${props.universalResponseAreaId}_handleDraftSave`] =
       props.handleDraftSave
-    ;(window as any)[`RA_${RESPONSE_TYPE}_previewSubmit`] = props.previewSubmit
+    ;(window as any)[`RA_${props.universalResponseAreaId}_previewSubmit`] = props.previewSubmit
 
     return (
       <this.InputTag
@@ -78,10 +78,10 @@ export class MyResponseAreaTub extends ResponseAreaTub {
         check-is-loading={props.checkIsLoading}
         feedback={JSON.stringify(props.feedback)}
         typesafe-error-message={props.typesafeErrorMessage}
-        handle-change={`RA_${RESPONSE_TYPE}_handleChange`}
-        handle-submit={`RA_${RESPONSE_TYPE}_handleSubmit`}
-        handle-draft-save={`RA_${RESPONSE_TYPE}_handleDraftSave`}
-        preview-submit={`RA_${RESPONSE_TYPE}_previewSubmit`}
+        handle-change={`RA_${props.universalResponseAreaId}_handleChange`}
+        handle-submit={`RA_${props.universalResponseAreaId}_handleSubmit`}
+        handle-draft-save={`RA_${props.universalResponseAreaId}_handleDraftSave`}
+        preview-submit={`RA_${props.universalResponseAreaId}_previewSubmit`}
         style={{ width: '100%', height: '100%' }}
       />
     )
