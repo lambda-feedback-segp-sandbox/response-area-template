@@ -10,6 +10,7 @@ if (!__dirname) {
 
 const config: StorybookConfig = {
   stories: [
+    '../stories/Wizard.stories.tsx',
     '../stories/**/*.mdx',
     '../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)',
   ],

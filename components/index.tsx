@@ -5,7 +5,7 @@ import {
 } from '@lambda-feedback-segp-sandbox/response-area-base'
 import { JSX } from 'react'
 
-import { Response } from './Input.schema'
+import { Response, Config } from './Input.schema'
 
 export * from './Input.schema'
 
@@ -23,6 +23,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   /** Schema created with Zod library, used to parse the answer for the
    *  response area */
   answerSchema = Response
+  
+  configSchema = Config
 
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
