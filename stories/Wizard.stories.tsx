@@ -1,15 +1,20 @@
-import { createInitialisedWizard } from '@lambda-feedback-segp-sandbox/response-area-template-lib'
-import type { Meta, StoryObj } from '@storybook/react'
+// These stories show the Wizard component in isolation.
+
+import {
+  DefaultStory,
+  createMeta,
+} from '@lambda-feedback-segp-sandbox/response-area-template-lib/stories/Wizard.stories'
 
 import { MyResponseAreaTub } from '../components'
 
-const WizardMeta: Meta = {
-  title: 'Wizard',
-  component: createInitialisedWizard(() => new MyResponseAreaTub()),
-  parameters: { layout: 'centered' },
+export default {
+  ...createMeta(() => new MyResponseAreaTub()),
+  // You can add custom story metadata here.
+  // See https://storybook.js.org/docs/writing-stories#default-export.
 }
-export default WizardMeta
 
-type Story = StoryObj<typeof WizardMeta>
+// Managed by response-area-template-lib.
+export const Default = DefaultStory
 
-export const Default: Story = {}
+// You can add your own stories here.
+// See https://storybook.js.org/docs/writing-stories#how-to-write-stories.
