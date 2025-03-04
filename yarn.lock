@@ -1960,10 +1960,10 @@
     react-query "^3.39.0"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^3.2.0", "@lambda-feedback-segp-sandbox/response-area-base@^3.2.1":
-  version "3.2.2"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.2.2/d4eccd7e3db1e60fc6f5cda4530becff63d48faf#d4eccd7e3db1e60fc6f5cda4530becff63d48faf"
-  integrity sha512-hz9d4sKnHhtiqG61C5Go23A5FAI2pOtbXHdcX7LWGM3797xdajnKPoKsdRyPBNGjb7R8edNK/fXiur1QI5WH+w==
+"@lambda-feedback-segp-sandbox/response-area-base@^3.3.0":
+  version "3.3.0"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.3.0/2725704633f7dc72b6339aa5d36c9bccd9b035f7#2725704633f7dc72b6339aa5d36c9bccd9b035f7"
+  integrity sha512-4bssfIMuJS4uP5Jk2RIhwOeRoooyRxcvcYsyN9bxhTNXhDX9iMqnbUBANF+Simvd7CNLHNMa1JvB9n4xPspeIg==
   dependencies:
     "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
     react "^18.3.1"
@@ -1972,12 +1972,12 @@
     zod "^3.14.4"
 
 "@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.3":
-  version "2.1.3"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.3/62c1c2f682322eb1b54e51ab83f90e7596a9180c#62c1c2f682322eb1b54e51ab83f90e7596a9180c"
-  integrity sha512-wJwEkq4yZlVbkfMB0uJ6qp2eR2q7AEJ/3M5dxG/QqocMbHq5O3lHR1xntPQXB3MWB4gQXKkCAeaF94/DabQDeg==
+  version "2.1.4"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.4/f5a93154f040fae3d92b457aa5f1c9264e6a3984#f5a93154f040fae3d92b457aa5f1c9264e6a3984"
+  integrity sha512-f3xIjokttVqBb5VlHEj/bu3tSQqlApg7XYqwkWc/OYJejmxCFrgPejJ5HXL5jeXPTSYbjHIRqORjA+zQ4u0crg==
   dependencies:
-    "@lambda-feedback-segp-sandbox/response-area" "^1.3.5"
-    "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
+    "@lambda-feedback-segp-sandbox/response-area" "^1.3.11"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.1.0"
     "@mui/icons-material" "^5.15.20"
     "@mui/material" "^5.15.20"
@@ -1986,10 +1986,10 @@
     react "^18.3.1"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.10", "@lambda-feedback-segp-sandbox/response-area@^1.3.5":
-  version "1.3.10"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.10/086f20eeef76f9c1c6ff9a55e1068d8671f4034d#086f20eeef76f9c1c6ff9a55e1068d8671f4034d"
-  integrity sha512-gg7UtG5CFGuqNIIAu+XDdHMbwUA444g/IMhKteEY+5Pe+BTPjTQQiE/F1KOOhu1K6Dk7b9fpTtzsRfwA0/OjOA==
+"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.11":
+  version "1.3.11"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.11/485ddd7770a401f99379c2d700bc833d33d81a39#485ddd7770a401f99379c2d700bc833d33d81a39"
+  integrity sha512-PxNn1gMPuPYZmSMyx0AEJu+lFHIuiYDfxb7k6Ezu+D5D/x8RXUUEK8jxux8S88vjbAt+OjIEZznoZquC4g1TdQ==
   dependencies:
     "@lambda-feedback-segp-sandbox/content-components" "^1.0.1"
     "@lambda-feedback-segp-sandbox/form-components" "^1.1.1"
@@ -1997,7 +1997,7 @@
     "@lambda-feedback-segp-sandbox/icon-components" "^1.0.1"
     "@lambda-feedback-segp-sandbox/loading-components" "^1.0.0"
     "@lambda-feedback-segp-sandbox/math-components" "^1.0.0"
-    "@lambda-feedback-segp-sandbox/response-area-base" "^3.2.0"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
     "@monaco-editor/react" "^4.6.0"
     "@mui/lab" "^5.0.0-alpha.100"

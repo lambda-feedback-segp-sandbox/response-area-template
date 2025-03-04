@@ -29,7 +29,12 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   /** Main data structure holding the answer for the response area, type of
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
-  public answer?: Response
+  protected _answer?: Response
+  
+  get answer(): Response | undefined {
+    return this._answer
+  }
+
   private InputTag = `input-component-${this.responseType}` as keyof JSX.IntrinsicElements;
   private WizardTag = `wizard-component-${this.responseType}` as keyof JSX.IntrinsicElements;
 
@@ -43,7 +48,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
       fontFamily: 'Arial',
     }
 
-    this.answer = ''
+    this._answer = ''
   }
 
   constructor() {
