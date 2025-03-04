@@ -44,5 +44,6 @@ if (customElements.get(`wizard-component-${RESPONSE_TYPE}`) == undefined) {
   customElements.define(`wizard-component-${RESPONSE_TYPE}`, WizardWebComponent)
 }
 
-;(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
-;(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub
+
+(parent as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;
+(window as any)[`RA_${RESPONSE_TYPE}`] = MyResponseAreaTub;
