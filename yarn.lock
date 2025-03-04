@@ -2919,11 +2919,6 @@
     "@storybook/global" "^5.0.0"
     tiny-invariant "^1.3.1"
 
-"@storybook/addon-onboarding@^8.5.0":
-  version "8.6.3"
-  resolved "https://registry.yarnpkg.com/@storybook/addon-onboarding/-/addon-onboarding-8.6.3.tgz#20cb6f3d04a6aa1ed186e878e27a57bd2ef63200"
-  integrity sha512-Xtx0RjLWdnnI6k59GzDtHF5j/fjuccATmiZBokAU/WP8xTaws6a+b3ynUCyHbJs92WcNtBVA/zAS5ASvSSI+NQ==
-
 "@storybook/addon-outline@8.6.3":
   version "8.6.3"
   resolved "https://registry.yarnpkg.com/@storybook/addon-outline/-/addon-outline-8.6.3.tgz#4ac86a6dcc899ab8cd71861f5dca883a9a630a93"
