@@ -1971,10 +1971,10 @@
     typedoc "^0.27.9"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.1.7":
-  version "2.1.7"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.1.7/288d428a880cfaa124b28a734b50fe6bdb7e23f6#288d428a880cfaa124b28a734b50fe6bdb7e23f6"
-  integrity sha512-mHqPKiGqxotcgB1LUBgNm2pL9GAilSXgOM9qORsz7YdWtcaizdLF7fvhkStaHoI1E8hM7o+ylthW8pfSKxMONQ==
+"@lambda-feedback-segp-sandbox/response-area-template-lib@^2.2.1":
+  version "2.2.1"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-template-lib/2.2.1/20c7d09f4c4f5ccc825cd152505a6ffda6cde3c4#20c7d09f4c4f5ccc825cd152505a6ffda6cde3c4"
+  integrity sha512-WU23eaZ0bRQhg21IParb5eK2AgaNmzTzSw/m7kDzXT8XZp5QTiEV64aVjRxY0hcvXki0Qi6MxNoWas3QGB0QIQ==
   dependencies:
     "@lambda-feedback-segp-sandbox/response-area" "^1.3.11"
     "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
