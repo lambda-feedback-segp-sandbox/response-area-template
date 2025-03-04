@@ -3,6 +3,7 @@
 import {
   AllActionButtonsDisabledStory,
   AllActionButtonsEnabledStory,
+  CustomFeedbackStory,
   ExploreActionButtonDisabledStory,
   StudentViewStory,
   createMeta,
@@ -27,6 +28,9 @@ export const ExploreActionButtonDisabled = ExploreActionButtonDisabledStory
 
 // Managed by response-area-template-lib.
 export const AllActionButtonsDisabled = AllActionButtonsDisabledStory
+
+// Managed by response-area-template-lib.
+export const CustomFeedback = CustomFeedbackStory
 
 // You can add your own stories here.
 // See https://storybook.js.org/docs/writing-stories#how-to-write-stories.
