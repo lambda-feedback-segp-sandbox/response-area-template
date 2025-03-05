@@ -1,4 +1,6 @@
 import {
+  DEFAULT_COLS,
+  DEFAULT_ROWS,
   BaseResponseAreaProps,
   BaseResponseAreaWizardProps,
   ResponseAreaTub,
@@ -7,9 +9,12 @@ import { JSX } from 'react'
 
 import { Response, Config } from './Input.schema'
 
+import { padMatrixFromRowsAndCols } from './helpers'
+import _ from 'lodash'
+
 export * from './Input.schema'
 
-export const RESPONSE_TYPE = 'replaceme'
+export const RESPONSE_TYPE = 'matrixweb'
 
 /** The main class for the custom response area, extends base
  * {@link ResponseAreaTub} abstract class */
@@ -30,6 +35,7 @@ export class MyResponseAreaTub extends ResponseAreaTub {
    *  answer can vary between different response areas, i.e. it might not
    *  necessarily be a string */
   protected _answer?: Response
+  protected _config?: Config
   
   get answer(): Response | undefined {
     return this._answer
@@ -45,10 +51,33 @@ export class MyResponseAreaTub extends ResponseAreaTub {
   // }
   initWithDefault = () => {
     this._config = {
-      fontFamily: 'Arial',
+      rows: DEFAULT_ROWS,
+      cols: DEFAULT_COLS,
     }
+    this._answer = padMatrixFromRowsAndCols({
+      rows: DEFAULT_ROWS,
+      cols: DEFAULT_COLS,
+    })
+  }
 
-    this._answer = ''
+  protected extractAnswer = (provided: any): void => {
+    if (!this._config) throw new Error('Config missing')
+    if (!Array.isArray(provided)) throw new Error('Answer is not an array')
+
+    // legacy handling: answer used to be stored as a one-dimensional array. This
+    // checks which format the answer is in and converts it to a two-dimensional
+    // array if necessary
+    const isChuncked = Array.isArray(provided[0])
+    let answerToParse: Response
+    if (isChuncked) {
+      answerToParse = provided
+    } else {
+      answerToParse = _.chunk(provided, this._config.cols)
+    }
+    const parsedAnswer = this.answerSchema.safeParse(answerToParse)
+    if (!parsedAnswer.success) throw new Error('Could not extract answer')
+
+    this._answer = parsedAnswer.data
   }
 
   constructor() {
@@ -57,7 +86,6 @@ export class MyResponseAreaTub extends ResponseAreaTub {
     this.WizardComponent = this.WizardComponent.bind(this)
   }
   InputComponent: React.FC<BaseResponseAreaProps> = props => {
-    this._config ??= { fontFamily: 'Arial' }
     ;(window as any)[`RA_${props.universalResponseAreaId}_handleChange`] = props.handleChange
     ;(window as any)[`RA_${props.universalResponseAreaId}_handleSubmit`] = props.handleSubmit
     ;(window as any)[`RA_${props.universalResponseAreaId}_handleDraftSave`] =

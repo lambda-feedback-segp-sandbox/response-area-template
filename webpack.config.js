@@ -1,4 +1,8 @@
 const path = require('path')
+const webpack = require('webpack')
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 module.exports = {
   entry: './components/WebComponents.tsx',
@@ -10,6 +14,12 @@ module.exports = {
     extensions: ['.ts', '.tsx', '.js'],
     alias: { 'next/font/google': path.resolve(__dirname, 'mocks/fonts.ts') },
   },
+  plugins: [
+    // fix "process is not defined" error:
+    new webpack.DefinePlugin({
+      'process.env': JSON.stringify(process.env),
+    }),
+  ],
   module: {
     rules: [
       {
@@ -20,6 +30,10 @@ module.exports = {
       {
         test: /\.js$/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
       },
     ],
   },

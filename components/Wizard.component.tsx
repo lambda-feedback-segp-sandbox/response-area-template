@@ -1,71 +1,98 @@
-import { IModularResponseSchema } from '@lambda-feedback-segp-sandbox/response-area/schemas/question-form.schema'
-import { BaseResponseAreaWizardProps } from '@lambda-feedback-segp-sandbox/response-area-base/types/base-props.type'
-import FormControl from '@mui/material/FormControl'
-import InputLabel from '@mui/material/InputLabel'
-import MenuItem from '@mui/material/MenuItem'
-import Select from '@mui/material/Select'
+import { TextInput } from "@lambda-feedback-segp-sandbox/form-components"
+import { MatrixLegacy } from './Input.component'
+import { FullResponseAreaWizardProps } from "@lambda-feedback-segp-sandbox/response-area-base"
+import { makeStyles } from "@lambda-feedback-segp-sandbox/styles"
+import { noop } from 'lodash'
 import React from 'react'
 
-import { Input } from './Input.component'
+import {Config, Response} from './Input.schema'
 
-/** Custom input parameters for the Wizard component, extending or overriding
- *  parameters provided in {@link BaseResponseAreaWizardProps} */
-export type WizardProps = Omit<
-  BaseResponseAreaWizardProps,
-  'handleChange' | 'answer'
-> & {
-  handleChange: (val: IModularResponseSchema) => void
-  answer?: string
-  config: { fontFamily: string }
+export const Wizard: React.FC<FullResponseAreaWizardProps> = props => {
+  const { handleChange, config, answer } = props
+  const { classes } = useStyles()
+
+  const { rows, cols } = Config.parse(config)
+  const matrix = Response.parse(answer)
+
+  return (
+    <div className={classes.container}>
+      <div className={classes.rowcolContainer}>
+        <TextInput
+          label={'rows'}
+          placeholder={'rows'}
+          type={'number'}
+          value={rows}
+          onChange={event => {
+            const newVal = Math.max(Number(event.target.value), 1)
+            handleChange({
+              responseType: 'MATRIX',
+              config: {
+                rows: newVal,
+                cols,
+              },
+              answer: matrix,
+            })
+          }}
+        />
+        <div className={classes.timesSymbol}>X</div>
+        <TextInput
+          label={'cols'}
+          placeholder={'cols'}
+          type={'number'}
+          value={cols}
+          onChange={event => {
+            const newVal = Math.max(Number(event.target.value), 1)
+            handleChange({
+              responseType: 'MATRIX',
+              config: {
+                rows,
+                cols: newVal,
+              },
+              answer: matrix,
+            })
+          }}
+        />
+      </div>
+      <div className={classes.matrix}>
+        <MatrixLegacy
+          previewSubmit={noop}
+          rows={rows}
+          cols={cols}
+          matrix={matrix}
+          handleChange={val => {
+            const matrix = Response.parse(val)
+            return handleChange({
+              responseType: 'MATRIX',
+              config: {
+                rows,
+                cols,
+              },
+              answer: matrix,
+            })
+          }}
+        />
+      </div>
+    </div>
+  )
 }
 
-/** Creates ReactNode rendering the Teacher configuration view, using
- *  {@link WizardProps} */
-export const Wizard: React.FC<WizardProps> = ({
-  handleChange,
-  answer,
-  config,
-}) => (
-  <>
-    <FormControl variant="outlined">
-      <InputLabel id="font-select-label">Font</InputLabel>
-      <Select
-        labelId="font-select-label"
-        onChange={event => {
-          handleChange({
-            config: { fontFamily: event.target.value },
-            answer: answer ?? '',
-            responseType: 'REPLACE_ME',
-          })
-        }}
-        defaultValue={config.fontFamily}
-        label="Font">
-        <MenuItem value="Arial" sx={{ fontFamily: 'Arial' }}>
-          Arial
-        </MenuItem>
-        <MenuItem value="Courier New" sx={{ fontFamily: 'Courier New' }}>
-          Courier New
-        </MenuItem>
-        <MenuItem
-          value="Times New Roman"
-          sx={{ fontFamily: 'Times New Roman' }}>
-          Times New Roman
-        </MenuItem>
-        <MenuItem value="Cursive" sx={{ fontFamily: 'Cursive' }}>
-          Cursive
-        </MenuItem>
-      </Select>
-    </FormControl>
-    <Input
-      handleChange={response =>
-        handleChange({
-          config,
-          answer: response,
-          responseType: 'REPLACE_ME',
-        })
-      }
-      answer={answer}
-      config={config as { fontFamily: string }}
-    />
-  </>
-)
+const useStyles = makeStyles()(theme => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+  },
+  rowcolContainer: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginBottom: theme.spacing(3),
+  },
+  timesSymbol: {
+    margin: theme.spacing(0, 2),
+  },
+  matrix: {
+    width: '100%',
+  },
+}))
