@@ -94,8 +94,8 @@ export class MyResponseAreaTub extends ResponseAreaTub {
 
     return (
       <this.InputTag
-        config={JSON.stringify(props.config ?? {})}
-        answer={JSON.stringify(props.answer)}
+        config={JSON.stringify(props.config ?? this._config)}
+        answer={JSON.stringify(props.answer ?? this._answer)}
         display-mode={props.displayMode}
         response-area-id={props.responseAreaId}
         universal-response-area-id={props.universalResponseAreaId}
