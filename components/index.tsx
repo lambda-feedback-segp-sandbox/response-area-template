@@ -8,8 +8,8 @@ import { JSX } from 'react'
 import { Response, Config } from './Input.schema'
 
 export * from './Input.schema'
-
-export const RESPONSE_TYPE = 'replaceme'
+import { RESPONSE_TYPE } from './constants'
+export { RESPONSE_TYPE }
 
 /** The main class for the custom response area, extends base
  * {@link ResponseAreaTub} abstract class */

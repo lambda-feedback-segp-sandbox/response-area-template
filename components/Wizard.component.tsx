@@ -7,6 +7,7 @@ import Select from '@mui/material/Select'
 import React from 'react'
 
 import { Input } from './Input.component'
+import { RESPONSE_TYPE } from './constants'
 
 /** Custom input parameters for the Wizard component, extending or overriding
  *  parameters provided in {@link BaseResponseAreaWizardProps} */
@@ -35,7 +36,7 @@ export const Wizard: React.FC<WizardProps> = ({
           handleChange({
             config: { fontFamily: event.target.value },
             answer: answer ?? '',
-            responseType: 'REPLACE_ME',
+            responseType: RESPONSE_TYPE,
           })
         }}
         defaultValue={config.fontFamily}
@@ -61,7 +62,7 @@ export const Wizard: React.FC<WizardProps> = ({
         handleChange({
           config,
           answer: response,
-          responseType: 'REPLACE_ME',
+          responseType: RESPONSE_TYPE,
         })
       }
       answer={answer}
