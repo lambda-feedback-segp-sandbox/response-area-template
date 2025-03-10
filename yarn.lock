@@ -1950,16 +1950,6 @@
     markdown-to-jsx "^7.1.7"
     react "^18.3.1"
 
-"@lambda-feedback-segp-sandbox/response-area-base@^1.1.0":
-  version "1.1.4"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/1.1.4/a7657f25dae085c317678f9369278bf78c57383b#a7657f25dae085c317678f9369278bf78c57383b"
-  integrity sha512-uEa+1BZ9AMb8G9CXsKXGqTH1h71kVRZVq0y8GoYwFu3h66vXefzypwBZhykm+8k5HEVcDOpPzaLpIjaoS+HPqw==
-  dependencies:
-    "@lambda-feedback-segp-sandbox/graphql-api" "^1.0.0"
-    react "^18.3.1"
-    react-query "^3.39.0"
-    zod "^3.14.4"
-
 "@lambda-feedback-segp-sandbox/response-area-base@^3.3.0":
   version "3.3.0"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area-base/3.3.0/2725704633f7dc72b6339aa5d36c9bccd9b035f7#2725704633f7dc72b6339aa5d36c9bccd9b035f7"
@@ -1986,7 +1976,7 @@
     react "^18.3.1"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/response-area@^1.3.1", "@lambda-feedback-segp-sandbox/response-area@^1.3.11":
+"@lambda-feedback-segp-sandbox/response-area@^1.3.11":
   version "1.3.11"
   resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/response-area/1.3.11/485ddd7770a401f99379c2d700bc833d33d81a39#485ddd7770a401f99379c2d700bc833d33d81a39"
   integrity sha512-PxNn1gMPuPYZmSMyx0AEJu+lFHIuiYDfxb7k6Ezu+D5D/x8RXUUEK8jxux8S88vjbAt+OjIEZznoZquC4g1TdQ==
@@ -2015,17 +2005,20 @@
     typedoc "^0.27.6"
     zod "^3.14.4"
 
-"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.16":
-  version "0.6.17"
-  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.17/665ed38fca87d41cb39058aa358445fbbac05f29#665ed38fca87d41cb39058aa358445fbbac05f29"
-  integrity sha512-o0QcP3HWdaDRiSAW0msj7lQBdxZdGNi90HDLVb50DmfRyiHcHCsJGOZqoyU+m8ke6fA1sjFyPvqpk35OmKTfGQ==
+"@lambda-feedback-segp-sandbox/sandbox-addon@^0.6.19":
+  version "0.6.19"
+  resolved "https://npm.pkg.github.com/download/@lambda-feedback-segp-sandbox/sandbox-addon/0.6.19/2ec13e9f7b9d3a27f83eac0071a5145fdb180f6a#2ec13e9f7b9d3a27f83eac0071a5145fdb180f6a"
+  integrity sha512-kCnF1mQWRkQ/ZMFUSss69k5lAa2Gj0a7q2i8fEmbbf+6spKdSsKlbwNbmPVHA7ouRVTqU3I50eC1sCIvo8gdMQ==
   dependencies:
     "@lambda-feedback-segp-sandbox/ef-test-server" "^0.5.0"
-    "@lambda-feedback-segp-sandbox/response-area" "^1.3.1"
-    "@lambda-feedback-segp-sandbox/response-area-base" "^1.1.0"
+    "@lambda-feedback-segp-sandbox/response-area" "^1.3.11"
+    "@lambda-feedback-segp-sandbox/response-area-base" "^3.3.0"
     "@lambda-feedback-segp-sandbox/styles" "^1.0.0"
+    "@r2wc/react-to-web-component" "^2.0.4"
     "@storybook/icons" "^1.2.10"
     axios "^1.7.9"
+    lodash "^4.17.21"
+    lodash-es "^4.17.21"
     node-fetch "^3.3.2"
 
 "@lambda-feedback-segp-sandbox/styles@^1.0.0", "@lambda-feedback-segp-sandbox/styles@^1.1.0", "@lambda-feedback-segp-sandbox/styles@^1.2.0":
@@ -6612,6 +6605,11 @@ locate-path@^7.1.0:
   integrity sha512-gvVijfZvn7R+2qyPX8mAuKcFGDf6Nc61GdvGafQsHL0sBIxfKzA+usWn4GFC/bk+QdwPUD4kWFJLhElipq+0VA==
   dependencies:
     p-locate "^6.0.0"
+
+lodash-es@^4.17.21:
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash-es/-/lodash-es-4.17.21.tgz#43e626c46e6591b7750beb2b50117390c609e3ee"
+  integrity sha512-mKnC+QJ9pWVzv+C4/U3rRsHapFfHvQFoFB92e52xeyGMcX6/OlIl78je1u8vePzYZSkkogMPJ2yjxxsb89cxyw==
 
 lodash.camelcase@^4.3.0:
   version "4.3.0"
